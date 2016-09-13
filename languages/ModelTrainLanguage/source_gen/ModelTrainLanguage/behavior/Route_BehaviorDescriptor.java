@@ -12,14 +12,14 @@ import org.jetbrains.mps.openapi.model.SNode;
  * This class is not involved in the actual method invocation
  */
 @Deprecated
-public abstract class Track_BehaviorDescriptor extends BaseConcept_BehaviorDescriptor implements INamedConcept_BehaviorDescriptor {
+public class Route_BehaviorDescriptor extends BaseConcept_BehaviorDescriptor implements INamedConcept_BehaviorDescriptor {
   public String virtual_getFqName_1213877404258(SNode __thisNode__) {
     return null;
   }
 
   @Override
   public String getConceptFqName() {
-    return "ModelTrainLanguage.structure.Track";
+    return "ModelTrainLanguage.structure.Route";
   }
 
 }

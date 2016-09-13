@@ -4,8 +4,26 @@
     <file name="ModelTrainSet_BehaviorDescriptor.java">
       <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.ModelTrainSet_BehaviorDescriptor" />
     </file>
+    <file name="Route_BehaviorDescriptor.java">
+      <unit at="14,0,26,0" name="ModelTrainLanguage.behavior.Route_BehaviorDescriptor" />
+    </file>
+    <file name="Station_BehaviorDescriptor.java">
+      <unit at="14,0,26,0" name="ModelTrainLanguage.behavior.Station_BehaviorDescriptor" />
+    </file>
+    <file name="TrackCurve_BehaviorDescriptor.java">
+      <unit at="11,0,20,0" name="ModelTrainLanguage.behavior.TrackCurve_BehaviorDescriptor" />
+    </file>
+    <file name="TrackMulti_BehaviorDescriptor.java">
+      <unit at="11,0,20,0" name="ModelTrainLanguage.behavior.TrackMulti_BehaviorDescriptor" />
+    </file>
+    <file name="TrackSplitter_BehaviorDescriptor.java">
+      <unit at="11,0,20,0" name="ModelTrainLanguage.behavior.TrackSplitter_BehaviorDescriptor" />
+    </file>
+    <file name="TrackStraight_BehaviorDescriptor.java">
+      <unit at="11,0,20,0" name="ModelTrainLanguage.behavior.TrackStraight_BehaviorDescriptor" />
+    </file>
     <file name="Track_BehaviorDescriptor.java">
-      <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
+      <unit at="14,0,26,0" name="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
     </file>
     <file name="TrainCar_BehaviorDescriptor.java">
       <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.TrainCar_BehaviorDescriptor" />
@@ -14,7 +32,10 @@
       <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.TrainEngine_BehaviorDescriptor" />
     </file>
     <file name="Train_BehaviorDescriptor.java">
-      <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.Train_BehaviorDescriptor" />
+      <unit at="14,0,26,0" name="ModelTrainLanguage.behavior.Train_BehaviorDescriptor" />
+    </file>
+    <file name="Vector_BehaviorDescriptor.java">
+      <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.Vector_BehaviorDescriptor" />
     </file>
   </root>
 </debug-info>
