@@ -12,7 +12,9 @@
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="hyam" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.event(JDK/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="5qva" ref="r:4e76e348-4c3e-46d2-b186-68d250e03a0e(ModelTrainLanguage.structure)" implicit="true" />
+    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -28,8 +30,10 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
-      <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
       </concept>
@@ -67,6 +71,9 @@
       <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
+      <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
+        <property id="1068580320021" name="value" index="3cmrfH" />
+      </concept>
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
@@ -74,13 +81,16 @@
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
+        <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
+      <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -90,10 +100,15 @@
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
+        <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
         <child id="1167514678247" name="rootMappingRule" index="3lj3bC" />
       </concept>
       <concept id="1168619357332" name="jetbrains.mps.lang.generator.structure.RootTemplateAnnotation" flags="lg" index="n94m4">
         <reference id="1168619429071" name="applicableConcept" index="n9lRv" />
+      </concept>
+      <concept id="1200911316486" name="jetbrains.mps.lang.generator.structure.MappingLabelDeclaration" flags="lg" index="2rT7sh">
+        <reference id="1200911342686" name="sourceConcept" index="2rTdP9" />
+        <reference id="1200913004646" name="targetConcept" index="2rZz_L" />
       </concept>
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
         <reference id="1167169349424" name="applicableConcept" index="30HIoZ" />
@@ -117,6 +132,11 @@
       <ref role="3lhOvi" node="7GuxenSFZ9l" resolve="map_ModelTrainSet" />
       <ref role="30HIoZ" to="5qva:7GuxenSFP0Z" resolve="ModelTrainSet" />
     </node>
+    <node concept="2rT7sh" id="1ritKXd4EbE" role="2rTMjI">
+      <property role="TrG5h" value="vectorListParam" />
+      <ref role="2rTdP9" to="5qva:7GuxenSFP0Z" resolve="ModelTrainSet" />
+      <ref role="2rZz_L" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+    </node>
   </node>
   <node concept="312cEu" id="7GuxenSFZ9l">
     <property role="TrG5h" value="map_ModelTrainSet" />
@@ -135,14 +155,23 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="gv3FBPUhIZ" role="jymVt">
-      <property role="TrG5h" value="mouseIsDown" />
-      <node concept="3Tm6S6" id="gv3FBPUhJ0" role="1B3o_S" />
-      <node concept="10P_77" id="gv3FBPUi0K" role="1tU5fm" />
-      <node concept="3clFbT" id="gv3FBPUizZ" role="33vP2m">
-        <property role="3clFbU" value="false" />
+    <node concept="312cEg" id="1ritKXd4E4P" role="jymVt">
+      <property role="34CwA1" value="false" />
+      <property role="eg7rD" value="false" />
+      <property role="TrG5h" value="trackPoints" />
+      <property role="3TUv4t" value="false" />
+      <node concept="3uibUv" id="1ritKXd4CRc" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~List" resolve="List" />
+        <node concept="3uibUv" id="1ritKXd4Dv4" role="11_B2D">
+          <ref role="3uigEE" to="33ny:~List" resolve="List" />
+          <node concept="3uibUv" id="1ritKXd4E3I" role="11_B2D">
+            <ref role="3uigEE" to="33ny:~Vector" resolve="Vector" />
+          </node>
+        </node>
       </node>
+      <node concept="3Tm6S6" id="1ritKXd4Eb0" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="1ritKXd4Efy" role="jymVt" />
     <node concept="2YIFZL" id="gv3FBPTleT" role="jymVt">
       <property role="TrG5h" value="main" />
       <node concept="37vLTG" id="gv3FBPTleU" role="3clF46">
@@ -184,7 +213,66 @@
       <property role="TrG5h" value="init" />
       <node concept="3cqZAl" id="gv3FBPTF8r" role="3clF45" />
       <node concept="3Tm1VV" id="gv3FBPTF8s" role="1B3o_S" />
-      <node concept="3clFbS" id="gv3FBPTF8t" role="3clF47" />
+      <node concept="3clFbS" id="gv3FBPTF8t" role="3clF47">
+        <node concept="3clFbF" id="1ritKXd472E" role="3cqZAp">
+          <node concept="1rXfSq" id="1ritKXd472D" role="3clFbG">
+            <ref role="37wK5l" to="z60i:~Frame.setTitle(java.lang.String):void" resolve="setTitle" />
+            <node concept="Xl_RD" id="1ritKXd47uj" role="37wK5m">
+              <property role="Xl_RC" value="ModelTrain Example Track" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ritKXd48kc" role="3cqZAp">
+          <node concept="1rXfSq" id="1ritKXd48Ku" role="3clFbG">
+            <ref role="37wK5l" to="dxuu:~JFrame.setDefaultCloseOperation(int):void" resolve="setDefaultCloseOperation" />
+            <node concept="37vLTw" id="1ritKXd4bYW" role="37wK5m">
+              <ref role="3cqZAo" to="dxuu:~JFrame.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ritKXd4cMz" role="3cqZAp">
+          <node concept="1rXfSq" id="1ritKXd4ecB" role="3clFbG">
+            <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+            <node concept="37vLTw" id="1ritKXd4f4$" role="37wK5m">
+              <ref role="3cqZAo" node="gv3FBPTN_s" resolve="panel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ritKXd4fU_" role="3cqZAp">
+          <node concept="2OqwBi" id="1ritKXd4gpT" role="3clFbG">
+            <node concept="37vLTw" id="1ritKXd4fUz" role="2Oq$k0">
+              <ref role="3cqZAo" node="gv3FBPTN_s" resolve="panel" />
+            </node>
+            <node concept="liA8E" id="1ritKXd4hfr" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension):void" resolve="setPreferredSize" />
+              <node concept="2ShNRf" id="1ritKXd4iRt" role="37wK5m">
+                <node concept="1pGfFk" id="1ritKXd4ulG" role="2ShVmc">
+                  <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
+                  <node concept="3cmrfG" id="1ritKXd4vmY" role="37wK5m">
+                    <property role="3cmrfH" value="500" />
+                  </node>
+                  <node concept="3cmrfG" id="1ritKXd4vUc" role="37wK5m">
+                    <property role="3cmrfH" value="500" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ritKXd4wJW" role="3cqZAp">
+          <node concept="1rXfSq" id="1ritKXd4_jW" role="3clFbG">
+            <ref role="37wK5l" to="z60i:~Window.pack():void" resolve="pack" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ritKXd4AbU" role="3cqZAp">
+          <node concept="1rXfSq" id="1ritKXd4AbS" role="3clFbG">
+            <ref role="37wK5l" to="z60i:~Window.setVisible(boolean):void" resolve="setVisible" />
+            <node concept="3clFbT" id="1ritKXd4ADR" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="gv3FBPTOVG" role="jymVt" />
     <node concept="3Tm1VV" id="7GuxenSFZ9m" role="1B3o_S" />
