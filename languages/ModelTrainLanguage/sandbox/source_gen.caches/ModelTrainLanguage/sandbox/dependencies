@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="ModelTrainLanguage.sandbox.map_ModelTrainSet" file="map_ModelTrainSet.java">
+    <classNode dependClassName="java.awt.Dimension" />
+    <classNode dependClassName="java.lang.Float" />
+    <classNode dependClassName="java.lang.Math" />
+    <classNode dependClassName="java.lang.NumberFormatException" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode extendsClassName="javax.swing.JFrame" />
   </dependency>

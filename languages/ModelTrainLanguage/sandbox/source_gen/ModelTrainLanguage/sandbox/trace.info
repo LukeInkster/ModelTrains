@@ -1,27 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info>
+  <concept fqn="jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ForStatement" />
   <concept fqn="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:f3ebd983-e5eb-4251-96ff-b5be31bfa6e0(ModelTrainLanguage.sandbox)/8871674439221113375">
     <file name="map_ModelTrainSet.java">
-      <node id="8871674439221113375" at="9,0,10,0" concept="1" trace="panel" />
-      <node id="8871674439221113375" at="10,0,11,0" concept="1" trace="mouseIsDown" />
-      <node id="8871674439221113375" at="11,42,12,52" concept="3" />
-      <node id="8871674439221113375" at="12,52,13,15" concept="0" />
-      <node id="8871674439221113375" at="16,0,18,0" concept="2" trace="init#()V" />
-      <node id="8871674439221113375" at="11,0,15,0" concept="4" trace="main#([Ljava/lang/String;)V" />
-      <scope id="8871674439221113375" at="16,22,16,22" />
-      <scope id="8871674439221113375" at="11,42,13,15">
+      <node id="8871674439221113375" at="12,0,13,0" concept="10" trace="pointGap" />
+      <node id="8871674439221113375" at="13,0,14,0" concept="10" trace="trackPoints" />
+      <node id="8871674439221113375" at="14,0,15,0" concept="3" trace="panel" />
+      <node id="8871674439221113375" at="15,42,16,52" concept="6" />
+      <node id="8871674439221113375" at="16,52,17,15" concept="2" />
+      <node id="8871674439221113375" at="21,0,22,0" concept="3" trace="points" />
+      <node id="8871674439221113375" at="22,0,23,0" concept="3" trace="from" />
+      <node id="8871674439221113375" at="23,0,24,0" concept="3" trace="to" />
+      <node id="8871674439221113375" at="24,89,25,27" concept="2" />
+      <node id="8871674439221113375" at="25,27,26,23" concept="2" />
+      <node id="8871674439221113375" at="26,23,27,19" concept="2" />
+      <node id="8871674439221113375" at="32,0,33,0" concept="3" trace="x" />
+      <node id="8871674439221113375" at="33,0,34,0" concept="3" trace="y" />
+      <node id="8871674439221113375" at="34,0,35,0" concept="3" trace="z" />
+      <node id="8871674439221113375" at="35,47,36,17" concept="2" />
+      <node id="8871674439221113375" at="36,17,37,17" concept="2" />
+      <node id="8871674439221113375" at="37,17,38,17" concept="2" />
+      <node id="8871674439221113375" at="42,102,43,74" concept="2" />
+      <node id="8871674439221113375" at="46,22,47,20" concept="2" />
+      <node id="8871674439221113375" at="47,20,48,19" concept="2" />
+      <node id="8871674439221113375" at="48,19,49,41" concept="2" />
+      <node id="8871674439221113375" at="49,41,50,44" concept="2" />
+      <node id="8871674439221113375" at="50,44,51,15" concept="2" />
+      <node id="8871674439221113375" at="51,15,52,52" concept="2" />
+      <node id="8871674439221113375" at="52,52,53,11" concept="2" />
+      <node id="8871674439221113375" at="53,11,54,21" concept="2" />
+      <node id="8871674439221113375" at="57,78,58,41" concept="6" />
+      <node id="8871674439221113375" at="58,41,59,78" concept="6" />
+      <node id="8871674439221113375" at="59,78,60,77" concept="6" />
+      <node id="8871674439221113375" at="60,77,61,33" concept="6" />
+      <node id="8871674439221113375" at="61,33,62,100" concept="6" />
+      <node id="8871674439221113375" at="62,100,63,100" concept="6" />
+      <node id="8871674439221113375" at="63,100,64,22" concept="2" />
+      <node id="8871674439221113375" at="64,22,65,22" concept="2" />
+      <node id="8871674439221113375" at="65,22,66,15" concept="7" />
+      <node id="8871674439221113375" at="69,31,70,9" concept="8" />
+      <node id="8871674439221113375" at="73,42,74,26" concept="2" />
+      <node id="8871674439221113375" at="77,32,78,52" concept="8" />
+      <node id="3537512858098153600" at="79,5,80,40" concept="8" />
+      <node id="3537512858098153600" at="80,40,81,22" concept="6" />
+      <node id="3537512858098153600" at="81,22,82,21" concept="6" />
+      <node id="3537512858098153600" at="82,21,83,0" concept="9" />
+      <node id="3537512858098153600" at="83,0,84,57" concept="8" />
+      <node id="3537512858098153600" at="84,57,85,26" concept="6" />
+      <node id="3537512858098153600" at="85,26,86,19" concept="6" />
+      <node id="3537512858098153600" at="86,19,87,44" concept="6" />
+      <node id="3537512858098153600" at="88,11,89,35" concept="2" />
+      <node id="3537512858098153600" at="90,41,91,87" concept="2" />
+      <node id="3537512858098153600" at="92,7,93,0" concept="9" />
+      <node id="3537512858098153600" at="93,0,94,88" concept="6" />
+      <node id="3537512858098153600" at="95,42,96,57" concept="2" />
+      <node id="3537512858098153600" at="97,7,98,56" concept="2" />
+      <node id="3537512858098153600" at="98,56,99,0" concept="9" />
+      <node id="3537512858098153600" at="99,0,100,54" concept="2" />
+      <node id="4209318209804312571" at="102,5,103,40" concept="8" />
+      <node id="4209318209804312571" at="103,40,104,22" concept="6" />
+      <node id="4209318209804312571" at="104,22,105,22" concept="6" />
+      <node id="4209318209804312571" at="105,22,106,0" concept="9" />
+      <node id="4209318209804312571" at="106,0,107,57" concept="8" />
+      <node id="4209318209804312571" at="107,57,108,26" concept="6" />
+      <node id="4209318209804312571" at="108,26,109,19" concept="6" />
+      <node id="4209318209804312571" at="109,19,110,44" concept="6" />
+      <node id="4209318209804312571" at="111,11,112,35" concept="2" />
+      <node id="4209318209804312571" at="113,41,114,87" concept="2" />
+      <node id="4209318209804312571" at="115,7,116,0" concept="9" />
+      <node id="4209318209804312571" at="116,0,117,88" concept="6" />
+      <node id="4209318209804312571" at="118,42,119,57" concept="2" />
+      <node id="4209318209804312571" at="120,7,121,56" concept="2" />
+      <node id="4209318209804312571" at="121,56,122,0" concept="9" />
+      <node id="4209318209804312571" at="122,0,123,54" concept="2" />
+      <node id="4209318209804312579" at="125,5,126,40" concept="8" />
+      <node id="4209318209804312579" at="126,40,127,22" concept="6" />
+      <node id="4209318209804312579" at="127,22,128,21" concept="6" />
+      <node id="4209318209804312579" at="128,21,129,0" concept="9" />
+      <node id="4209318209804312579" at="129,0,130,57" concept="8" />
+      <node id="4209318209804312579" at="130,57,131,26" concept="6" />
+      <node id="4209318209804312579" at="131,26,132,19" concept="6" />
+      <node id="4209318209804312579" at="132,19,133,44" concept="6" />
+      <node id="4209318209804312579" at="134,11,135,35" concept="2" />
+      <node id="4209318209804312579" at="136,41,137,87" concept="2" />
+      <node id="4209318209804312579" at="138,7,139,0" concept="9" />
+      <node id="4209318209804312579" at="139,0,140,88" concept="6" />
+      <node id="4209318209804312579" at="141,42,142,57" concept="2" />
+      <node id="4209318209804312579" at="143,7,144,56" concept="2" />
+      <node id="4209318209804312579" at="144,56,145,0" concept="9" />
+      <node id="4209318209804312579" at="145,0,146,54" concept="2" />
+      <node id="8871674439221113375" at="42,0,45,0" concept="11" trace="addTrackSegment#(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="8871674439221113375" at="69,0,72,0" concept="5" trace="trackDrawing#()V" />
+      <node id="8871674439221113375" at="73,0,76,0" concept="11" trace="printTest#(Ljava/lang/String;)V" />
+      <node id="3537512858098153600" at="94,88,97,7" concept="4" />
+      <node id="4209318209804312571" at="117,88,120,7" concept="4" />
+      <node id="4209318209804312579" at="140,88,143,7" concept="4" />
+      <node id="8871674439221113375" at="15,0,19,0" concept="11" trace="main#([Ljava/lang/String;)V" />
+      <node id="8871674439221113375" at="24,0,29,0" concept="1" trace="TrackSegment#(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="8871674439221113375" at="35,0,40,0" concept="1" trace="Vector3#(FFF)V" />
+      <node id="3537512858098153600" at="87,44,92,7" concept="12" />
+      <node id="4209318209804312571" at="110,44,115,7" concept="12" />
+      <node id="4209318209804312579" at="133,44,138,7" concept="12" />
+      <node id="8871674439221113375" at="46,0,56,0" concept="5" trace="init#()V" />
+      <node id="8871674439221113375" at="57,0,68,0" concept="11" trace="arcCalc#(FFF)LModelTrainLanguage/sandbox/map_ModelTrainSet/Vector3;" />
+      <node id="3537512858098153600" at="78,52,101,5" concept="0" />
+      <node id="4209318209804312571" at="101,5,124,5" concept="0" />
+      <node id="4209318209804312579" at="124,5,147,5" concept="0" />
+      <node id="8871674439221113375" at="77,0,149,0" concept="5" trace="trackCreation#()V" />
+      <scope id="8871674439221113375" at="42,102,43,74" />
+      <scope id="8871674439221113375" at="69,31,70,9" />
+      <scope id="8871674439221113375" at="73,42,74,26" />
+      <scope id="3537512858098153600" at="88,11,89,35" />
+      <scope id="3537512858098153600" at="90,0,91,87">
+        <var name="e" id="3537512858098153600" />
+      </scope>
+      <scope id="3537512858098153600" at="90,41,91,87" />
+      <scope id="3537512858098153600" at="95,42,96,57" />
+      <scope id="4209318209804312571" at="111,11,112,35" />
+      <scope id="4209318209804312571" at="113,0,114,87">
+        <var name="e" id="4209318209804312571" />
+      </scope>
+      <scope id="4209318209804312571" at="113,41,114,87" />
+      <scope id="4209318209804312571" at="118,42,119,57" />
+      <scope id="4209318209804312579" at="134,11,135,35" />
+      <scope id="4209318209804312579" at="136,0,137,87">
+        <var name="e" id="4209318209804312579" />
+      </scope>
+      <scope id="4209318209804312579" at="136,41,137,87" />
+      <scope id="4209318209804312579" at="141,42,142,57" />
+      <scope id="8871674439221113375" at="15,42,17,15">
         <var name="mts" id="8871674439221113375" />
       </scope>
-      <scope id="8871674439221113375" at="16,0,18,0" />
-      <scope id="8871674439221113375" at="11,0,15,0">
+      <scope id="8871674439221113375" at="24,89,27,19" />
+      <scope id="8871674439221113375" at="35,47,38,17" />
+      <scope id="8871674439221113375" at="42,0,45,0">
+        <var name="from" id="8871674439221113375" />
+        <var name="points" id="8871674439221113375" />
+        <var name="to" id="8871674439221113375" />
+      </scope>
+      <scope id="8871674439221113375" at="69,0,72,0" />
+      <scope id="8871674439221113375" at="73,0,76,0">
+        <var name="s" id="8871674439221113375" />
+      </scope>
+      <scope id="3537512858098153600" at="94,88,97,7">
+        <var name="i" id="3537512858098153600" />
+      </scope>
+      <scope id="4209318209804312571" at="117,88,120,7">
+        <var name="i" id="4209318209804312571" />
+      </scope>
+      <scope id="4209318209804312579" at="140,88,143,7">
+        <var name="i" id="4209318209804312579" />
+      </scope>
+      <scope id="8871674439221113375" at="15,0,19,0">
         <var name="args" id="8871674439221113375" />
       </scope>
-      <unit id="8871674439221113375" at="8,0,20,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet" />
+      <scope id="8871674439221113375" at="24,0,29,0">
+        <var name="from" id="8871674439221113375" />
+        <var name="points" id="8871674439221113375" />
+        <var name="to" id="8871674439221113375" />
+      </scope>
+      <scope id="8871674439221113375" at="35,0,40,0">
+        <var name="x" id="8871674439221113375" />
+        <var name="y" id="8871674439221113375" />
+        <var name="z" id="8871674439221113375" />
+      </scope>
+      <scope id="8871674439221113375" at="46,22,54,21" />
+      <scope id="8871674439221113375" at="57,78,66,15">
+        <var name="ans" id="8871674439221113375" />
+        <var name="center" id="8871674439221113375" />
+        <var name="d" id="8871674439221113375" />
+        <var name="point" id="8871674439221113375" />
+        <var name="x" id="8871674439221113375" />
+        <var name="y" id="8871674439221113375" />
+      </scope>
+      <scope id="8871674439221113375" at="46,0,56,0" />
+      <scope id="8871674439221113375" at="57,0,68,0">
+        <var name="a" id="8871674439221113375" />
+        <var name="p" id="8871674439221113375" />
+        <var name="r" id="8871674439221113375" />
+      </scope>
+      <scope id="3537512858098153600" at="79,5,100,54">
+        <var name="f1" id="3537512858098153600" />
+        <var name="f2" id="3537512858098153600" />
+        <var name="len" id="3537512858098153600" />
+        <var name="list" id="3537512858098153600" />
+        <var name="s1" id="3537512858098153600" />
+        <var name="s2" id="3537512858098153600" />
+      </scope>
+      <scope id="4209318209804312571" at="102,5,123,54">
+        <var name="f1" id="4209318209804312571" />
+        <var name="f2" id="4209318209804312571" />
+        <var name="len" id="4209318209804312571" />
+        <var name="list" id="4209318209804312571" />
+        <var name="s1" id="4209318209804312571" />
+        <var name="s2" id="4209318209804312571" />
+      </scope>
+      <scope id="4209318209804312579" at="125,5,146,54">
+        <var name="f1" id="4209318209804312579" />
+        <var name="f2" id="4209318209804312579" />
+        <var name="len" id="4209318209804312579" />
+        <var name="list" id="4209318209804312579" />
+        <var name="s1" id="4209318209804312579" />
+        <var name="s2" id="4209318209804312579" />
+      </scope>
+      <scope id="8871674439221113375" at="77,32,147,5" />
+      <scope id="8871674439221113375" at="77,0,149,0" />
+      <unit id="8871674439221113375" at="20,0,30,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet$TrackSegment" />
+      <unit id="8871674439221113375" at="31,0,41,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet$Vector3" />
+      <unit id="8871674439221113375" at="11,0,150,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet" />
     </file>
   </root>
 </debug-info>

@@ -15,8 +15,14 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     {
       SAbstractConcept cncpt = ((SAbstractConcept) concept);
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track"))) {
-        return Collections.<ConceptEditor>singletonList(new Track_Editor());
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, "ModelTrainLanguage.structure.ModelTrainSet"))) {
+        return Collections.<ConceptEditor>singletonList(new ModelTrainSet_Editor());
+      }
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, "ModelTrainLanguage.structure.TrackCurve"))) {
+        return Collections.<ConceptEditor>singletonList(new TrackCurve_Editor());
+      }
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L, "ModelTrainLanguage.structure.TrackStraight"))) {
+        return Collections.<ConceptEditor>singletonList(new TrackStraight_Editor());
       }
     }
     return Collections.<ConceptEditor>emptyList();

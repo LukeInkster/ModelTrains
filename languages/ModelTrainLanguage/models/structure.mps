@@ -85,6 +85,18 @@
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3K61cWEfzGE" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track1" />
+      <property role="20lbJX" value="0..1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+    <node concept="1TJgyj" id="3K61cWEfzGF" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track2" />
+      <property role="20lbJX" value="0..1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
     <node concept="PrWs8" id="2pqQ2agKjDQ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -139,25 +151,18 @@
   <node concept="1TIwiD" id="gv3FBPUA7E">
     <property role="1pbfSe" value="100044637" />
     <property role="TrG5h" value="TrackSwitch" />
-    <property role="R4oN_" value="A piece of track that represents a splitter or merger" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-    <node concept="1TJgyj" id="gv3FBPUAas" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="splitPoint" />
+    <node concept="1TJgyj" id="3K61cWEfzkP" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track3" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
-    <node concept="1TJgyj" id="gv3FBPUAau" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="single" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
-    </node>
-    <node concept="1TJgyj" id="gv3FBPUAax" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="multi" />
-      <property role="20lbJX" value="1..n" />
-      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    <node concept="1TJgyj" id="3K61cWEfzkQ" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track4" />
+      <property role="20lbJX" value="0..1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKvFt" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -183,15 +188,14 @@
   <node concept="1TIwiD" id="gv3FBPUA9$">
     <property role="1pbfSe" value="100044515" />
     <property role="TrG5h" value="TrackStraight" />
+    <property role="R4oN_" value="Straight Track" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
     <node concept="PrWs8" id="2pqQ2agKvDu" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node concept="1TJgyj" id="1ritKXd44cW" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="connectedTrack" />
-      <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyi" id="3K61cWEfzl4" role="1TKVEl">
+      <property role="TrG5h" value="length" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
     </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUAa0">
@@ -212,6 +216,22 @@
     <property role="1pbfSe" value="1222847716" />
     <property role="TrG5h" value="TrackCrossing" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyi" id="3K61cWEfzl6" role="1TKVEl">
+      <property role="TrG5h" value="crossover" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyj" id="3K61cWEfzko" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track3" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+    <node concept="1TJgyj" id="3K61cWEfzkD" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track4" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
     <node concept="PrWs8" id="2pqQ2agKvFV" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -227,12 +247,6 @@
     <node concept="1TJgyi" id="1ritKXd44du" role="1TKVEl">
       <property role="TrG5h" value="angle" />
       <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyj" id="1ritKXd44dx" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="connectedTrack" />
-      <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKzi1" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />

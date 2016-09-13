@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info>
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="7,0,10,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
+      <unit at="13,0,46,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
+    </file>
+  </root>
+  <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/1644507721544961483">
+    <file name="QueriesGenerated.java">
+      <node id="4209318209804196592" at="15,112,16,333" concept="0" />
+      <node id="4209318209804199048" at="18,112,19,333" concept="0" />
+      <node id="4209318209804219950" at="21,112,22,186" concept="0" />
+      <node id="4209318209804241289" at="24,112,25,175" concept="0" />
+      <scope id="4209318209804196202" at="15,112,16,333" />
+      <scope id="4209318209804198648" at="18,112,19,333" />
+      <scope id="4209318209804219866" at="21,112,22,186" />
+      <scope id="4209318209804240743" at="24,112,25,175" />
+    </file>
+  </root>
+  <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/3766816980441708938">
+    <file name="QueriesGenerated.java">
+      <node id="4209318209804511353" at="27,112,28,333" concept="0" />
+      <node id="4209318209804511366" at="30,112,31,333" concept="0" />
+      <node id="4209318209804511382" at="33,112,34,186" concept="0" />
+      <node id="4209318209804516848" at="36,112,37,187" concept="0" />
+      <node id="4209318209804511418" at="39,112,40,175" concept="0" />
+      <scope id="4209318209804511352" at="27,112,28,333" />
+      <scope id="4209318209804511365" at="30,112,31,333" />
+      <scope id="4209318209804511381" at="33,112,34,186" />
+      <scope id="4209318209804516715" at="36,112,37,187" />
+      <scope id="4209318209804511417" at="39,112,40,175" />
+    </file>
+  </root>
+  <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/8871674439221113429">
+    <file name="QueriesGenerated.java">
+      <node id="4209318209804269718" at="42,120,43,197" concept="0" />
+      <scope id="4209318209804269717" at="42,120,43,197" />
     </file>
   </root>
 </debug-info>
