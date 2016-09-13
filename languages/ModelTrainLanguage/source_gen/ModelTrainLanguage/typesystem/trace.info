@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debug-info />
+<debug-info>
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="7,0,11,0" name="ModelTrainLanguage.typesystem.TypesystemDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:3906eca0-42ab-4ae0-ac16-b3b218ad47a2(ModelTrainLanguage.typesystem)/296972292287224465">
+    <file name="Vector.java">
+      <node id="296972292287224710" at="7,0,8,0" concept="2" trace="x" />
+      <node id="296972292287224773" at="8,0,9,0" concept="2" trace="y" />
+      <node id="296972292287224834" at="9,0,10,0" concept="2" trace="z" />
+      <node id="296972292287225014" at="10,44,11,15" concept="1" />
+      <node id="296972292287225568" at="11,15,12,15" concept="1" />
+      <node id="296972292287226199" at="12,15,13,15" concept="1" />
+      <node id="296972292287224520" at="10,0,15,0" concept="0" trace="Vector#(FFF)V" />
+      <scope id="296972292287224524" at="10,44,13,15" />
+      <scope id="296972292287224520" at="10,0,15,0">
+        <var name="x" id="296972292287224535" />
+        <var name="y" id="296972292287224545" />
+        <var name="z" id="296972292287224562" />
+      </scope>
+      <unit id="296972292287224465" at="6,0,16,0" name="ModelTrainLanguage.typesystem.Vector" />
+    </file>
+  </root>
+</debug-info>
 

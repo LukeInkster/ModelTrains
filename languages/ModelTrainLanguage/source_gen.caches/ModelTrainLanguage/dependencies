@@ -3,6 +3,7 @@
   <dependency className="ModelTrainLanguage.Language" file="Language.java">
     <classNode dependClassName="ModelTrainLanguage.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="ModelTrainLanguage.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="ModelTrainLanguage.typesystem.TypesystemDescriptor" />
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -10,6 +11,7 @@
     <classNode dependClassName="java.util.UUID" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateModule" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info>
+  <concept fqn="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:f3ebd983-e5eb-4251-96ff-b5be31bfa6e0(ModelTrainLanguage.sandbox)/8871674439221113375">
     <file name="map_ModelTrainSet.java">
-      <unit id="8871674439221113375" at="6,0,8,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet" />
+      <node id="8871674439221113375" at="9,0,10,0" concept="1" trace="panel" />
+      <node id="8871674439221113375" at="10,0,11,0" concept="1" trace="mouseIsDown" />
+      <node id="8871674439221113375" at="11,42,12,52" concept="3" />
+      <node id="8871674439221113375" at="12,52,13,15" concept="0" />
+      <node id="8871674439221113375" at="16,0,18,0" concept="2" trace="init#()V" />
+      <node id="8871674439221113375" at="11,0,15,0" concept="4" trace="main#([Ljava/lang/String;)V" />
+      <scope id="8871674439221113375" at="16,22,16,22" />
+      <scope id="8871674439221113375" at="11,42,13,15">
+        <var name="mts" id="8871674439221113375" />
+      </scope>
+      <scope id="8871674439221113375" at="16,0,18,0" />
+      <scope id="8871674439221113375" at="11,0,15,0">
+        <var name="args" id="8871674439221113375" />
+      </scope>
+      <unit id="8871674439221113375" at="8,0,20,0" name="ModelTrainLanguage.sandbox.map_ModelTrainSet" />
     </file>
   </root>
 </debug-info>

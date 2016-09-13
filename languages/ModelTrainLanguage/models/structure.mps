@@ -12,15 +12,20 @@
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="1587916991969465369" name="conceptId" index="1pbfSe" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
         <reference id="1082985295845" name="dataType" index="AX2Wp" />
@@ -68,33 +73,9 @@
   <node concept="1TIwiD" id="7GuxenSFP0U">
     <property role="1pbfSe" value="1942869279" />
     <property role="TrG5h" value="Track" />
-    <property role="R5$K7" value="false" />
+    <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="7GuxenSFZb9" role="1TKVEl">
-      <property role="TrG5h" value="x1" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="7GuxenSFZbi" role="1TKVEl">
-      <property role="TrG5h" value="x2" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="7GuxenSFZbn" role="1TKVEl">
-      <property role="TrG5h" value="y1" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="7GuxenSFZbt" role="1TKVEl">
-      <property role="TrG5h" value="y2" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="7GuxenSFZb$" role="1TKVEl">
-      <property role="TrG5h" value="z1" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="7GuxenSFZbG" role="1TKVEl">
-      <property role="TrG5h" value="z2" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0Z">
     <property role="1pbfSe" value="1942869284" />
@@ -113,6 +94,109 @@
       <property role="20kJfa" value="trains" />
       <ref role="20lvS9" node="5TXDKSg3Wek" resolve="Train" />
     </node>
+    <node concept="1TJgyj" id="gv3FBPUA7a" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="stations" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="gv3FBPUA5O" resolve="Station" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA5O">
+    <property role="1pbfSe" value="100044755" />
+    <property role="TrG5h" value="Station" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="gv3FBPUA6g" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUA6i" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="stationTrack" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA7e">
+    <property role="1pbfSe" value="100044665" />
+    <property role="TrG5h" value="TrackSplitter" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA7E">
+    <property role="1pbfSe" value="100044637" />
+    <property role="TrG5h" value="TrackMulti" />
+    <property role="R4oN_" value="A piece of track that represents a splitter or merger" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyj" id="gv3FBPUAas" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="splitPoint" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUAau" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="single" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUAax" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="multi" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA86">
+    <property role="1pbfSe" value="100044609" />
+    <property role="TrG5h" value="Vector" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="gv3FBPUA8y" role="1TKVEl">
+      <property role="TrG5h" value="x" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+    </node>
+    <node concept="1TJgyi" id="gv3FBPUA8$" role="1TKVEl">
+      <property role="TrG5h" value="y" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+    </node>
+    <node concept="1TJgyi" id="gv3FBPUA8B" role="1TKVEl">
+      <property role="TrG5h" value="z" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA94">
+    <property role="1pbfSe" value="100044547" />
+    <property role="TrG5h" value="TrackStraight" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyj" id="gv3FBPUtEc" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="track1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUtEe" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="track2" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUA8T" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="inPos" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    </node>
+    <node concept="1TJgyj" id="gv3FBPUA8X" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="outPos" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUA9$">
+    <property role="1pbfSe" value="100044515" />
+    <property role="TrG5h" value="TrackCurve" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+  </node>
+  <node concept="1TIwiD" id="gv3FBPUAa0">
+    <property role="1pbfSe" value="100044487" />
+    <property role="TrG5h" value="Route" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
 </model>
 
