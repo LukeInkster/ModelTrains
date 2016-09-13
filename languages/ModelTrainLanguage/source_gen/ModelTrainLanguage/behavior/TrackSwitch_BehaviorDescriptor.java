@@ -10,11 +10,11 @@ import jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor;
  * This class is not involved in the actual method invocation
  */
 @Deprecated
-public class SimpleTrack_BehaviorDescriptor extends Track_BehaviorDescriptor implements INamedConcept_BehaviorDescriptor {
+public class TrackSwitch_BehaviorDescriptor extends Track_BehaviorDescriptor implements INamedConcept_BehaviorDescriptor {
 
   @Override
   public String getConceptFqName() {
-    return "ModelTrainLanguage.structure.SimpleTrack";
+    return "ModelTrainLanguage.structure.TrackSwitch";
   }
 
 }
