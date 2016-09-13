@@ -67,11 +67,17 @@
     <property role="1pbfSe" value="1942869260" />
     <property role="TrG5h" value="TrainEngine" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="2pqQ2agKw74" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0C">
     <property role="1pbfSe" value="1942869261" />
     <property role="TrG5h" value="TrainCar" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="2pqQ2agKvFX" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0U">
     <property role="1pbfSe" value="1942869279" />
@@ -121,14 +127,9 @@
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
   </node>
-  <node concept="1TIwiD" id="gv3FBPUA7e">
-    <property role="1pbfSe" value="100044665" />
-    <property role="TrG5h" value="TrackSplitter" />
-    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-  </node>
   <node concept="1TIwiD" id="gv3FBPUA7E">
     <property role="1pbfSe" value="100044637" />
-    <property role="TrG5h" value="TrackMulti" />
+    <property role="TrG5h" value="SwitchTrack" />
     <property role="R4oN_" value="A piece of track that represents a splitter or merger" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
     <node concept="1TJgyj" id="gv3FBPUAas" role="1TKVEi">
@@ -149,6 +150,9 @@
       <property role="20lbJX" value="1..n" />
       <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
     </node>
+    <node concept="PrWs8" id="2pqQ2agKvFt" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUA86">
     <property role="1pbfSe" value="100044609" />
@@ -167,43 +171,31 @@
       <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
     </node>
   </node>
-  <node concept="1TIwiD" id="gv3FBPUA94">
-    <property role="1pbfSe" value="100044547" />
-    <property role="TrG5h" value="TrackStraight" />
-    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-    <node concept="1TJgyj" id="gv3FBPUtEc" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="track1" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
-    </node>
-    <node concept="1TJgyj" id="gv3FBPUtEe" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="track2" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
-    </node>
-    <node concept="1TJgyj" id="gv3FBPUA8T" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="inPos" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
-    </node>
-    <node concept="1TJgyj" id="gv3FBPUA8X" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="outPos" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="gv3FBPUA86" resolve="Vector" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="gv3FBPUA9$">
     <property role="1pbfSe" value="100044515" />
-    <property role="TrG5h" value="TrackCurve" />
+    <property role="TrG5h" value="SimpleTrack" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="PrWs8" id="2pqQ2agKvDu" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="2pqQ2agKvF0" role="1TKVEl">
+      <property role="TrG5h" value="Angle" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+    </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUAa0">
     <property role="1pbfSe" value="100044487" />
     <property role="TrG5h" value="Route" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="2pqQ2agKjDO" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2pqQ2agKvFU">
+    <property role="1pbfSe" value="1222847716" />
+    <property role="TrG5h" value="CrossingTrack" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="PrWs8" id="2pqQ2agKvFV" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>

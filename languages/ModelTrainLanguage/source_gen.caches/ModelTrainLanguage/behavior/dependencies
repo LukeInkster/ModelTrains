@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="ModelTrainLanguage.behavior.CrossingTrack_BehaviorDescriptor" file="CrossingTrack_BehaviorDescriptor.java">
+    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor" />
+    <classNode extendsClassName="java.lang.Cloneable" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
+  </dependency>
   <dependency className="ModelTrainLanguage.behavior.ModelTrainSet_BehaviorDescriptor" file="ModelTrainSet_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
@@ -17,6 +26,15 @@
     <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
   </dependency>
+  <dependency className="ModelTrainLanguage.behavior.SimpleTrack_BehaviorDescriptor" file="SimpleTrack_BehaviorDescriptor.java">
+    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor" />
+    <classNode extendsClassName="java.lang.Cloneable" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
+  </dependency>
   <dependency className="ModelTrainLanguage.behavior.Station_BehaviorDescriptor" file="Station_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
@@ -27,32 +45,13 @@
     <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
   </dependency>
-  <dependency className="ModelTrainLanguage.behavior.TrackCurve_BehaviorDescriptor" file="TrackCurve_BehaviorDescriptor.java">
+  <dependency className="ModelTrainLanguage.behavior.SwitchTrack_BehaviorDescriptor" file="SwitchTrack_BehaviorDescriptor.java">
     <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
-  </dependency>
-  <dependency className="ModelTrainLanguage.behavior.TrackMulti_BehaviorDescriptor" file="TrackMulti_BehaviorDescriptor.java">
-    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
-  </dependency>
-  <dependency className="ModelTrainLanguage.behavior.TrackSplitter_BehaviorDescriptor" file="TrackSplitter_BehaviorDescriptor.java">
-    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
-  </dependency>
-  <dependency className="ModelTrainLanguage.behavior.TrackStraight_BehaviorDescriptor" file="TrackStraight_BehaviorDescriptor.java">
-    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor" />
+    <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
   </dependency>
   <dependency className="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" file="Track_BehaviorDescriptor.java">
@@ -70,6 +69,9 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.lang.core.behavior.BaseConcept_BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
   </dependency>
   <dependency className="ModelTrainLanguage.behavior.TrainEngine_BehaviorDescriptor" file="TrainEngine_BehaviorDescriptor.java">
