@@ -98,6 +98,16 @@
       <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
+    <node concept="1TJgyj" id="5jD1KEMNsIx" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track3" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
+    <node concept="1TJgyj" id="5jD1KEMNsIA" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track4" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    </node>
     <node concept="PrWs8" id="2pqQ2agKjDQ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -156,17 +166,9 @@
     <property role="1pbfSe" value="100044637" />
     <property role="TrG5h" value="TrackSwitch" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-    <node concept="1TJgyj" id="3K61cWEfzkP" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="track3" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
-    </node>
-    <node concept="1TJgyj" id="3K61cWEfzkQ" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="track4" />
-      <property role="20lbJX" value="0..1" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyi" id="5jD1KEMJ$61" role="1TKVEl">
+      <property role="TrG5h" value="left" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKvFt" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -220,21 +222,9 @@
     <property role="1pbfSe" value="1222847716" />
     <property role="TrG5h" value="TrackCrossing" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-    <node concept="1TJgyi" id="3K61cWEfzl6" role="1TKVEl">
-      <property role="TrG5h" value="crossover" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="1TJgyj" id="3K61cWEfzko" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="track3" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
-    </node>
-    <node concept="1TJgyj" id="3K61cWEfzkD" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="track4" />
-      <property role="20lbJX" value="1" />
-      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="1TJgyi" id="5jD1KEMU$XF" role="1TKVEl">
+      <property role="TrG5h" value="angle" />
+      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKvFV" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -279,6 +269,14 @@
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKzi3" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5jD1KEMQx41">
+    <property role="1pbfSe" value="130226187" />
+    <property role="TrG5h" value="TrackBuffer" />
+    <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
+    <node concept="PrWs8" id="5jD1KEMQx6e" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>

@@ -43,6 +43,15 @@
     <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
   </dependency>
+  <dependency className="ModelTrainLanguage.behavior.TrackBuffer_BehaviorDescriptor" file="TrackBuffer_BehaviorDescriptor.java">
+    <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.INamedConcept_BehaviorDescriptor" />
+    <classNode extendsClassName="java.lang.Cloneable" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.impl.CompiledBehaviorDescriptor" />
+  </dependency>
   <dependency className="ModelTrainLanguage.behavior.TrackCrossing_BehaviorDescriptor" file="TrackCrossing_BehaviorDescriptor.java">
     <classNode dependClassName="ModelTrainLanguage.behavior.Track_BehaviorDescriptor" />
     <classNode dependClassName="java.lang.Deprecated" />
