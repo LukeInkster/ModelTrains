@@ -3,7 +3,7 @@
   <concept fqn="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="14,0,221,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
+      <unit at="14,0,218,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/1644507721544961483">
@@ -130,7 +130,6 @@
       <node id="6118429311292501550" at="205,112,206,491" concept="0" />
       <node id="6118429311292501565" at="208,112,209,491" concept="0" />
       <node id="6118429311292300435" at="211,112,212,186" concept="0" />
-      <node id="6118429311292300482" at="214,112,215,175" concept="0" />
       <scope id="6118429311292300276" at="148,112,149,175" />
       <scope id="6118429311292300293" at="151,112,152,333" />
       <scope id="6118429311292300308" at="154,112,155,227" />
@@ -153,13 +152,12 @@
       <scope id="6118429311292501549" at="205,112,206,491" />
       <scope id="6118429311292501564" at="208,112,209,491" />
       <scope id="6118429311292300434" at="211,112,212,186" />
-      <scope id="6118429311292300481" at="214,112,215,175" />
     </file>
   </root>
   <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/8871674439221113429">
     <file name="QueriesGenerated.java">
-      <node id="4209318209804269718" at="217,120,218,197" concept="0" />
-      <scope id="4209318209804269717" at="217,120,218,197" />
+      <node id="4209318209804269718" at="214,120,215,197" concept="0" />
+      <scope id="4209318209804269717" at="214,120,215,197" />
     </file>
   </root>
 </debug-info>

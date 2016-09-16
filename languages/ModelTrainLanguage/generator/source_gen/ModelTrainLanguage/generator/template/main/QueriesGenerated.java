@@ -211,9 +211,6 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetPropertyValue_6118429311292300433(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL, 0x54e9070ab2ea4f6bL, "angle"));
   }
-  public static Object propertyMacro_GetPropertyValue_6118429311292300480(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-  }
   public static Iterable<SNode> sourceNodesQuery_4209318209804269716(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
   }

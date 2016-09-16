@@ -37,51 +37,60 @@
   </registry>
   <node concept="23Gtjq" id="7GuxenSFZ8v">
     <property role="TrG5h" value="Test_Example_SimpleLoop" />
-    <node concept="3LXmNt" id="5jD1KEN8oCr" role="23Gti_">
+    <node concept="3LXmNt" id="5BQNfoel82E" role="23Gti_">
       <property role="TrG5h" value="1" />
       <property role="me36b" value="5.0f" />
       <ref role="me3Z_" node="5jD1KEMS2VY" resolve="Z" />
-      <ref role="me3Z$" node="5jD1KEN8oCz" resolve="2" />
+      <ref role="me3Z$" node="5BQNfoel82M" resolve="2" />
     </node>
-    <node concept="3LXmXj" id="5jD1KEN8oCz" role="23Gti_">
+    <node concept="3LXmXj" id="5BQNfoel82M" role="23Gti_">
       <property role="TrG5h" value="2" />
-      <ref role="me3Z_" node="5jD1KEN8oCr" resolve="1" />
-      <ref role="3A9cMF" node="5jD1KEN8oCV" resolve="3" />
-      <ref role="me3Z$" node="5jD1KEN8tjP" resolve="4" />
+      <ref role="me3Z$" node="5BQNfoel82E" resolve="1" />
+      <ref role="me3Z_" node="5jD1KEMS2VY" resolve="Z" />
+      <ref role="3A9cMF" node="5BQNfoeoEe_" resolve="3" />
     </node>
-    <node concept="1rKzhf" id="5jD1KEN8oCV" role="23Gti_">
+    <node concept="1rKzhf" id="5BQNfoeoEe_" role="23Gti_">
       <property role="TrG5h" value="3" />
-      <property role="1rKzhh" value="45.0f" />
+      <property role="1rKzhh" value="25.0f" />
       <property role="1rKzhj" value="10.0f" />
-      <ref role="me3Z_" node="5jD1KEN8oCz" resolve="2" />
-      <ref role="me3Z$" node="5jD1KEN8w2h" resolve="6" />
+      <ref role="me3Z_" node="5BQNfoel82M" resolve="2" />
+      <ref role="me3Z$" node="5BQNfoeoGJt" resolve="4" />
     </node>
-    <node concept="3LXmNt" id="5jD1KEN8tjP" role="23Gti_">
+    <node concept="2QAMbo" id="5BQNfoeoGJt" role="23Gti_">
       <property role="TrG5h" value="4" />
-      <property role="me36b" value="10.0f" />
-      <ref role="me3Z_" node="5jD1KEN8oCz" resolve="2" />
-      <ref role="me3Z$" node="5jD1KEN8tk3" resolve="5" />
+      <property role="3A0Oxx" value="45.0f" />
+      <ref role="me3Z$" node="5jD1KEMS2VY" resolve="Z" />
+      <ref role="me3Z_" node="5BQNfoeoEe_" resolve="3" />
+      <ref role="3A9cMG" node="5BQNfoexxKB" resolve="5" />
+      <ref role="3A9cMF" node="5BQNfoexzdP" resolve="6" />
     </node>
-    <node concept="1rKzhf" id="5jD1KEN8tk3" role="23Gti_">
+    <node concept="3LXmNt" id="5BQNfoexxKB" role="23Gti_">
       <property role="TrG5h" value="5" />
-      <property role="1rKzhh" value="180.0f" />
-      <property role="1rKzhj" value="10.0f" />
-      <ref role="me3Z_" node="5jD1KEN8tjP" resolve="4" />
-      <ref role="me3Z$" node="5jD1KEMS2VY" resolve="Z" />
-    </node>
-    <node concept="3LXmNt" id="5jD1KEN8w2h" role="23Gti_">
-      <property role="TrG5h" value="6" />
       <property role="me36b" value="4.0f" />
-      <ref role="me3Z_" node="5jD1KEN8oCV" resolve="3" />
-      <ref role="me3Z$" node="5jD1KEMS2VY" resolve="Z" />
+      <ref role="me3Z_" node="5BQNfoeoGJt" resolve="4" />
+      <ref role="me3Z$" node="5BQNfoexAfb" resolve="7" />
     </node>
-    <node concept="2QAMbo" id="5jD1KEN8xuZ" role="23Gti_">
+    <node concept="1rKzhf" id="5BQNfoexzdP" role="23Gti_">
+      <property role="TrG5h" value="6" />
+      <property role="1rKzhh" value="-25.0f" />
+      <property role="1rKzhj" value="5.0f" />
+      <ref role="me3Z_" node="5BQNfoeoGJt" resolve="4" />
+      <ref role="me3Z$" node="2i1gwAaQq4o" resolve="8" />
+    </node>
+    <node concept="1rKzhf" id="5BQNfoexAfb" role="23Gti_">
       <property role="TrG5h" value="7" />
+      <property role="1rKzhh" value="50.0f" />
+      <property role="1rKzhj" value="7.0f" />
+      <ref role="me3Z$" node="5BQNfoexxKB" resolve="5" />
+      <ref role="me3Z_" node="2i1gwAaQq4o" resolve="8" />
+    </node>
+    <node concept="2QAMbo" id="2i1gwAaQq4o" role="23Gti_">
+      <property role="TrG5h" value="8" />
       <property role="3A0Oxx" value="90.0f" />
-      <ref role="me3Z_" node="5jD1KEN8w2h" resolve="6" />
       <ref role="me3Z$" node="5jD1KEMS2VY" resolve="Z" />
       <ref role="3A9cMF" node="5jD1KEMS2VY" resolve="Z" />
       <ref role="3A9cMG" node="5jD1KEMS2VY" resolve="Z" />
+      <ref role="me3Z_" node="5BQNfoexzdP" resolve="6" />
     </node>
     <node concept="3AcLob" id="5jD1KEMS2VY" role="23Gti_">
       <property role="TrG5h" value="Z" />

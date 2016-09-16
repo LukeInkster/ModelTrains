@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Color;
-import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Set;
+import java.util.HashSet;
 
 public class map_ModelTrainSet extends JFrame {
   public static double pointGap = 2;
@@ -22,9 +23,12 @@ public class map_ModelTrainSet extends JFrame {
 
   public static int width = 1000;
   public static int height = 700;
+  public static double startAngle = 0;
 
   public JPanel panel;
   private static Map<String, String> trackCross = new HashMap<String, String>();
+  private static Map<String, Double> trackCrossAngles = new HashMap<String, Double>();
+  private static Map<String, map_ModelTrainSet.TrackSegment> trackPointsMap = new HashMap<String, map_ModelTrainSet.TrackSegment>();
   private static List<map_ModelTrainSet.TrackSegment> trackPoints = new ArrayList<map_ModelTrainSet.TrackSegment>();
 
   public static void main(String[] args) {
@@ -34,7 +38,7 @@ public class map_ModelTrainSet extends JFrame {
 
   public void init() {
     trackCreation();
-    trackTranslating();
+    trackTranslating(1);
     setTitle("ModelTrain Example Track");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     panel = new JPanel() {
@@ -60,6 +64,15 @@ public class map_ModelTrainSet extends JFrame {
     return new map_ModelTrainSet.Vector3(x2, 0, y2);
   }
 
+  public static map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> rotatePoints(map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> points, double angle, map_ModelTrainSet.Vector3 rotPoint) {
+    List<map_ModelTrainSet.Vector3> p = new ArrayList<map_ModelTrainSet.Vector3>();
+    p.add(points.a);
+    p.add(points.b);
+    p = rotatePoints(p, angle, rotPoint);
+    points.a = p.get(0);
+    points.b = p.get(1);
+    return points;
+  }
 
   public static List<map_ModelTrainSet.Vector3> rotatePoints(List<map_ModelTrainSet.Vector3> points, double angle, map_ModelTrainSet.Vector3 rotPoint) {
     // Rotate list of vectors around a point 
@@ -76,7 +89,12 @@ public class map_ModelTrainSet extends JFrame {
     }
     return points;
   }
-
+  public static List<map_ModelTrainSet.Vector3> movePoints(List<map_ModelTrainSet.Vector3> points, map_ModelTrainSet.Vector3 offset) {
+    for (int i = 0; i < points.size(); i++) {
+      points.set(i, map_ModelTrainSet.Vector3.add(points.get(i), offset));
+    }
+    return points;
+  }
 
   private void trackDrawing(int width, int height, Graphics g) {
     // Loop through all track pieces until all have been drawn 
@@ -140,10 +158,146 @@ public class map_ModelTrainSet extends JFrame {
     }
   }
 
+  private void trackTranslating(int a) {
+    Map<String, Double> angles = new HashMap<String, Double>();
+    boolean started = false;
+    boolean done = false;
+    int doneCounter = 0;
+    int doneLimit = 15;
+    while (!(done) && doneCounter < doneLimit) {
+      done = true;
+      for (map_ModelTrainSet.TrackSegment ts : trackPoints) {
+        if (angles.containsKey(ts.self)) {
+          continue;
+        }
+        done = false;
+
+        if (!(started)) {
+          angles.put(ts.self, startAngle);
+          started = true;
+          continue;
+        }
+        String dir = "- F";
+        map_ModelTrainSet.TrackSegment target;
+        double angle;
+        map_ModelTrainSet.Vector3 targetPositionL;
+        map_ModelTrainSet.Vector3 targetPositionR;
+        map_ModelTrainSet.Vector3 originPositionL;
+        map_ModelTrainSet.Vector3 originPositionR;
+
+        if (angles.containsKey(ts.from)) {
+          target = trackPointsMap.get(ts.from);
+          originPositionL = ts.leftPoints.get(0);
+          originPositionR = ts.rightPoints.get(0);
+          if (target.from.equals(ts.self)) {
+            dir += "F";
+            angle = 180 + angles.get(target.self);
+            targetPositionL = target.rightPoints.get(0);
+            targetPositionR = target.leftPoints.get(0);
+          } else {
+            dir += "T";
+            angle = angles.get(target.self) + target.angle;
+            targetPositionL = target.leftPoints.get(target.leftPoints.size() - 1);
+            targetPositionR = target.rightPoints.get(target.rightPoints.size() - 1);
+          }
+        } else if (angles.containsKey(ts.to)) {
+          dir = "- T";
+          target = trackPointsMap.get(ts.to);
+          originPositionL = ts.leftPoints.get(ts.leftPoints.size() - 1);
+          originPositionR = ts.rightPoints.get(ts.rightPoints.size() - 1);
+          if (target.to.equals(ts.self)) {
+            dir += "T";
+            angle = angles.get(target.self) + target.angle + 180 - ts.angle;
+            targetPositionL = target.rightPoints.get(target.rightPoints.size() - 1);
+            targetPositionR = target.leftPoints.get(target.leftPoints.size() - 1);
+          } else {
+            dir += "F";
+            angle = angles.get(target.self) - ts.angle;
+            targetPositionL = target.leftPoints.get(0);
+            targetPositionR = target.rightPoints.get(0);
+          }
+        } else {
+          continue;
+        }
+        while (angle > 360) {
+          angle -= 360;
+        }
+        while (angle < -360) {
+          angle += 360;
+        }
+        angles.put(ts.self, angle);
+
+        ts.leftPoints = rotatePoints(ts.leftPoints, angle, map_ModelTrainSet.Vector3.zero);
+        ts.rightPoints = rotatePoints(ts.rightPoints, angle, map_ModelTrainSet.Vector3.zero);
+        map_ModelTrainSet.Vector3 offsetL = map_ModelTrainSet.Vector3.subtract(targetPositionL, originPositionL);
+        map_ModelTrainSet.Vector3 offsetR = map_ModelTrainSet.Vector3.subtract(targetPositionR, originPositionR);
+        ts.leftPoints = movePoints(ts.leftPoints, offsetL);
+        ts.rightPoints = movePoints(ts.rightPoints, offsetR);
+        print("Track: " + ts.self + dir);
+        print("From: Left" + ts.leftPoints.get(0) + ", Right: " + ts.rightPoints.get(0));
+        print("  To: Left" + ts.leftPoints.get(ts.leftPoints.size() - 1) + ", Right: " + ts.rightPoints.get(ts.rightPoints.size() - 1));
+        print("Angle: " + angle + "," + (angle + ts.angle));
+
+        // Handle cross and switch track 
+        String tsCrossName = "";
+        if (trackCross.containsKey(ts.self)) {
+          tsCrossName = trackCross.get(ts.self);
+        } else if (trackCross.containsValue(ts.self)) {
+          tsCrossName = StringUtils.substring(ts.self, ts.self.length() - 1 - crossSuffix.length(), ts.self.length() - 1);
+        }
+        if (!(tsCrossName.equals(""))) {
+          map_ModelTrainSet.TrackSegment tsCross = trackPointsMap.get(tsCrossName);
+          tsCross.leftPoints = rotatePoints(tsCross.leftPoints, angle, map_ModelTrainSet.Vector3.zero);
+          tsCross.rightPoints = rotatePoints(tsCross.rightPoints, angle, map_ModelTrainSet.Vector3.zero);
+          map_ModelTrainSet.Vector3 moveTo = map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(0), ts.rightPoints.get(0));
+          tsCross.leftPoints = movePoints(tsCross.leftPoints, moveTo);
+          tsCross.rightPoints = movePoints(tsCross.rightPoints, moveTo);
+          angle += trackCrossAngles.get(tsCrossName);
+          angles.put(tsCross.self, angle);
+          angle = trackCrossAngles.get(tsCrossName);
+          map_ModelTrainSet.Vector3 center = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(tsCross.leftPoints.get(0), tsCross.rightPoints.get(0)), map_ModelTrainSet.Vector3.midPoint(tsCross.leftPoints.get(tsCross.leftPoints.size() - 1), tsCross.rightPoints.get(tsCross.rightPoints.size() - 1)));
+          tsCross.leftPoints = rotatePoints(tsCross.leftPoints, angle, center);
+          tsCross.rightPoints = rotatePoints(tsCross.rightPoints, angle, center);
+          print("Track: " + tsCross.self);
+          print("From: Left" + tsCross.leftPoints.get(0) + ", Right: " + tsCross.rightPoints.get(0));
+          print("  To: Left" + tsCross.leftPoints.get(tsCross.leftPoints.size() - 1) + ", Right: " + tsCross.rightPoints.get(tsCross.rightPoints.size() - 1));
+          print("Angle: " + angles.get(tsCross.self));
+        }
+
+        String tsSwitchName = "";
+        if (trackPointsMap.containsKey(ts.self + switchSuffix)) {
+          tsSwitchName = ts.self + switchSuffix;
+        } else if (trackPointsMap.containsKey(StringUtils.substring(ts.self, ts.self.length() - 1 - switchSuffix.length(), ts.self.length() - 1))) {
+          tsSwitchName = StringUtils.substring(ts.self, ts.self.length() - 1 - switchSuffix.length(), ts.self.length() - 1);
+        }
+        if (!(tsSwitchName.equals(""))) {
+          map_ModelTrainSet.TrackSegment tsSwitch = trackPointsMap.get(tsSwitchName);
+          tsSwitch.leftPoints = rotatePoints(tsSwitch.leftPoints, angle, map_ModelTrainSet.Vector3.zero);
+          tsSwitch.rightPoints = rotatePoints(tsSwitch.rightPoints, angle, map_ModelTrainSet.Vector3.zero);
+          offsetL = map_ModelTrainSet.Vector3.subtract(ts.leftPoints.get(0), tsSwitch.leftPoints.get(0));
+          offsetR = map_ModelTrainSet.Vector3.subtract(ts.rightPoints.get(0), tsSwitch.rightPoints.get(0));
+          tsSwitch.leftPoints = movePoints(tsSwitch.leftPoints, offsetL);
+          tsSwitch.rightPoints = movePoints(tsSwitch.rightPoints, offsetR);
+          angles.put(tsSwitch.self, angles.get(ts.self));
+          print("Track: " + tsSwitch.self);
+          print("From: Left" + tsSwitch.leftPoints.get(0) + ", Right: " + tsSwitch.rightPoints.get(0));
+          print("  To: Left" + tsSwitch.leftPoints.get(tsSwitch.leftPoints.size() - 1) + ", Right: " + tsSwitch.rightPoints.get(tsSwitch.rightPoints.size() - 1));
+          print("Angle: " + angle);
+
+        }
+      }
+
+
+      doneCounter += 1;
+    }
+  }
+
   private void trackTranslating() {
     // Translate and rotate track pieces into a 3D coordinate system 
     Map<String, map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>> offsets = new HashMap<String, map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>>();
     Map<String, map_ModelTrainSet.Pair<Double, Double>> angles = new HashMap<String, map_ModelTrainSet.Pair<Double, Double>>();
+    Map<String, map_ModelTrainSet.Vector3> translationOffsets = new HashMap<String, map_ModelTrainSet.Vector3>();
+    Set<String> skipSet = new HashSet<String>();
     boolean started = false;
     boolean done = false;
     int doneCounter = 0;
@@ -165,6 +319,7 @@ public class map_ModelTrainSet extends JFrame {
             anglePair.b = ts.angle;
           }
           angles.put(ts.self, anglePair);
+          translationOffsets.put(ts.self, offsets.get(ts.self).a);
           continue;
         }
 
@@ -174,7 +329,7 @@ public class map_ModelTrainSet extends JFrame {
 
         // Calculate this tracks position based on connected pieces that have already been processed 
         // Results are slightly different based on whether the connected piece is "from" or "to" 
-        double rotationAngle = 0;
+        double rotationAngle;
         map_ModelTrainSet.Vector3 rotatePoint = map_ModelTrainSet.Vector3.zero;
         if (offsets.containsKey(ts.from)) {
           targetAngles = angles.get(ts.from);
@@ -185,17 +340,19 @@ public class map_ModelTrainSet extends JFrame {
           ts.rightPoints = rotatePoints(ts.rightPoints, rotationAngle, map_ModelTrainSet.Vector3.zero);
           offset.a = offsets.get(ts.from).b;
           offset.b = map_ModelTrainSet.Vector3.add(offset.a, map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(ts.leftPoints.size() - 1), ts.rightPoints.get(ts.rightPoints.size() - 1)));
+          translationOffsets.put(ts.self, offset.a);
           print("from - Offset " + offset.a + "," + offset.b);
         } else if (offsets.containsKey(ts.to)) {
           targetAngles = angles.get(ts.to);
           selfAngles = new map_ModelTrainSet.Pair<Double, Double>(targetAngles.a - ts.angle, targetAngles.a);
           print(ts.self + ") to - Angle " + selfAngles.a + "," + selfAngles.b);
           rotatePoint = map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(ts.leftPoints.size() - 1), ts.rightPoints.get(ts.rightPoints.size() - 1));
-          rotationAngle = selfAngles.b;
+          rotationAngle = selfAngles.a;
           ts.leftPoints = rotatePoints(ts.leftPoints, rotationAngle, rotatePoint);
           ts.rightPoints = rotatePoints(ts.rightPoints, rotationAngle, rotatePoint);
           offset.b = offsets.get(ts.to).a;
-          offset.a = map_ModelTrainSet.Vector3.subtract(offset.b, map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(0), ts.rightPoints.get(0)));
+          offset.a = map_ModelTrainSet.Vector3.subtract(offset.b, rotatePoint);
+          translationOffsets.put(ts.self, offset.a);
           print("to - Offset " + offset.a + "," + offset.b);
         } else {
           continue;
@@ -203,7 +360,7 @@ public class map_ModelTrainSet extends JFrame {
         angles.put(ts.self, selfAngles);
         offsets.put(ts.self, offset);
 
-
+        // This fixes the potential problem created by a crossing that creates a disconnected track 
         String tsCrossName = "";
         if (trackCross.containsKey(ts.self)) {
           tsCrossName = trackCross.get(ts.self);
@@ -211,11 +368,26 @@ public class map_ModelTrainSet extends JFrame {
           tsCrossName = StringUtils.substring(ts.self, ts.self.length() - 1 - crossSuffix.length(), ts.self.length() - 1);
         }
         if (!(tsCrossName.equals(""))) {
-          offsets.put(tsCrossName, new map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>(offset.a, offset.b));
+          double angle = trackCrossAngles.get(tsCrossName);
+          print(angle + tsCrossName);
+          angles.put(tsCrossName, new map_ModelTrainSet.Pair<Double, Double>(angle + rotationAngle, angle + rotationAngle));
+          offsets.put(tsCrossName, new map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>(new map_ModelTrainSet.Vector3(offset.a.x, offset.a.y, offset.a.z), new map_ModelTrainSet.Vector3(offset.b.x, offset.b.y, offset.b.z)));
           for (map_ModelTrainSet.TrackSegment ts2 : trackPoints) {
             if (ts2.self.equals(tsCrossName)) {
-              ts2.leftPoints = rotatePoints(ts2.leftPoints, rotationAngle, rotatePoint);
-              ts2.rightPoints = rotatePoints(ts2.rightPoints, rotationAngle, rotatePoint);
+              map_ModelTrainSet.Vector3 mid;
+              mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(0), ts2.rightPoints.get(0)), map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(ts2.leftPoints.size() - 1), ts2.rightPoints.get(ts2.rightPoints.size() - 1)));
+
+              ts2.leftPoints = rotatePoints(ts2.leftPoints, angle, rotatePoint);
+              ts2.rightPoints = rotatePoints(ts2.rightPoints, angle, rotatePoint);
+              map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> offset2 = offsets.get(tsCrossName);
+              for (int i = 0; i < ts2.leftPoints.size(); i++) {
+                ts2.leftPoints.set(i, map_ModelTrainSet.Vector3.add(ts2.leftPoints.get(i), offset2.a));
+                ts2.rightPoints.set(i, map_ModelTrainSet.Vector3.add(ts2.rightPoints.get(i), offset2.a));
+              }
+              mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(0), ts2.rightPoints.get(0)), map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(ts2.leftPoints.size() - 1), ts2.rightPoints.get(ts2.rightPoints.size() - 1)));
+              offset2 = rotatePoints(offset2, angle, mid);
+              skipSet.add(ts2.self);
+              break;
             }
           }
         }
@@ -225,16 +397,19 @@ public class map_ModelTrainSet extends JFrame {
     }
     // Apply offsets 
     for (map_ModelTrainSet.TrackSegment ts : trackPoints) {
-      if (ts == null || !(offsets.containsKey(ts.self))) {
+      if (ts == null || !(offsets.containsKey(ts.self)) || skipSet.contains(ts.self)) {
         continue;
       }
-      map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> offset = offsets.get(ts.self);
+      map_ModelTrainSet.Vector3 offset = translationOffsets.get(ts.self);
       print("Track: " + ts.self);
       for (int i = 0; i < ts.leftPoints.size(); i++) {
-        print(i + ") Offset: " + offset.a + ", left: " + ts.leftPoints.get(i) + ", right: " + ts.rightPoints.get(i));
-        ts.leftPoints.set(i, map_ModelTrainSet.Vector3.add(ts.leftPoints.get(i), offset.a));
-        ts.rightPoints.set(i, map_ModelTrainSet.Vector3.add(ts.rightPoints.get(i), offset.a));
+        ts.leftPoints.set(i, map_ModelTrainSet.Vector3.add(ts.leftPoints.get(i), offset));
+        ts.rightPoints.set(i, map_ModelTrainSet.Vector3.add(ts.rightPoints.get(i), offset));
       }
+      print("From left: " + ts.leftPoints.get(0) + " " + ", right: " + ts.rightPoints.get(0));
+      print("  To left: " + ts.leftPoints.get(ts.leftPoints.size() - 1) + " " + ", right: " + ts.rightPoints.get(ts.rightPoints.size() - 1));
+      print("Offset: " + offsets.get(ts.self).a + "," + offsets.get(ts.self).b);
+      print("Angles: " + angles.get(ts.self).a + "," + angles.get(ts.self).b);
     }
   }
 
@@ -247,15 +422,19 @@ public class map_ModelTrainSet extends JFrame {
   }
 
 
-  public static void addTrackCross(String t1, String t2) {
+  public static void addTrackCross(String t1, String t2, double angle) {
     trackCross.put(t1, t2);
+    trackCrossAngles.put(t1, -angle);
+    trackCrossAngles.put(t2, angle);
   }
 
   public static void addTrackSegment(String self, List<map_ModelTrainSet.Vector3> leftPoints, List<map_ModelTrainSet.Vector3> rightPoints, String from, String to, double angle) {
-    trackPoints.add(new map_ModelTrainSet.TrackSegment(self, leftPoints, rightPoints, from, to, angle));
+    map_ModelTrainSet.TrackSegment s = new map_ModelTrainSet.TrackSegment(self, leftPoints, rightPoints, from, to, angle);
+    trackPoints.add(s);
+    trackPointsMap.put(self, s);
   }
   public static void addTrackSegment(String self, List<map_ModelTrainSet.Vector3> leftPoints, List<map_ModelTrainSet.Vector3> rightPoints, String from, String to) {
-    trackPoints.add(new map_ModelTrainSet.TrackSegment(self, leftPoints, rightPoints, from, to, 0));
+    addTrackSegment(self, leftPoints, rightPoints, from, to, 0);
   }
 
   public class Pair<A, B> {
@@ -312,9 +491,6 @@ public class map_ModelTrainSet extends JFrame {
     }
   }
 
-  private void trackCreation(SNode node) {
-    print(node);
-  }
 
   private void trackCreation() {
     // Turns track pieces into sets of 3d positions 
@@ -379,9 +555,9 @@ public class map_ModelTrainSet extends JFrame {
       String crossSuffix = map_ModelTrainSet.crossSuffix;
       boolean left = false;
 
-      String track1Name = "1";
+      String track1Name = "Z";
       if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackStraight";
+        String concept = "ModelTrainLanguage.structure.TrackBuffer";
         if (!(concept.equals(""))) {
           if (concept.endsWith(".TrackSwitch") && self.equals("")) {
             track1Name += switchSuffix;
@@ -390,7 +566,7 @@ public class map_ModelTrainSet extends JFrame {
           }
         }
       }
-      String track2Name = "4";
+      String track2Name = "1";
       if (!(track2Name.equals(""))) {
         String concept = "ModelTrainLanguage.structure.TrackStraight";
         if (!(concept.equals(""))) {
@@ -443,7 +619,8 @@ public class map_ModelTrainSet extends JFrame {
       map_ModelTrainSet.addTrackSegment(self + switchSuffix, listLeft, listRight, track1Name, track3Name, dAng);
 
       // Straight 
-      dLen = Math.max(listLeft.get(listLeft.size() - 1).x, listRight.get(listRight.size() - 1).x);
+      // 8 should be the closest whole length that is greater than the curve ^ 
+      dLen = 8;
       listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
       listRight = new ArrayList<map_ModelTrainSet.Vector3>();
       for (double i = 0; i < dLen; i += dGap) {
@@ -474,21 +651,20 @@ public class map_ModelTrainSet extends JFrame {
           }
         }
       }
-      String track2Name = "6";
+      String track2Name = "4";
       if (!(track2Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackStraight";
+        String concept = "ModelTrainLanguage.structure.TrackCrossing";
         if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("6")) {
             track2Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("6") || concept.equals("5"))) {
             track2Name += crossSuffix;
           }
         }
       }
 
-
       // Create track segments based on this track piece 
-      String ang = "45.0f";
+      String ang = "25.0f";
       String rad = "10.0f";
       double dAng = 0;
       double dRad = 0;
@@ -507,6 +683,7 @@ public class map_ModelTrainSet extends JFrame {
       double dm = dGap;
       if (dAng < 0) {
         dm = -dGap;
+        dRad = -dRad;
       }
 
       for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
@@ -522,123 +699,6 @@ public class map_ModelTrainSet extends JFrame {
     {
       // Get names of connecting tracks 
       String self = "4";
-      String switchSuffix = map_ModelTrainSet.switchSuffix;
-      String crossSuffix = map_ModelTrainSet.crossSuffix;
-      // Surely there is a better way than this!? 
-      String track1Name = "2";
-      if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackSwitch";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("3")) {
-            track1Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("3") || self.equals(""))) {
-            track1Name += crossSuffix;
-          }
-        }
-      }
-      String track2Name = "5";
-      if (!(track2Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackCurve";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track2Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
-            track2Name += crossSuffix;
-          }
-        }
-      }
-
-
-
-      // Create track segments based on this track piece 
-      String len = "10.0f";
-      double dLen = 0;
-      double dGap = map_ModelTrainSet.pointGap;
-      double dWid = map_ModelTrainSet.railWidth;
-      try {
-        dLen = Double.parseDouble(StringUtils.substring(len, 0, len.length() - 2));
-      } catch (NumberFormatException e) {
-        System.out.println("Straight Track " + "4" + " has an invalid length: " + len);
-      }
-
-      List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
-      List<map_ModelTrainSet.Vector3> listRight = new ArrayList<map_ModelTrainSet.Vector3>();
-      for (double i = 0; i < dLen; i += dGap) {
-        listLeft.add(new map_ModelTrainSet.Vector3(i, 0, -dWid));
-        listRight.add(new map_ModelTrainSet.Vector3(i, 0, dWid));
-
-      }
-      listLeft.add(new map_ModelTrainSet.Vector3(dLen, 0, -dWid));
-      listRight.add(new map_ModelTrainSet.Vector3(dLen, 0, dWid));
-
-      map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
-
-    }
-    {
-      // Get names of connecting tracks 
-      String self = "5";
-      String switchSuffix = map_ModelTrainSet.switchSuffix;
-      String crossSuffix = map_ModelTrainSet.crossSuffix;
-
-      String track1Name = "4";
-      if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackStraight";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track1Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
-            track1Name += crossSuffix;
-          }
-        }
-      }
-      String track2Name = "Z";
-      if (!(track2Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track2Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
-            track2Name += crossSuffix;
-          }
-        }
-      }
-
-
-      // Create track segments based on this track piece 
-      String ang = "180.0f";
-      String rad = "10.0f";
-      double dAng = 0;
-      double dRad = 0;
-      double dGap = map_ModelTrainSet.pointGapCurve;
-      double dWid = map_ModelTrainSet.railWidth;
-      try {
-        dAng = Double.parseDouble(StringUtils.substring(ang, 0, ang.length() - 2));
-        dRad = Double.parseDouble(StringUtils.substring(rad, 0, rad.length() - 2));
-      } catch (NumberFormatException e) {
-        System.out.println("Curved Track " + "5" + " has an invalid angle/radius: " + ang + " " + rad);
-      }
-
-      List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
-      List<map_ModelTrainSet.Vector3> listRight = new ArrayList<map_ModelTrainSet.Vector3>();
-
-      double dm = dGap;
-      if (dAng < 0) {
-        dm = -dGap;
-      }
-
-      for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
-        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
-        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-
-      }
-      listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
-      listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-
-      map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
-    }
-    {
-      // Get names of connecting tracks 
-      String self = "6";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
       String crossSuffix = map_ModelTrainSet.crossSuffix;
       // Surely there is a better way than this!? 
@@ -659,6 +719,95 @@ public class map_ModelTrainSet extends JFrame {
         if (!(concept.equals(""))) {
           if (concept.endsWith(".TrackSwitch") && self.equals("")) {
             track2Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
+            track2Name += crossSuffix;
+          }
+        }
+      }
+      String track3Name = "6";
+      if (!(track3Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCurve";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
+            track3Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
+            track3Name += crossSuffix;
+          }
+        }
+      }
+      String track4Name = "5";
+      if (!(track4Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackStraight";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
+            track4Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
+            track4Name += crossSuffix;
+          }
+        }
+      }
+
+
+      // Create track segments based on this track piece 
+      String ang = "45.0f";
+      double dLen = 4;
+      double dGap = map_ModelTrainSet.pointGap;
+      double dWid = map_ModelTrainSet.railWidth;
+      double dAng = 0;
+      try {
+        dAng = Double.parseDouble(StringUtils.substring(ang, 0, ang.length() - 2));
+      } catch (NumberFormatException e) {
+      }
+
+      List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
+      List<map_ModelTrainSet.Vector3> listRight = new ArrayList<map_ModelTrainSet.Vector3>();
+      for (double i = 0; i < dLen; i += dGap) {
+        listLeft.add(new map_ModelTrainSet.Vector3(i, 0, -dWid));
+        listRight.add(new map_ModelTrainSet.Vector3(i, 0, dWid));
+      }
+      listLeft.add(new map_ModelTrainSet.Vector3(dLen, 0, -dWid));
+      listRight.add(new map_ModelTrainSet.Vector3(dLen, 0, dWid));
+
+      map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
+      map_ModelTrainSet.addTrackCross(self, self + crossSuffix, dAng);
+
+      listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
+      listRight = new ArrayList<map_ModelTrainSet.Vector3>();
+      for (double i = 0; i < dLen; i += dGap) {
+        listLeft.add(new map_ModelTrainSet.Vector3(i, 0, -dWid));
+        listRight.add(new map_ModelTrainSet.Vector3(i, 0, dWid));
+      }
+      listLeft.add(new map_ModelTrainSet.Vector3(dLen, 0, -dWid));
+      listRight.add(new map_ModelTrainSet.Vector3(dLen, 0, dWid));
+
+      map_ModelTrainSet.Vector3 mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(listLeft.get(0), listRight.get(0)), map_ModelTrainSet.Vector3.midPoint(listLeft.get(listLeft.size() - 1), listRight.get(listRight.size() - 1)));
+
+      map_ModelTrainSet.addTrackSegment(self + crossSuffix, listLeft, listRight, track3Name, track4Name);
+
+    }
+    {
+      // Get names of connecting tracks 
+      String self = "5";
+      String switchSuffix = map_ModelTrainSet.switchSuffix;
+      String crossSuffix = map_ModelTrainSet.crossSuffix;
+      // Surely there is a better way than this!? 
+      String track1Name = "4";
+      if (!(track1Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCrossing";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("6")) {
+            track1Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("6") || self.equals("5"))) {
+            track1Name += crossSuffix;
+          }
+        }
+      }
+      String track2Name = "7";
+      if (!(track2Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCurve";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
+            track2Name += switchSuffix;
           } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
             track2Name += crossSuffix;
           }
@@ -675,7 +824,7 @@ public class map_ModelTrainSet extends JFrame {
       try {
         dLen = Double.parseDouble(StringUtils.substring(len, 0, len.length() - 2));
       } catch (NumberFormatException e) {
-        System.out.println("Straight Track " + "6" + " has an invalid length: " + len);
+        System.out.println("Straight Track " + "5" + " has an invalid length: " + len);
       }
 
       List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
@@ -693,13 +842,137 @@ public class map_ModelTrainSet extends JFrame {
     }
     {
       // Get names of connecting tracks 
+      String self = "6";
+      String switchSuffix = map_ModelTrainSet.switchSuffix;
+      String crossSuffix = map_ModelTrainSet.crossSuffix;
+
+      String track1Name = "4";
+      if (!(track1Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCrossing";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("6")) {
+            track1Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("6") || self.equals("5"))) {
+            track1Name += crossSuffix;
+          }
+        }
+      }
+      String track2Name = "8";
+      if (!(track2Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCrossing";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("Z")) {
+            track2Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("Z") || concept.equals("Z"))) {
+            track2Name += crossSuffix;
+          }
+        }
+      }
+
+      // Create track segments based on this track piece 
+      String ang = "-25.0f";
+      String rad = "5.0f";
+      double dAng = 0;
+      double dRad = 0;
+      double dGap = map_ModelTrainSet.pointGapCurve;
+      double dWid = map_ModelTrainSet.railWidth;
+      try {
+        dAng = Double.parseDouble(StringUtils.substring(ang, 0, ang.length() - 2));
+        dRad = Double.parseDouble(StringUtils.substring(rad, 0, rad.length() - 2));
+      } catch (NumberFormatException e) {
+        System.out.println("Curved Track " + "6" + " has an invalid angle/radius: " + ang + " " + rad);
+      }
+
+      List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
+      List<map_ModelTrainSet.Vector3> listRight = new ArrayList<map_ModelTrainSet.Vector3>();
+
+      double dm = dGap;
+      if (dAng < 0) {
+        dm = -dGap;
+        dRad = -dRad;
+      }
+
+      for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
+        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
+        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
+
+      }
+      listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
+      listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
+
+      map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
+    }
+    {
+      // Get names of connecting tracks 
       String self = "7";
+      String switchSuffix = map_ModelTrainSet.switchSuffix;
+      String crossSuffix = map_ModelTrainSet.crossSuffix;
+
+      String track1Name = "8";
+      if (!(track1Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackCrossing";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("Z")) {
+            track1Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("Z") || self.equals("Z"))) {
+            track1Name += crossSuffix;
+          }
+        }
+      }
+      String track2Name = "5";
+      if (!(track2Name.equals(""))) {
+        String concept = "ModelTrainLanguage.structure.TrackStraight";
+        if (!(concept.equals(""))) {
+          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
+            track2Name += switchSuffix;
+          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
+            track2Name += crossSuffix;
+          }
+        }
+      }
+
+      // Create track segments based on this track piece 
+      String ang = "50.0f";
+      String rad = "7.0f";
+      double dAng = 0;
+      double dRad = 0;
+      double dGap = map_ModelTrainSet.pointGapCurve;
+      double dWid = map_ModelTrainSet.railWidth;
+      try {
+        dAng = Double.parseDouble(StringUtils.substring(ang, 0, ang.length() - 2));
+        dRad = Double.parseDouble(StringUtils.substring(rad, 0, rad.length() - 2));
+      } catch (NumberFormatException e) {
+        System.out.println("Curved Track " + "7" + " has an invalid angle/radius: " + ang + " " + rad);
+      }
+
+      List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
+      List<map_ModelTrainSet.Vector3> listRight = new ArrayList<map_ModelTrainSet.Vector3>();
+
+      double dm = dGap;
+      if (dAng < 0) {
+        dm = -dGap;
+        dRad = -dRad;
+      }
+
+      for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
+        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
+        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
+
+      }
+      listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
+      listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
+
+      map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
+    }
+    {
+      // Get names of connecting tracks 
+      String self = "8";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
       String crossSuffix = map_ModelTrainSet.crossSuffix;
       // Surely there is a better way than this!? 
       String track1Name = "6";
       if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackStraight";
+        String concept = "ModelTrainLanguage.structure.TrackCurve";
         if (!(concept.equals(""))) {
           if (concept.endsWith(".TrackSwitch") && self.equals("")) {
             track1Name += switchSuffix;
@@ -752,7 +1025,6 @@ public class map_ModelTrainSet extends JFrame {
       try {
         dAng = Double.parseDouble(StringUtils.substring(ang, 0, ang.length() - 2));
       } catch (NumberFormatException e) {
-        System.out.println("Crossing Track " + "7" + " has an invalid angle: " + ang);
       }
 
       List<map_ModelTrainSet.Vector3> listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
@@ -765,7 +1037,7 @@ public class map_ModelTrainSet extends JFrame {
       listRight.add(new map_ModelTrainSet.Vector3(dLen, 0, dWid));
 
       map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
-      map_ModelTrainSet.addTrackCross(self, self + crossSuffix);
+      map_ModelTrainSet.addTrackCross(self, self + crossSuffix, dAng);
 
       listLeft = new ArrayList<map_ModelTrainSet.Vector3>();
       listRight = new ArrayList<map_ModelTrainSet.Vector3>();
@@ -777,8 +1049,6 @@ public class map_ModelTrainSet extends JFrame {
       listRight.add(new map_ModelTrainSet.Vector3(dLen, 0, dWid));
 
       map_ModelTrainSet.Vector3 mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(listLeft.get(0), listRight.get(0)), map_ModelTrainSet.Vector3.midPoint(listLeft.get(listLeft.size() - 1), listRight.get(listRight.size() - 1)));
-      listLeft = map_ModelTrainSet.rotatePoints(listLeft, -dAng, mid);
-      listRight = map_ModelTrainSet.rotatePoints(listRight, -dAng, mid);
 
       map_ModelTrainSet.addTrackSegment(self + crossSuffix, listLeft, listRight, track3Name, track4Name);
 
