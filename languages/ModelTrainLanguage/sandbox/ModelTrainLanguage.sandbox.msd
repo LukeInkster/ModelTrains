@@ -11,7 +11,7 @@
     <dependency reexport="false">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>
   </dependencies>
   <languageVersions>
-    <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" fqName="ModelTrainLanguage" version="-1" />
+    <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" fqName="ModelTrainLanguage" version="0" />
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" fqName="jetbrains.mps.lang.core" version="1" />
   </languageVersions>
   <dependencyVersions>
