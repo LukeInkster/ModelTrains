@@ -33,7 +33,6 @@ public class TrackStraight_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createRefCell_wx07hf_f0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_wx07hf_g0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_wx07hf_h0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_wx07hf_i0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_wx07hf_a0(EditorContext editorContext, SNode node) {
@@ -190,14 +189,5 @@ public class TrackStraight_Editor extends DefaultNodeEditor {
       } else
       return editorCell;
     }
-  }
-  private EditorCell createConstant_wx07hf_i0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "-------------");
-    editorCell.setCellId("Constant_wx07hf_i0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
   }
 }

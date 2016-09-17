@@ -7,16 +7,28 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.smodel.language.ConceptRegistry;
-import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import javax.swing.JComponent;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import ModelTrainLanguage.sandbox.VisualisationPanel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import javax.swing.BoxLayout;
+import java.awt.Color;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -25,17 +37,52 @@ public final class ModelTrainSet__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, "ModelTrainLanguage.structure.ModelTrainSet");
   private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
+  public static final SMethod<JComponent> createVisualisation_id6yx95Kw7wIm = new SMethodBuilder<JComponent>(new SJavaCompoundTypeImpl(JComponent.class)).name("createVisualisation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6yx95Kw7wIm").registry(REGISTRY).build();
+  public static final SMethod<JComponent> parseNodes_id7bbQqrm_D74 = new SMethodBuilder<JComponent>(new SJavaCompoundTypeImpl(JComponent.class)).name("parseNodes").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7bbQqrm_D74").registry(REGISTRY).build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createVisualisation_id6yx95Kw7wIm, parseNodes_id7bbQqrm_D74);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces")).size() == 0) {
-      SNode z = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer")));
-      SPropertyOperations.set(z, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "X");
-      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"))).addElement(z);
-    }
   }
 
+  /*package*/ static JComponent createVisualisation_id6yx95Kw7wIm(@NotNull SNode __thisNode__) {
+    VisualisationPanel panel = new VisualisationPanel();
+    List<SNode> tracks = SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
+    for (SNode track : ListSequence.fromList(tracks)) {
+    }
+
+
+
+    return panel;
+  }
+  /*package*/ static JComponent parseNodes_id7bbQqrm_D74(@NotNull SNode __thisNode__) {
+    int w = 500;
+    int h = 500;
+    List<SNode> tracks = SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
+    for (SNode track : ListSequence.fromList(tracks)) {
+    }
+    SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
+    final BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+    Graphics2D g = image.createGraphics();
+    JPanel panel = new JPanel() {
+      @Override
+      protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, null);
+      }
+    };
+    panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+    g.setColor(Color.lightGray);
+    g.fillRect(0, 0, w, h);
+    g.setColor(Color.black);
+
+    g.fillRect(0, 0, w, 20);
+    g.setColor(Color.white);
+    g.drawString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " Visualisation", 10, 12);
+    panel.setPreferredSize(new Dimension(500, 500));
+    panel.setBorder(BorderFactory.createBevelBorder(2));
+    return panel;
+  }
 
   /*package*/ ModelTrainSet__BehaviorDescriptor() {
     super(REGISTRY);
@@ -53,6 +100,10 @@ public final class ModelTrainSet__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((JComponent) createVisualisation_id6yx95Kw7wIm(node));
+      case 1:
+        return (T) ((JComponent) parseNodes_id7bbQqrm_D74(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

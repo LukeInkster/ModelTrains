@@ -11,9 +11,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 public class TrackBuffer_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
@@ -26,7 +23,6 @@ public class TrackBuffer_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_kid20w_a0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_kid20w_b0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_kid20w_c0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_kid20w_d0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_kid20w_a0(EditorContext editorContext, SNode node) {
@@ -54,15 +50,6 @@ public class TrackBuffer_Editor extends DefaultNodeEditor {
   private EditorCell createConstant_kid20w_c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ", End of Line");
     editorCell.setCellId("Constant_kid20w_c0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_kid20w_d0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "-------------");
-    editorCell.setCellId("Constant_kid20w_d0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
-    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }

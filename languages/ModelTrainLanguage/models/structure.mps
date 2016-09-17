@@ -147,6 +147,10 @@
     <node concept="PrWs8" id="2DG_yenJDNu" role="PzmwI">
       <ref role="PrY4T" to="4fqr:431DWIovi3l" resolve="IMainClass" />
     </node>
+    <node concept="1TJgyi" id="7bbQqrm$Qu4" role="1TKVEl">
+      <property role="TrG5h" value="startAngle" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUA5O">
     <property role="1pbfSe" value="100044755" />

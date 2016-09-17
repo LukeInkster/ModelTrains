@@ -11,13 +11,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
-import javax.swing.JComponent;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -35,14 +28,13 @@ public class TrackSwitch_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_cxxyo6_a0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_cxxyo6_b0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_cxxyo6_c0(editorContext, node));
-    editorCell.addEditorCell(this.createJComponent_cxxyo6_d0(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_cxxyo6_d0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_cxxyo6_e0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_cxxyo6_f0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_cxxyo6_g0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_cxxyo6_h0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_cxxyo6_i0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_cxxyo6_j0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_cxxyo6_k0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_cxxyo6_a0(EditorContext editorContext, SNode node) {
@@ -68,31 +60,26 @@ public class TrackSwitch_Editor extends DefaultNodeEditor {
     return editorCell;
   }
   private EditorCell createConstant_cxxyo6_c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ", Split Direction: ");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ", Split Left: ");
     editorCell.setCellId("Constant_cxxyo6_c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createJComponent_cxxyo6_d0(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = EditorCell_Component.createComponentCell(editorContext, node, TrackSwitch_Editor._QueryFunction_JComponent_cxxyo6_a3a(node, editorContext), "_cxxyo6_d0");
-    editorCell.setCellId("JComponent_cxxyo6_d0");
+  private EditorCell createProperty_cxxyo6_d0(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("left");
+    provider.setNoTargetText("<no left>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_left");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
     return editorCell;
-  }
-  private static JComponent _QueryFunction_JComponent_cxxyo6_a3a(final SNode node, final EditorContext editorContext) {
-    String[] values = {"Left", "Right"};
-    JComboBox cb = new JComboBox();
-    for (String s : values) {
-      cb.addItem(s);
-    }
-    cb.setSelectedIndex(0);
-    ActionListener a = new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        JComboBox b = (JComboBox) e.getSource();
-        SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea61eaL, 0x54e9070ab2be4181L, "left"), "" + (((b.getSelectedIndex() == 0 ? true : false))));
-      }
-    };
-    cb.addActionListener(a);
-    return cb;
   }
   private EditorCell createConstant_cxxyo6_e0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "   Connections:");
@@ -258,14 +245,5 @@ public class TrackSwitch_Editor extends DefaultNodeEditor {
       } else
       return editorCell;
     }
-  }
-  private EditorCell createConstant_cxxyo6_k0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "-------------");
-    editorCell.setCellId("Constant_cxxyo6_k0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
   }
 }

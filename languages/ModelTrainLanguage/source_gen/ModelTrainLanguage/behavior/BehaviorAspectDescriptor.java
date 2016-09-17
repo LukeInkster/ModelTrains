@@ -13,14 +13,16 @@ import java.util.Arrays;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myTrackSwitch__BehaviorDescriptor = new TrackSwitch__BehaviorDescriptor();
+  private final BHDescriptor myTrackCurve__BehaviorDescriptor = new TrackCurve__BehaviorDescriptor();
   private final BHDescriptor myModelTrainSet__BehaviorDescriptor = new ModelTrainSet__BehaviorDescriptor();
 
   private final long[] myConceptBehaviorIds;
 
   public BehaviorAspectDescriptor() {
-    myConceptBehaviorIds = new long[2];
+    myConceptBehaviorIds = new long[3];
     myConceptBehaviorIds[0] = 0x41f0eb9f5ea61eaL;
-    myConceptBehaviorIds[1] = 0x7b1e84e5f8af503fL;
+    myConceptBehaviorIds[1] = 0x16d2770f4d104340L;
+    myConceptBehaviorIds[2] = 0x7b1e84e5f8af503fL;
   }
 
   @Deprecated
@@ -37,6 +39,8 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 0:
         return myTrackSwitch__BehaviorDescriptor;
       case 1:
+        return myTrackCurve__BehaviorDescriptor;
+      case 2:
         return myModelTrainSet__BehaviorDescriptor;
       default:
         return null;

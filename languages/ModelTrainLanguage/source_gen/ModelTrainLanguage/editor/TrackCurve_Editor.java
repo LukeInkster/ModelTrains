@@ -11,13 +11,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
-import javax.swing.JComponent;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -35,14 +28,13 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_a6bl5g_a0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_a6bl5g_b0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_c0(editorContext, node));
-    editorCell.addEditorCell(this.createJComponent_a6bl5g_d0(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_a6bl5g_d0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_e0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_a6bl5g_f0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_g0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_a6bl5g_h0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_i0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_a6bl5g_j0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_a6bl5g_k0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_a6bl5g_a0(EditorContext editorContext, SNode node) {
@@ -73,26 +65,21 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createJComponent_a6bl5g_d0(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = EditorCell_Component.createComponentCell(editorContext, node, TrackCurve_Editor._QueryFunction_JComponent_a6bl5g_a3a(node, editorContext), "_a6bl5g_d0");
-    editorCell.setCellId("JComponent_a6bl5g_d0");
+  private EditorCell createProperty_a6bl5g_d0(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("angle");
+    provider.setNoTargetText("<no angle>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_angle");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
     return editorCell;
-  }
-  private static JComponent _QueryFunction_JComponent_a6bl5g_a3a(final SNode node, final EditorContext editorContext) {
-    String[] angles = {"45", "30", "22.5", "15", "-45", "-30", "-22.5", "-15"};
-    JComboBox angleComboBox = new JComboBox();
-    for (String s : angles) {
-      angleComboBox.addItem(s);
-    }
-    angleComboBox.setSelectedIndex(0);
-    ActionListener a = new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        JComboBox b = (JComboBox) e.getSource();
-        SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435eL, "angle"), b.getSelectedItem().toString());
-      }
-    };
-    angleComboBox.addActionListener(a);
-    return angleComboBox;
   }
   private EditorCell createConstant_a6bl5g_e0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, " Radius:");
@@ -226,14 +213,5 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
       } else
       return editorCell;
     }
-  }
-  private EditorCell createConstant_a6bl5g_k0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "-------------");
-    editorCell.setCellId("Constant_a6bl5g_k0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
   }
 }
