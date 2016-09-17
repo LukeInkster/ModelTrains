@@ -8,28 +8,31 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Dimension;
-import java.awt.Color;
-import java.util.Set;
-import java.util.HashSet;
 
 public class map_ModelTrainSet extends JFrame {
   public static double pointGap = 2;
   public static double pointGapCurve = 0.5;
   public static double railWidth = 1;
-  public static String switchSuffix = "_switch#";
-  public static String crossSuffix = "_cross#";
+  public static String switchSuffix = "_switch";
+  public static String crossSuffix = "_cross";
 
   public static int width = 1000;
   public static int height = 700;
   public static double startAngle = 0;
-
   public JPanel panel;
+
   private static Map<String, String> trackCross = new HashMap<String, String>();
   private static Map<String, Double> trackCrossAngles = new HashMap<String, Double>();
   private static Map<String, map_ModelTrainSet.TrackSegment> trackPointsMap = new HashMap<String, map_ModelTrainSet.TrackSegment>();
   private static List<map_ModelTrainSet.TrackSegment> trackPoints = new ArrayList<map_ModelTrainSet.TrackSegment>();
+
+  private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+  private Graphics2D g = (Graphics2D) image.createGraphics();
 
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
@@ -37,15 +40,18 @@ public class map_ModelTrainSet extends JFrame {
   }
 
   public void init() {
+    g.setColor(Color.gray);
+    g.fillRect(0, 0, width, height);
     trackCreation();
-    trackTranslating(1);
-    setTitle("ModelTrain Example Track");
+    trackTranslating();
+    trackDrawing();
+    setTitle("ModelTrain - " + "Test_Example_SimpleLoop");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     panel = new JPanel() {
       @Override
-      protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-        trackDrawing(width, height, graphics);
+      protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, null);
       }
     };
     add(panel);
@@ -54,49 +60,8 @@ public class map_ModelTrainSet extends JFrame {
     setVisible(true);
   }
 
-  public static map_ModelTrainSet.Vector3 arcCalc(double p, double r, double a) {
-    map_ModelTrainSet.Vector3 center = new map_ModelTrainSet.Vector3(0, 0, r);
-    map_ModelTrainSet.Vector3 point = new map_ModelTrainSet.Vector3(0, 0, p);
-    double d = Math.toRadians(a);
-    // x is clearly zero so the original formula can be reduced a bit: 
-    double x2 = (-Math.sin(d) * (point.z - center.z));
-    double y2 = (Math.cos(d) * (point.z - center.z) + center.z);
-    return new map_ModelTrainSet.Vector3(x2, 0, y2);
-  }
 
-  public static map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> rotatePoints(map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> points, double angle, map_ModelTrainSet.Vector3 rotPoint) {
-    List<map_ModelTrainSet.Vector3> p = new ArrayList<map_ModelTrainSet.Vector3>();
-    p.add(points.a);
-    p.add(points.b);
-    p = rotatePoints(p, angle, rotPoint);
-    points.a = p.get(0);
-    points.b = p.get(1);
-    return points;
-  }
-
-  public static List<map_ModelTrainSet.Vector3> rotatePoints(List<map_ModelTrainSet.Vector3> points, double angle, map_ModelTrainSet.Vector3 rotPoint) {
-    // Rotate list of vectors around a point 
-    if (angle == 0) {
-      return points;
-    }
-    map_ModelTrainSet.Vector3 center = rotPoint;
-    for (map_ModelTrainSet.Vector3 point : points) {
-      double a = Math.toRadians(angle);
-      double x = (Math.cos(a) * (point.x - center.x) - Math.sin(a) * (point.z - center.z) + center.x);
-      double z = (Math.sin(a) * (point.x - center.x) + Math.cos(a) * (point.z - center.z) + center.z);
-      point.x = x;
-      point.z = z;
-    }
-    return points;
-  }
-  public static List<map_ModelTrainSet.Vector3> movePoints(List<map_ModelTrainSet.Vector3> points, map_ModelTrainSet.Vector3 offset) {
-    for (int i = 0; i < points.size(); i++) {
-      points.set(i, map_ModelTrainSet.Vector3.add(points.get(i), offset));
-    }
-    return points;
-  }
-
-  private void trackDrawing(int width, int height, Graphics g) {
+  private void trackDrawing() {
     // Loop through all track pieces until all have been drawn 
     // First find range of x,y,z - y currently not used (no height) 
     double xMin = Double.MAX_VALUE;
@@ -117,10 +82,10 @@ public class map_ModelTrainSet extends JFrame {
         zMax = Math.max(v.z, zMax);
       }
     }
-    topDown(xMin, xMax, zMin, zMax, width, height, g);
+    topDown(xMin, xMax, zMin, zMax);
   }
 
-  private void topDown(double xMin, double xMax, double zMin, double zMax, int panelW, int panelH, Graphics g) {
+  private void topDown(double xMin, double xMax, double zMin, double zMax) {
     // Orthogonal projection 
     double cx = -xMin;
     double cy = -zMin;
@@ -136,10 +101,10 @@ public class map_ModelTrainSet extends JFrame {
         double x2 = ts.leftPoints.get(i + 1).x;
         double y2 = ts.leftPoints.get(i + 1).z;
 
-        int px1 = ((int) (sx * (x1 + cx))) + xOff;
-        int py1 = ((int) (sy * (y1 + cy))) + yOff;
-        int px2 = ((int) (sx * (x2 + cx))) + xOff;
-        int py2 = ((int) (sy * (y2 + cy))) + yOff;
+        int px1 = (int) (Math.round(sx * (x1 + cx))) + xOff;
+        int py1 = (int) (Math.round(sy * (y1 + cy))) + yOff;
+        int px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
+        int py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
 
         g.drawLine(px1, py1, px2, py2);
 
@@ -148,17 +113,18 @@ public class map_ModelTrainSet extends JFrame {
         x2 = ts.rightPoints.get(i + 1).x;
         y2 = ts.rightPoints.get(i + 1).z;
 
-        px1 = ((int) (sx * (x1 + cx))) + xOff;
-        py1 = ((int) (sy * (y1 + cy))) + yOff;
-        px2 = ((int) (sx * (x2 + cx))) + xOff;
-        py2 = ((int) (sy * (y2 + cy))) + yOff;
+        px1 = (int) (Math.round(sx * (x1 + cx))) + xOff;
+        py1 = (int) (Math.round(sy * (y1 + cy))) + yOff;
+        px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
+        py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
 
         g.drawLine(px1, py1, px2, py2);
+
       }
     }
   }
 
-  private void trackTranslating(int a) {
+  private void trackTranslating() {
     Map<String, Double> angles = new HashMap<String, Double>();
     boolean started = false;
     boolean done = false;
@@ -292,125 +258,35 @@ public class map_ModelTrainSet extends JFrame {
     }
   }
 
-  private void trackTranslating() {
-    // Translate and rotate track pieces into a 3D coordinate system 
-    Map<String, map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>> offsets = new HashMap<String, map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>>();
-    Map<String, map_ModelTrainSet.Pair<Double, Double>> angles = new HashMap<String, map_ModelTrainSet.Pair<Double, Double>>();
-    Map<String, map_ModelTrainSet.Vector3> translationOffsets = new HashMap<String, map_ModelTrainSet.Vector3>();
-    Set<String> skipSet = new HashSet<String>();
-    boolean started = false;
-    boolean done = false;
-    int doneCounter = 0;
-    int doneLimit = 15;
-    while (!(done) && doneCounter < doneLimit) {
-      done = true;
-      for (map_ModelTrainSet.TrackSegment ts : trackPoints) {
-        if (offsets.containsKey(ts.self)) {
-          continue;
-        }
-        done = false;
+  public static map_ModelTrainSet.Vector3 arcCalc(double p, double r, double a) {
+    map_ModelTrainSet.Vector3 center = new map_ModelTrainSet.Vector3(0, 0, r);
+    map_ModelTrainSet.Vector3 point = new map_ModelTrainSet.Vector3(0, 0, p);
+    double d = Math.toRadians(a);
+    double x2 = (-Math.sin(d) * (point.z - center.z));
+    double y2 = (Math.cos(d) * (point.z - center.z) + center.z);
+    return new map_ModelTrainSet.Vector3(x2, 0, y2);
+  }
 
-        if (!(started)) {
-          // Initalise starting position for first track piece at (0,0,0) 
-          offsets.put(ts.self, new map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>(map_ModelTrainSet.Vector3.zero, map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(ts.leftPoints.size() - 1), ts.rightPoints.get(ts.rightPoints.size() - 1))));
-          started = true;
-          map_ModelTrainSet.Pair<Double, Double> anglePair = new map_ModelTrainSet.Pair<Double, Double>(0.0, 0.0);
-          if (ts.angle != 0) {
-            anglePair.b = ts.angle;
-          }
-          angles.put(ts.self, anglePair);
-          translationOffsets.put(ts.self, offsets.get(ts.self).a);
-          continue;
-        }
-
-        map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> offset = new map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>(map_ModelTrainSet.Vector3.zero, map_ModelTrainSet.Vector3.zero);
-        map_ModelTrainSet.Pair<Double, Double> targetAngles;
-        map_ModelTrainSet.Pair<Double, Double> selfAngles;
-
-        // Calculate this tracks position based on connected pieces that have already been processed 
-        // Results are slightly different based on whether the connected piece is "from" or "to" 
-        double rotationAngle;
-        map_ModelTrainSet.Vector3 rotatePoint = map_ModelTrainSet.Vector3.zero;
-        if (offsets.containsKey(ts.from)) {
-          targetAngles = angles.get(ts.from);
-          selfAngles = new map_ModelTrainSet.Pair<Double, Double>(targetAngles.b, targetAngles.b + ts.angle);
-          print(ts.self + ") from - Angle " + selfAngles.a + "," + selfAngles.b);
-          rotationAngle = selfAngles.a;
-          ts.leftPoints = rotatePoints(ts.leftPoints, rotationAngle, map_ModelTrainSet.Vector3.zero);
-          ts.rightPoints = rotatePoints(ts.rightPoints, rotationAngle, map_ModelTrainSet.Vector3.zero);
-          offset.a = offsets.get(ts.from).b;
-          offset.b = map_ModelTrainSet.Vector3.add(offset.a, map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(ts.leftPoints.size() - 1), ts.rightPoints.get(ts.rightPoints.size() - 1)));
-          translationOffsets.put(ts.self, offset.a);
-          print("from - Offset " + offset.a + "," + offset.b);
-        } else if (offsets.containsKey(ts.to)) {
-          targetAngles = angles.get(ts.to);
-          selfAngles = new map_ModelTrainSet.Pair<Double, Double>(targetAngles.a - ts.angle, targetAngles.a);
-          print(ts.self + ") to - Angle " + selfAngles.a + "," + selfAngles.b);
-          rotatePoint = map_ModelTrainSet.Vector3.midPoint(ts.leftPoints.get(ts.leftPoints.size() - 1), ts.rightPoints.get(ts.rightPoints.size() - 1));
-          rotationAngle = selfAngles.a;
-          ts.leftPoints = rotatePoints(ts.leftPoints, rotationAngle, rotatePoint);
-          ts.rightPoints = rotatePoints(ts.rightPoints, rotationAngle, rotatePoint);
-          offset.b = offsets.get(ts.to).a;
-          offset.a = map_ModelTrainSet.Vector3.subtract(offset.b, rotatePoint);
-          translationOffsets.put(ts.self, offset.a);
-          print("to - Offset " + offset.a + "," + offset.b);
-        } else {
-          continue;
-        }
-        angles.put(ts.self, selfAngles);
-        offsets.put(ts.self, offset);
-
-        // This fixes the potential problem created by a crossing that creates a disconnected track 
-        String tsCrossName = "";
-        if (trackCross.containsKey(ts.self)) {
-          tsCrossName = trackCross.get(ts.self);
-        } else if (trackCross.containsValue(ts.self)) {
-          tsCrossName = StringUtils.substring(ts.self, ts.self.length() - 1 - crossSuffix.length(), ts.self.length() - 1);
-        }
-        if (!(tsCrossName.equals(""))) {
-          double angle = trackCrossAngles.get(tsCrossName);
-          print(angle + tsCrossName);
-          angles.put(tsCrossName, new map_ModelTrainSet.Pair<Double, Double>(angle + rotationAngle, angle + rotationAngle));
-          offsets.put(tsCrossName, new map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3>(new map_ModelTrainSet.Vector3(offset.a.x, offset.a.y, offset.a.z), new map_ModelTrainSet.Vector3(offset.b.x, offset.b.y, offset.b.z)));
-          for (map_ModelTrainSet.TrackSegment ts2 : trackPoints) {
-            if (ts2.self.equals(tsCrossName)) {
-              map_ModelTrainSet.Vector3 mid;
-              mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(0), ts2.rightPoints.get(0)), map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(ts2.leftPoints.size() - 1), ts2.rightPoints.get(ts2.rightPoints.size() - 1)));
-
-              ts2.leftPoints = rotatePoints(ts2.leftPoints, angle, rotatePoint);
-              ts2.rightPoints = rotatePoints(ts2.rightPoints, angle, rotatePoint);
-              map_ModelTrainSet.Pair<map_ModelTrainSet.Vector3, map_ModelTrainSet.Vector3> offset2 = offsets.get(tsCrossName);
-              for (int i = 0; i < ts2.leftPoints.size(); i++) {
-                ts2.leftPoints.set(i, map_ModelTrainSet.Vector3.add(ts2.leftPoints.get(i), offset2.a));
-                ts2.rightPoints.set(i, map_ModelTrainSet.Vector3.add(ts2.rightPoints.get(i), offset2.a));
-              }
-              mid = map_ModelTrainSet.Vector3.midPoint(map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(0), ts2.rightPoints.get(0)), map_ModelTrainSet.Vector3.midPoint(ts2.leftPoints.get(ts2.leftPoints.size() - 1), ts2.rightPoints.get(ts2.rightPoints.size() - 1)));
-              offset2 = rotatePoints(offset2, angle, mid);
-              skipSet.add(ts2.self);
-              break;
-            }
-          }
-        }
-
-      }
-      doneCounter += 1;
+  public static List<map_ModelTrainSet.Vector3> rotatePoints(List<map_ModelTrainSet.Vector3> points, double angle, map_ModelTrainSet.Vector3 rotPoint) {
+    // Rotate list of vectors around a point 
+    if (angle == 0) {
+      return points;
     }
-    // Apply offsets 
-    for (map_ModelTrainSet.TrackSegment ts : trackPoints) {
-      if (ts == null || !(offsets.containsKey(ts.self)) || skipSet.contains(ts.self)) {
-        continue;
-      }
-      map_ModelTrainSet.Vector3 offset = translationOffsets.get(ts.self);
-      print("Track: " + ts.self);
-      for (int i = 0; i < ts.leftPoints.size(); i++) {
-        ts.leftPoints.set(i, map_ModelTrainSet.Vector3.add(ts.leftPoints.get(i), offset));
-        ts.rightPoints.set(i, map_ModelTrainSet.Vector3.add(ts.rightPoints.get(i), offset));
-      }
-      print("From left: " + ts.leftPoints.get(0) + " " + ", right: " + ts.rightPoints.get(0));
-      print("  To left: " + ts.leftPoints.get(ts.leftPoints.size() - 1) + " " + ", right: " + ts.rightPoints.get(ts.rightPoints.size() - 1));
-      print("Offset: " + offsets.get(ts.self).a + "," + offsets.get(ts.self).b);
-      print("Angles: " + angles.get(ts.self).a + "," + angles.get(ts.self).b);
+    map_ModelTrainSet.Vector3 center = rotPoint;
+    for (map_ModelTrainSet.Vector3 point : points) {
+      double a = Math.toRadians(angle);
+      double x = (Math.cos(a) * (point.x - center.x) - Math.sin(a) * (point.z - center.z) + center.x);
+      double z = (Math.sin(a) * (point.x - center.x) + Math.cos(a) * (point.z - center.z) + center.z);
+      point.x = x;
+      point.z = z;
     }
+    return points;
+  }
+  public static List<map_ModelTrainSet.Vector3> movePoints(List<map_ModelTrainSet.Vector3> points, map_ModelTrainSet.Vector3 offset) {
+    for (int i = 0; i < points.size(); i++) {
+      points.set(i, map_ModelTrainSet.Vector3.add(points.get(i), offset));
+    }
+    return points;
   }
 
 

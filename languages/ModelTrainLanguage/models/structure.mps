@@ -170,6 +170,18 @@
       <property role="TrG5h" value="left" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
+    <node concept="1TJgyi" id="Wi2zY8HytS" role="1TKVEl">
+      <property role="TrG5h" value="angle" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="Wi2zY8HytV" role="1TKVEl">
+      <property role="TrG5h" value="radius" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="Wi2zY8HytZ" role="1TKVEl">
+      <property role="TrG5h" value="length" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
     <node concept="PrWs8" id="2pqQ2agKvFt" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -201,7 +213,7 @@
     </node>
     <node concept="1TJgyi" id="3K61cWEfzl4" role="1TKVEl">
       <property role="TrG5h" value="length" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUAa0">
@@ -224,7 +236,7 @@
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
     <node concept="1TJgyi" id="5jD1KEMU$XF" role="1TKVEl">
       <property role="TrG5h" value="angle" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKvFV" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -236,11 +248,11 @@
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
     <node concept="1TJgyi" id="1ritKXd44ds" role="1TKVEl">
       <property role="TrG5h" value="radius" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyi" id="1ritKXd44du" role="1TKVEl">
       <property role="TrG5h" value="angle" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="PrWs8" id="2pqQ2agKzi1" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />

@@ -12,23 +12,24 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
-public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
-  public TrackCurve_Constraints() {
-    super(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L));
+public class TrackStraight_Constraints extends BaseConstraintsDescriptor {
+  public TrackStraight_Constraints() {
+    super(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L));
   }
   @Override
   protected Map<SPropertyId, PropertyConstraintsDescriptor> getNotDefaultSProperties() {
     Map<SPropertyId, PropertyConstraintsDescriptor> properties = new HashMap<SPropertyId, PropertyConstraintsDescriptor>();
-    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), this) {
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L, 0x3c0604cf2a3e3544L), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L, 0x3c0604cf2a3e3544L), this) {
       @Override
       public boolean hasOwnValidator() {
         return true;
       }
       @Override
       public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "radius";
+        String propertyName = "length";
         try {
           Double.parseDouble((SPropertyOperations.getString(propertyValue)));
+          System.out.println(Double.parseDouble((SPropertyOperations.getString(propertyValue))));
           return true;
         } catch (NumberFormatException e) {
           return false;

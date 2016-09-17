@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="ModelTrainLanguage.Language" file="Language.java">
+    <classNode dependClassName="ModelTrainLanguage.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="ModelTrainLanguage.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="ModelTrainLanguage.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="ModelTrainLanguage.structure.StructureAspectDescriptor" />
@@ -13,6 +14,7 @@
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateUtil" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />

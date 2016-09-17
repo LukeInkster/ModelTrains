@@ -198,7 +198,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
         };
       }
     });
-    references.put(MetaIdFactory.refId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL), this) {
+    references.put(MetaIdFactory.refId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;

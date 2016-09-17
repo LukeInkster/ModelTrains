@@ -11,6 +11,13 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
+import javax.swing.JComponent;
+import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -28,7 +35,7 @@ public class TrackCrossing_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_7oyj9r_a0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_7oyj9r_b0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_7oyj9r_c0(editorContext, node));
-    editorCell.addEditorCell(this.createProperty_7oyj9r_d0(editorContext, node));
+    editorCell.addEditorCell(this.createJComponent_7oyj9r_d0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_7oyj9r_e0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_7oyj9r_f0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_7oyj9r_g0(editorContext, node));
@@ -68,21 +75,26 @@ public class TrackCrossing_Editor extends DefaultNodeEditor {
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createProperty_7oyj9r_d0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
-    provider.setRole("angle");
-    provider.setNoTargetText("<no angle>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    editorCell.setCellId("property_angle");
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
-      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
-    } else
+  private EditorCell createJComponent_7oyj9r_d0(EditorContext editorContext, SNode node) {
+    EditorCell editorCell = EditorCell_Component.createComponentCell(editorContext, node, TrackCrossing_Editor._QueryFunction_JComponent_7oyj9r_a3a(node, editorContext), "_7oyj9r_d0");
+    editorCell.setCellId("JComponent_7oyj9r_d0");
     return editorCell;
+  }
+  private static JComponent _QueryFunction_JComponent_7oyj9r_a3a(final SNode node, final EditorContext editorContext) {
+    String[] values = {"90", "45"};
+    JComboBox cb = new JComboBox();
+    for (String s : values) {
+      cb.addItem(s);
+    }
+    cb.setSelectedIndex(0);
+    ActionListener a = new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        JComboBox b = (JComboBox) e.getSource();
+        SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL, 0x54e9070ab2ea4f6bL, "angle"), b.getSelectedItem().toString());
+      }
+    };
+    cb.addActionListener(a);
+    return cb;
   }
   private EditorCell createConstant_7oyj9r_e0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "   Connections:");

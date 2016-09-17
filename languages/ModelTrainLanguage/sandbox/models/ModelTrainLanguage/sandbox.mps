@@ -4,7 +4,9 @@
   <languages>
     <use id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage" version="0" />
   </languages>
-  <imports />
+  <imports>
+    <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
+  </imports>
   <registry>
     <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage">
       <concept id="8871674439221071935" name="ModelTrainLanguage.structure.ModelTrainSet" flags="ng" index="23Gtjq" />
