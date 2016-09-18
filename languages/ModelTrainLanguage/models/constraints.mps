@@ -81,6 +81,10 @@
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
       <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
+      <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
+        <child id="1068580123160" name="condition" index="3clFbw" />
+        <child id="1068580123161" name="ifTrue" index="3clFbx" />
+      </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
@@ -176,6 +180,7 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
+      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
@@ -1391,106 +1396,188 @@
     <ref role="1M2myG" to="5qva:7GuxenSFP0Z" resolve="ModelTrainSet" />
     <node concept="osYL8" id="6yx95KwcWri" role="1MLXOK">
       <node concept="3clFbS" id="6yx95KwcWrj" role="2VODD2">
-        <node concept="3cpWs6" id="6yx95KwcWsn" role="3cqZAp">
-          <node concept="3clFbC" id="6yx95KwcZdC" role="3cqZAk">
-            <node concept="3clFbT" id="6yx95KwcZhm" role="3uHU7w">
-              <property role="3clFbU" value="false" />
+        <node concept="3SKdUt" id="3ulocsUCrZ9" role="3cqZAp">
+          <node concept="3SKdUq" id="3ulocsUCrZb" role="3SKWNk">
+            <property role="3SKdUp" value="We don't care about the connections of buffers because you can't be on a buffer" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3ulocsUCr3K" role="3cqZAp">
+          <node concept="3clFbS" id="3ulocsUCr3M" role="3clFbx">
+            <node concept="3cpWs6" id="3ulocsUCrKe" role="3cqZAp">
+              <node concept="3clFbT" id="3ulocsUCrOn" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
             </node>
-            <node concept="1eOMI4" id="3ulocsUBOMt" role="3uHU7B">
-              <node concept="22lmx$" id="6yx95KwcYjm" role="1eOMHV">
-                <node concept="22lmx$" id="6yx95KwcX_S" role="3uHU7B">
-                  <node concept="22lmx$" id="6yx95KwcX45" role="3uHU7B">
-                    <node concept="2OqwBi" id="6yx95KwcWQU" role="3uHU7B">
-                      <node concept="2OqwBi" id="6yx95KwcWBO" role="2Oq$k0">
-                        <node concept="1PxgMI" id="6yx95KwcWz3" role="2Oq$k0">
-                          <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
-                          <node concept="2H4GUG" id="6yx95KwcWwL" role="1PxMeX" />
-                        </node>
-                        <node concept="3TrEf2" id="6yx95KwcWKo" role="2OqNvi">
-                          <ref role="3Tt5mk" to="5qva:3K61cWEfzGE" />
-                        </node>
-                      </node>
-                      <node concept="3w_OXm" id="6yx95KwcWZX" role="2OqNvi" />
-                    </node>
-                    <node concept="2OqwBi" id="6yx95KwcXrL" role="3uHU7w">
-                      <node concept="2OqwBi" id="6yx95KwcXfE" role="2Oq$k0">
-                        <node concept="1PxgMI" id="6yx95KwcX9o" role="2Oq$k0">
-                          <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
-                          <node concept="2H4GUG" id="6yx95KwcX6U" role="1PxMeX" />
-                        </node>
-                        <node concept="3TrEf2" id="6yx95KwcXkS" role="2OqNvi">
-                          <ref role="3Tt5mk" to="5qva:3K61cWEfzGF" />
-                        </node>
-                      </node>
-                      <node concept="3w_OXm" id="6yx95KwcXxl" role="2OqNvi" />
-                    </node>
-                  </node>
-                  <node concept="1eOMI4" id="3ulocsUBOMf" role="3uHU7w">
-                    <node concept="1Wc70l" id="3ulocsUBOaC" role="1eOMHV">
-                      <node concept="1eOMI4" id="3ulocsUBOM7" role="3uHU7B">
-                        <node concept="22lmx$" id="3ulocsUBOYE" role="1eOMHV">
-                          <node concept="2OqwBi" id="3ulocsUBP7T" role="3uHU7w">
-                            <node concept="2H4GUG" id="3ulocsUBP3v" role="2Oq$k0" />
-                            <node concept="1mIQ4w" id="3ulocsUBPfC" role="2OqNvi">
-                              <node concept="chp4Y" id="3ulocsUBPky" role="cj9EA">
-                                <ref role="cht4Q" to="5qva:2pqQ2agKvFU" resolve="TrackCrossing" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="3ulocsUBOjR" role="3uHU7B">
-                            <node concept="2H4GUG" id="3ulocsUBOf6" role="2Oq$k0" />
-                            <node concept="1mIQ4w" id="3ulocsUBOqG" role="2OqNvi">
-                              <node concept="chp4Y" id="3ulocsUBOz9" role="cj9EA">
-                                <ref role="cht4Q" to="5qva:gv3FBPUA7E" resolve="TrackSwitch" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="2OqwBi" id="6yx95KwcY0g" role="3uHU7w">
-                        <node concept="2OqwBi" id="6yx95KwcXNr" role="2Oq$k0">
-                          <node concept="1PxgMI" id="6yx95KwcXGn" role="2Oq$k0">
-                            <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
-                            <node concept="2H4GUG" id="6yx95KwcXDy" role="1PxMeX" />
-                          </node>
-                          <node concept="3TrEf2" id="6yx95KwcXT0" role="2OqNvi">
-                            <ref role="3Tt5mk" to="5qva:5jD1KEMNsIx" />
-                          </node>
-                        </node>
-                        <node concept="3w_OXm" id="6yx95KwcYaO" role="2OqNvi" />
-                      </node>
-                    </node>
-                  </node>
+          </node>
+          <node concept="2OqwBi" id="3ulocsUCrsF" role="3clFbw">
+            <node concept="2H4GUG" id="3ulocsUCrar" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="3ulocsUCr$Z" role="2OqNvi">
+              <node concept="chp4Y" id="3ulocsUCrEo" role="cj9EA">
+                <ref role="cht4Q" to="5qva:5jD1KEMQx41" resolve="TrackBuffer" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3ulocsUCqXh" role="3cqZAp" />
+        <node concept="3SKdUt" id="3ulocsUCsgH" role="3cqZAp">
+          <node concept="3SKdUq" id="3ulocsUCsgJ" role="3SKWNk">
+            <property role="3SKdUp" value="All tracks have at least two connections" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3ulocsUCksd" role="3cqZAp">
+          <node concept="3clFbS" id="3ulocsUCksf" role="3clFbx">
+            <node concept="3cpWs6" id="3ulocsUCl_Z" role="3cqZAp">
+              <node concept="3clFbT" id="3ulocsUClDO" role="3cqZAk">
+                <property role="3clFbU" value="false" />
+              </node>
+            </node>
+          </node>
+          <node concept="22lmx$" id="3ulocsUCll_" role="3clFbw">
+            <node concept="2OqwBi" id="3ulocsUCl5s" role="3uHU7B">
+              <node concept="2OqwBi" id="3ulocsUCkMc" role="2Oq$k0">
+                <node concept="1PxgMI" id="3ulocsUCkAU" role="2Oq$k0">
+                  <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
+                  <node concept="2H4GUG" id="3ulocsUCky6" role="1PxMeX" />
                 </node>
-                <node concept="1eOMI4" id="3ulocsUBNvj" role="3uHU7w">
-                  <node concept="1Wc70l" id="3ulocsUBMuR" role="1eOMHV">
-                    <node concept="2OqwBi" id="6yx95KwcYOf" role="3uHU7w">
-                      <node concept="2OqwBi" id="6yx95KwcYAA" role="2Oq$k0">
-                        <node concept="1PxgMI" id="6yx95KwcYuE" role="2Oq$k0">
-                          <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
-                          <node concept="2H4GUG" id="6yx95KwcYrr" role="1PxMeX" />
-                        </node>
-                        <node concept="3TrEf2" id="6yx95KwcYG_" role="2OqNvi">
-                          <ref role="3Tt5mk" to="5qva:5jD1KEMNsIA" />
-                        </node>
-                      </node>
-                      <node concept="3w_OXm" id="6yx95KwcYVL" role="2OqNvi" />
-                    </node>
-                    <node concept="2OqwBi" id="3ulocsUBN5A" role="3uHU7B">
-                      <node concept="2H4GUG" id="3ulocsUBN1X" role="2Oq$k0" />
-                      <node concept="1mIQ4w" id="3ulocsUBNbj" role="2OqNvi">
-                        <node concept="chp4Y" id="3ulocsUBNen" role="cj9EA">
-                          <ref role="cht4Q" to="5qva:2pqQ2agKvFU" resolve="TrackCrossing" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <node concept="3TrEf2" id="3ulocsUCkV8" role="2OqNvi">
+                  <ref role="3Tt5mk" to="5qva:3K61cWEfzGE" />
+                </node>
+              </node>
+              <node concept="3w_OXm" id="3ulocsUCleK" role="2OqNvi" />
+            </node>
+            <node concept="2OqwBi" id="6yx95KwcXrL" role="3uHU7w">
+              <node concept="2OqwBi" id="6yx95KwcXfE" role="2Oq$k0">
+                <node concept="1PxgMI" id="6yx95KwcX9o" role="2Oq$k0">
+                  <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
+                  <node concept="2H4GUG" id="6yx95KwcX6U" role="1PxMeX" />
+                </node>
+                <node concept="3TrEf2" id="6yx95KwcXkS" role="2OqNvi">
+                  <ref role="3Tt5mk" to="5qva:3K61cWEfzGF" />
+                </node>
+              </node>
+              <node concept="3w_OXm" id="6yx95KwcXxl" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3ulocsUCqLD" role="3cqZAp" />
+        <node concept="3SKdUt" id="3ulocsUD5My" role="3cqZAp">
+          <node concept="3SKdUq" id="3ulocsUD5M$" role="3SKWNk">
+            <property role="3SKdUp" value="Straight and curved tracks only need two connections" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3ulocsUD3Ti" role="3cqZAp">
+          <node concept="3clFbS" id="3ulocsUD3Tk" role="3clFbx">
+            <node concept="3cpWs6" id="3ulocsUD5BC" role="3cqZAp">
+              <node concept="3clFbT" id="3ulocsUD5Ea" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="22lmx$" id="3ulocsUD5dp" role="3clFbw">
+            <node concept="2OqwBi" id="3ulocsUD5mf" role="3uHU7w">
+              <node concept="2H4GUG" id="3ulocsUD5i1" role="2Oq$k0" />
+              <node concept="1mIQ4w" id="3ulocsUD5tL" role="2OqNvi">
+                <node concept="chp4Y" id="3ulocsUD5yu" role="cj9EA">
+                  <ref role="cht4Q" to="5qva:1ritKXd44d0" resolve="TrackCurve" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3ulocsUD4GD" role="3uHU7B">
+              <node concept="2H4GUG" id="3ulocsUD4BV" role="2Oq$k0" />
+              <node concept="1mIQ4w" id="3ulocsUD4Nd" role="2OqNvi">
+                <node concept="chp4Y" id="3ulocsUD4RO" role="cj9EA">
+                  <ref role="cht4Q" to="5qva:gv3FBPUA9$" resolve="TrackStraight" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="3ulocsUBM1b" role="3cqZAp" />
+        <node concept="3clFbH" id="3ulocsUD3OK" role="3cqZAp" />
+        <node concept="3SKdUt" id="3ulocsUCsw8" role="3cqZAp">
+          <node concept="3SKdUq" id="3ulocsUCswa" role="3SKWNk">
+            <property role="3SKdUp" value="Switches must have a third connection" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3ulocsUClOK" role="3cqZAp">
+          <node concept="3clFbS" id="3ulocsUClOM" role="3clFbx">
+            <node concept="3cpWs6" id="3ulocsUCn5u" role="3cqZAp">
+              <node concept="2OqwBi" id="3ulocsUCvUZ" role="3cqZAk">
+                <node concept="2OqwBi" id="3ulocsUCvna" role="2Oq$k0">
+                  <node concept="1PxgMI" id="3ulocsUCv6g" role="2Oq$k0">
+                    <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
+                    <node concept="2H4GUG" id="3ulocsUCuYC" role="1PxMeX" />
+                  </node>
+                  <node concept="3TrEf2" id="3ulocsUCvGh" role="2OqNvi">
+                    <ref role="3Tt5mk" to="5qva:5jD1KEMNsIx" />
+                  </node>
+                </node>
+                <node concept="3x8VRR" id="3ulocsUCwdQ" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3ulocsUCm3K" role="3clFbw">
+            <node concept="2H4GUG" id="3ulocsUClYP" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="3ulocsUCma_" role="2OqNvi">
+              <node concept="chp4Y" id="3ulocsUCmfX" role="cj9EA">
+                <ref role="cht4Q" to="5qva:gv3FBPUA7E" resolve="TrackSwitch" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3ulocsUCqFe" role="3cqZAp" />
+        <node concept="3SKdUt" id="3ulocsUCsL4" role="3cqZAp">
+          <node concept="3SKdUq" id="3ulocsUCsL6" role="3SKWNk">
+            <property role="3SKdUp" value="Crossings must have a third and fourth connection" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3ulocsUCwuc" role="3cqZAp">
+          <node concept="3clFbS" id="3ulocsUCwud" role="3clFbx">
+            <node concept="3cpWs6" id="3ulocsUCx9b" role="3cqZAp">
+              <node concept="1Wc70l" id="3ulocsUCylE" role="3cqZAk">
+                <node concept="2OqwBi" id="3ulocsUCz5y" role="3uHU7w">
+                  <node concept="2OqwBi" id="3ulocsUCyLa" role="2Oq$k0">
+                    <node concept="1PxgMI" id="3ulocsUCyzE" role="2Oq$k0">
+                      <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
+                      <node concept="2H4GUG" id="3ulocsUCysh" role="1PxMeX" />
+                    </node>
+                    <node concept="3TrEf2" id="3ulocsUCyVd" role="2OqNvi">
+                      <ref role="3Tt5mk" to="5qva:5jD1KEMNsIA" />
+                    </node>
+                  </node>
+                  <node concept="3x8VRR" id="3ulocsUCzjt" role="2OqNvi" />
+                </node>
+                <node concept="2OqwBi" id="3ulocsUCy0h" role="3uHU7B">
+                  <node concept="2OqwBi" id="3ulocsUCxCU" role="2Oq$k0">
+                    <node concept="1PxgMI" id="3ulocsUCxng" role="2Oq$k0">
+                      <ref role="1PxNhF" to="5qva:7GuxenSFP0U" resolve="Track" />
+                      <node concept="2H4GUG" id="3ulocsUCxf8" role="1PxMeX" />
+                    </node>
+                    <node concept="3TrEf2" id="3ulocsUCxMx" role="2OqNvi">
+                      <ref role="3Tt5mk" to="5qva:5jD1KEMNsIx" />
+                    </node>
+                  </node>
+                  <node concept="3x8VRR" id="3ulocsUCydK" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="3ulocsUC$fO" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="3ulocsUCwul" role="3clFbw">
+            <node concept="2H4GUG" id="3ulocsUCwum" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="3ulocsUCwun" role="2OqNvi">
+              <node concept="chp4Y" id="3ulocsUCwAx" role="cj9EA">
+                <ref role="cht4Q" to="5qva:2pqQ2agKvFU" resolve="TrackCrossing" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3ulocsUCzuh" role="3cqZAp" />
+        <node concept="3cpWs6" id="3ulocsUCzQC" role="3cqZAp">
+          <node concept="3clFbT" id="3ulocsUCzVf" role="3cqZAk">
+            <property role="3clFbU" value="false" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="3ulocsUCzyy" role="3cqZAp" />
       </node>
     </node>
   </node>
