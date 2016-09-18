@@ -4,12 +4,15 @@ package ModelTrainLanguage.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import java.util.Map;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -20,12 +23,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.ListScope;
@@ -34,6 +35,20 @@ import jetbrains.mps.smodel.SNodePointer;
 public class Track_Constraints extends BaseConstraintsDescriptor {
   public Track_Constraints() {
     super(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL));
+  }
+  @Override
+  public boolean hasOwnCanBeChildMethod() {
+    return true;
+  }
+  @Override
+  public boolean canBeChild(@Nullable SNode node, SNode parentNode, SNode link, SNode childConcept, final IOperationContext operationContext, @Nullable final CheckingNodeContext checkingNodeContext) {
+    boolean result = static_canBeAChild(node, parentNode, link, childConcept, operationContext);
+
+    if (!(result) && checkingNodeContext != null) {
+      checkingNodeContext.setBreakingNode(canBeChildBreakingPoint);
+    }
+
+    return result;
   }
   @Override
   protected Map<SPropertyId, PropertyConstraintsDescriptor> getNotDefaultSProperties() {
@@ -70,7 +85,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_uxez5t_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_uxez5t_a0a0a0a0a1a0b0a1a4;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -106,7 +121,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_uxez5t_a0a0a0a0a1a0b0a2a2;
+            return breakingNode_uxez5t_a0a0a0a0a1a0b0a2a4;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -142,7 +157,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_uxez5t_a0a0a0a0a1a0b0a3a2;
+            return breakingNode_uxez5t_a0a0a0a0a1a0b0a3a4;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -178,7 +193,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_uxez5t_a0a0a0a0a1a0b0a4a2;
+            return breakingNode_uxez5t_a0a0a0a0a1a0b0a4a4;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -205,8 +220,36 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
     });
     return references;
   }
-  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290695288");
-  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a2a2 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290756338");
-  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a3a2 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290758163");
-  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a4a2 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290760250");
+  public static boolean static_canBeAChild(SNode node, SNode parentNode, SNode link, SNode childConcept, final IOperationContext operationContext) {
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer"))) {
+      return true;
+    }
+
+    // All tracks have at least two connections 
+    if ((SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) == null) || (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) == null)) {
+      return false;
+    }
+
+    // Straight and curved tracks only need two connections 
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L, "ModelTrainLanguage.structure.TrackStraight")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, "ModelTrainLanguage.structure.TrackCurve"))) {
+      return true;
+    }
+
+    // Switches must have a third connection 
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea61eaL, "ModelTrainLanguage.structure.TrackSwitch"))) {
+      return (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) != null);
+    }
+
+    // Crossings must have a third and fourth connection 
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL, "ModelTrainLanguage.structure.TrackCrossing"))) {
+      return (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) != null) || (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) != null);
+    }
+
+    return false;
+  }
+  private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "639298976496644388");
+  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a1a4 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290695288");
+  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a2a4 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290756338");
+  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a3a4 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290758163");
+  private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a4a4 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290760250");
 }
