@@ -10,8 +10,8 @@ import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
   public TrackCurve_Constraints() {
@@ -20,22 +20,6 @@ public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SPropertyId, PropertyConstraintsDescriptor> getNotDefaultSProperties() {
     Map<SPropertyId, PropertyConstraintsDescriptor> properties = new HashMap<SPropertyId, PropertyConstraintsDescriptor>();
-    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "radius";
-        try {
-          Double.parseDouble((SPropertyOperations.getString(propertyValue)));
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
-        }
-      }
-    });
     properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435eL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435eL), this) {
       @Override
       public boolean hasOwnValidator() {

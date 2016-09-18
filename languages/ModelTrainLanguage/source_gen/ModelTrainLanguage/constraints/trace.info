@@ -323,26 +323,27 @@
       <node id="8218298438572160962" at="28,51,29,68" concept="2" />
       <node id="8218298438572160962" at="30,5,31,0" concept="8" />
       <node id="8218298438572160962" at="31,0,32,18" concept="6" />
-      <node id="7539347229290776343" at="34,148,35,1359" concept="6" />
-      <node id="8218298438572160962" at="37,0,38,0" concept="9" trace="canBeParentBreakingPoint" />
+      <node id="7539347229290776343" at="34,148,35,1911" concept="6" />
+      <node id="4005213852414189643" at="35,1911,36,0" concept="8" />
+      <node id="8218298438572160962" at="38,0,39,0" concept="9" trace="canBeParentBreakingPoint" />
       <node id="8218298438572160962" at="17,0,20,0" concept="1" trace="ModelTrainSet_Constraints#()V" />
       <node id="8218298438572160962" at="27,0,30,5" concept="3" />
-      <node id="8218298438572160962" at="34,0,37,0" concept="10" trace="static_canBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
       <node id="8218298438572160962" at="20,0,24,0" concept="4" trace="hasOwnCanBeParentMethod#()Z" />
+      <node id="8218298438572160962" at="34,0,38,0" concept="10" trace="static_canBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
       <node id="8218298438572160962" at="24,0,34,0" concept="4" trace="canBeParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
       <scope id="8218298438572160962" at="17,38,18,98" />
       <scope id="8218298438572160962" at="21,44,22,16" />
       <scope id="8218298438572160962" at="28,51,29,68" />
-      <scope id="7539347229290776275" at="34,148,35,1359" />
+      <scope id="7539347229290776275" at="34,148,36,0" />
       <scope id="8218298438572160962" at="17,0,20,0" />
-      <scope id="8218298438572160962" at="34,0,37,0">
+      <scope id="8218298438572160962" at="20,0,24,0" />
+      <scope id="8218298438572160962" at="34,0,38,0">
         <var name="childConcept" id="8218298438572160962" />
         <var name="childNode" id="8218298438572160962" />
         <var name="link" id="8218298438572160962" />
         <var name="node" id="8218298438572160962" />
         <var name="operationContext" id="8218298438572160962" />
       </scope>
-      <scope id="8218298438572160962" at="20,0,24,0" />
       <scope id="8218298438572160962" at="25,188,32,18">
         <var name="result" id="8218298438572160962" />
       </scope>
@@ -354,7 +355,7 @@
         <var name="node" id="8218298438572160962" />
         <var name="operationContext" id="8218298438572160962" />
       </scope>
-      <unit id="8218298438572160962" at="16,0,39,0" name="ModelTrainLanguage.constraints.ModelTrainSet_Constraints" />
+      <unit id="8218298438572160962" at="16,0,40,0" name="ModelTrainLanguage.constraints.ModelTrainSet_Constraints" />
     </file>
   </root>
   <root nodeRef="r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)/8611346641738624120">
@@ -362,62 +363,36 @@
       <node id="8611346641738624120" at="17,35,18,98" concept="11" />
       <node id="8611346641738624120" at="21,88,22,123" concept="5" />
       <node id="8611346641738624120" at="25,40,26,20" concept="6" />
-      <node id="8611346641738624120" at="29,70,30,39" concept="5" />
-      <node id="1085941728142526706" at="31,13,32,77" concept="2" />
-      <node id="1085941728142526709" at="32,77,33,22" concept="6" />
-      <node id="1085941728142526715" at="34,43,35,23" concept="6" />
-      <node id="8611346641738624120" at="41,40,42,20" concept="6" />
-      <node id="8611346641738624120" at="45,70,46,38" concept="5" />
-      <node id="7539347229290669129" at="47,9,48,85" concept="5" />
-      <node id="7539347229290691355" at="48,85,49,124" concept="6" />
-      <node id="8611346641738624120" at="52,7,53,22" concept="6" />
+      <node id="8611346641738624120" at="29,70,30,38" concept="5" />
+      <node id="7539347229290669129" at="31,9,32,85" concept="5" />
+      <node id="7539347229290691355" at="32,85,33,124" concept="6" />
+      <node id="8611346641738624120" at="36,7,37,22" concept="6" />
       <node id="8611346641738624120" at="17,0,20,0" concept="1" trace="TrackCurve_Constraints#()V" />
       <node id="8611346641738624120" at="24,0,28,0" concept="4" trace="hasOwnValidator#()Z" />
-      <node id="8611346641738624120" at="40,0,44,0" concept="4" trace="hasOwnValidator#()Z" />
-      <node id="8611346641738624120" at="46,38,50,9" concept="0" />
-      <node id="1085941728142526704" at="30,39,36,9" concept="12" />
-      <node id="8611346641738624120" at="30,39,36,9" concept="0" />
-      <node id="8611346641738624120" at="44,0,52,0" concept="4" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-      <node id="8611346641738624120" at="28,0,38,0" concept="4" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-      <node id="8611346641738624120" at="38,7,52,7" concept="2" />
-      <node id="8611346641738624120" at="22,123,38,7" concept="2" />
-      <node id="8611346641738624120" at="20,0,55,0" concept="4" trace="getNotDefaultSProperties#()Ljava/util/Map;" />
+      <node id="8611346641738624120" at="30,38,34,9" concept="0" />
+      <node id="8611346641738624120" at="28,0,36,0" concept="4" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="8611346641738624120" at="22,123,36,7" concept="2" />
+      <node id="8611346641738624120" at="20,0,39,0" concept="4" trace="getNotDefaultSProperties#()Ljava/util/Map;" />
       <scope id="8611346641738624120" at="17,35,18,98" />
       <scope id="8611346641738624120" at="25,40,26,20" />
-      <scope id="1085941728142526711" at="34,0,35,23">
-        <var name="e" id="1085941728142526712" />
-      </scope>
-      <scope id="1085941728142526714" at="34,43,35,23" />
-      <scope id="8611346641738624120" at="41,40,42,20" />
-      <scope id="1085941728142526705" at="31,13,33,22" />
-      <scope id="7539347229290668908" at="47,9,49,124">
+      <scope id="7539347229290668908" at="31,9,33,124">
         <var name="angles" id="7539347229290669132" />
       </scope>
       <scope id="8611346641738624120" at="17,0,20,0" />
       <scope id="8611346641738624120" at="24,0,28,0" />
-      <scope id="8611346641738624120" at="40,0,44,0" />
-      <scope id="8611346641738624120" at="45,70,50,9">
+      <scope id="8611346641738624120" at="29,70,34,9">
         <var name="propertyName" id="8611346641738624120" />
       </scope>
-      <scope id="1085941728142526703" at="30,39,36,9" />
-      <scope id="8611346641738624120" at="29,70,36,9">
-        <var name="propertyName" id="8611346641738624120" />
-      </scope>
-      <scope id="8611346641738624120" at="44,0,52,0">
+      <scope id="8611346641738624120" at="28,0,36,0">
         <var name="node" id="8611346641738624120" />
         <var name="propertyValue" id="8611346641738624120" />
       </scope>
-      <scope id="8611346641738624120" at="28,0,38,0">
-        <var name="node" id="8611346641738624120" />
-        <var name="propertyValue" id="8611346641738624120" />
-      </scope>
-      <scope id="8611346641738624120" at="21,88,53,22">
+      <scope id="8611346641738624120" at="21,88,37,22">
         <var name="properties" id="8611346641738624120" />
       </scope>
-      <scope id="8611346641738624120" at="20,0,55,0" />
-      <unit id="8611346641738624120" at="39,129,52,5" name="ModelTrainLanguage.constraints.TrackCurve_Constraints$2" />
-      <unit id="8611346641738624120" at="23,129,38,5" name="ModelTrainLanguage.constraints.TrackCurve_Constraints$1" />
-      <unit id="8611346641738624120" at="16,0,56,0" name="ModelTrainLanguage.constraints.TrackCurve_Constraints" />
+      <scope id="8611346641738624120" at="20,0,39,0" />
+      <unit id="8611346641738624120" at="23,129,36,5" name="ModelTrainLanguage.constraints.TrackCurve_Constraints$1" />
+      <unit id="8611346641738624120" at="16,0,40,0" name="ModelTrainLanguage.constraints.TrackCurve_Constraints" />
     </file>
   </root>
 </debug-info>
