@@ -221,31 +221,16 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   public static boolean static_canBeAChild(SNode node, SNode parentNode, SNode link, SNode childConcept, final IOperationContext operationContext) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer"))) {
-      return true;
-    }
 
     // All tracks have at least two connections 
-    if ((SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) == null) || (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) == null)) {
-      return false;
-    }
 
     // Straight and curved tracks only need two connections 
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6264L, "ModelTrainLanguage.structure.TrackStraight")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, "ModelTrainLanguage.structure.TrackCurve"))) {
-      return true;
-    }
 
     // Switches must have a third connection 
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea61eaL, "ModelTrainLanguage.structure.TrackSwitch"))) {
-      return (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) != null);
-    }
 
     // Crossings must have a third and fourth connection 
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL, "ModelTrainLanguage.structure.TrackCrossing"))) {
-      return (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) != null) || (SLinkOperations.findLinkDeclaration(SNodeOperations.getReference(node, MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) != null);
-    }
 
-    return false;
+    return true;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "639298976496644388");
   private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a1a4 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290695288");

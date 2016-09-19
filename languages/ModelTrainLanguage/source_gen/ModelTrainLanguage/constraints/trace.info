@@ -98,26 +98,21 @@
       <node id="7539347229290760285" at="207,49,208,3202" concept="6" />
       <node id="7539347229290760350" at="212,52,213,347" concept="6" />
       <node id="4493802879052512374" at="220,7,221,22" concept="6" />
-      <node id="639298976496646543" at="224,183,225,18" concept="6" />
-      <node id="639298976496648931" at="226,5,227,0" concept="8" />
-      <node id="639298976496648932" at="227,0,228,48" concept="7" />
-      <node id="639298976496799463" at="229,439,230,19" concept="6" />
-      <node id="639298976496648959" at="231,5,232,0" concept="8" />
-      <node id="639298976496648960" at="232,0,233,60" concept="7" />
-      <node id="639298976496648964" at="234,359,235,18" concept="6" />
-      <node id="639298976496648975" at="236,5,237,0" concept="8" />
-      <node id="639298976496648976" at="237,0,238,45" concept="7" />
-      <node id="639298976496802106" at="239,182,240,226" concept="6" />
-      <node id="639298976496648995" at="241,5,242,0" concept="8" />
-      <node id="639298976496648996" at="242,0,243,57" concept="7" />
-      <node id="639298976496812796" at="244,185,245,442" concept="6" />
-      <node id="639298976496961235" at="246,5,247,0" concept="8" />
-      <node id="639298976496646944" at="247,0,248,17" concept="6" />
-      <node id="4493802879052512374" at="250,0,251,0" concept="9" trace="canBeChildBreakingPoint" />
-      <node id="4493802879052512374" at="251,0,252,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a1a4" />
-      <node id="4493802879052512374" at="252,0,253,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a2a4" />
-      <node id="4493802879052512374" at="253,0,254,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a3a4" />
-      <node id="4493802879052512374" at="254,0,255,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a4a4" />
+      <node id="639298976496648931" at="223,148,224,0" concept="8" />
+      <node id="639298976496648932" at="224,0,225,48" concept="7" />
+      <node id="639298976496648959" at="225,48,226,0" concept="8" />
+      <node id="639298976496648960" at="226,0,227,60" concept="7" />
+      <node id="639298976496648975" at="227,60,228,0" concept="8" />
+      <node id="639298976496648976" at="228,0,229,45" concept="7" />
+      <node id="639298976496648995" at="229,45,230,0" concept="8" />
+      <node id="639298976496648996" at="230,0,231,57" concept="7" />
+      <node id="639298976496961235" at="231,57,232,0" concept="8" />
+      <node id="630218212371986121" at="232,0,233,16" concept="6" />
+      <node id="4493802879052512374" at="235,0,236,0" concept="9" trace="canBeChildBreakingPoint" />
+      <node id="4493802879052512374" at="236,0,237,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a1a4" />
+      <node id="4493802879052512374" at="237,0,238,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a2a4" />
+      <node id="4493802879052512374" at="238,0,239,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a3a4" />
+      <node id="4493802879052512374" at="239,0,240,0" concept="9" trace="breakingNode_uxez5t_a0a0a0a0a1a0b0a4a4" />
       <node id="4493802879052512374" at="36,0,39,0" concept="1" trace="Track_Constraints#()V" />
       <node id="4493802879052512374" at="46,0,49,5" concept="3" />
       <node id="8218298438571570434" at="66,0,69,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -133,11 +128,6 @@
       <node id="7539347229290760261" at="202,0,205,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7539347229290760283" at="207,0,210,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7539347229290760344" at="212,0,215,0" concept="4" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="639298976496645504" at="223,148,226,5" concept="3" />
-      <node id="639298976496783619" at="228,48,231,5" concept="3" />
-      <node id="639298976496648962" at="233,60,236,5" concept="3" />
-      <node id="639298976496648978" at="238,45,241,5" concept="3" />
-      <node id="639298976496648998" at="243,57,246,5" concept="3" />
       <node id="4493802879052512374" at="39,0,43,0" concept="4" trace="hasOwnCanBeChildMethod#()Z" />
       <node id="4493802879052512374" at="57,0,61,0" concept="4" trace="hasOwnValidator#()Z" />
       <node id="4493802879052512374" at="78,0,82,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -164,6 +154,7 @@
       <node id="4493802879052512374" at="63,37,69,24" concept="0" />
       <node id="4493802879052512374" at="43,0,53,0" concept="4" trace="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
       <node id="4493802879052512374" at="61,0,71,0" concept="4" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="4493802879052512374" at="223,0,235,0" concept="10" trace="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
       <node id="4493802879052512374" at="55,123,71,7" concept="2" />
       <node id="4493802879052512374" at="91,122,108,13" concept="0" />
       <node id="4493802879052512374" at="127,122,144,13" concept="0" />
@@ -178,7 +169,6 @@
       <node id="4493802879052512374" at="120,56,146,10" concept="6" />
       <node id="4493802879052512374" at="156,56,182,10" concept="6" />
       <node id="4493802879052512374" at="192,56,218,10" concept="6" />
-      <node id="4493802879052512374" at="223,0,250,0" concept="10" trace="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
       <node id="4493802879052512374" at="82,0,112,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="4493802879052512374" at="118,0,148,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="4493802879052512374" at="154,0,184,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
@@ -213,11 +203,6 @@
       <scope id="7539347229290760262" at="202,55,203,414" />
       <scope id="7539347229290760284" at="207,49,208,3202" />
       <scope id="7539347229290760349" at="212,52,213,347" />
-      <scope id="639298976496645506" at="224,183,225,18" />
-      <scope id="639298976496783621" at="229,439,230,19" />
-      <scope id="639298976496648963" at="234,359,235,18" />
-      <scope id="639298976496648979" at="239,182,240,226" />
-      <scope id="639298976496648999" at="244,185,245,442" />
       <scope id="4493802879052512374" at="36,0,39,0" />
       <scope id="8218298438571570434" at="66,0,69,0">
         <var name="it" id="8218298438571570434" />
@@ -287,6 +272,14 @@
         <var name="node" id="4493802879052512374" />
         <var name="propertyValue" id="4493802879052512374" />
       </scope>
+      <scope id="639298976496644389" at="223,148,233,16" />
+      <scope id="4493802879052512374" at="223,0,235,0">
+        <var name="childConcept" id="4493802879052512374" />
+        <var name="link" id="4493802879052512374" />
+        <var name="node" id="4493802879052512374" />
+        <var name="operationContext" id="4493802879052512374" />
+        <var name="parentNode" id="4493802879052512374" />
+      </scope>
       <scope id="7539347229290695290" at="92,13,107,16">
         <var name="root" id="7539347229290700030" />
         <var name="tracks" id="7539347229290721450" />
@@ -327,18 +320,10 @@
         <var name="operationContext" id="4493802879052512374" />
       </scope>
       <scope id="4493802879052512374" at="53,0,74,0" />
-      <scope id="639298976496644389" at="223,148,248,17" />
       <scope id="4493802879052512374" at="84,56,110,10" />
       <scope id="4493802879052512374" at="120,56,146,10" />
       <scope id="4493802879052512374" at="156,56,182,10" />
       <scope id="4493802879052512374" at="192,56,218,10" />
-      <scope id="4493802879052512374" at="223,0,250,0">
-        <var name="childConcept" id="4493802879052512374" />
-        <var name="link" id="4493802879052512374" />
-        <var name="node" id="4493802879052512374" />
-        <var name="operationContext" id="4493802879052512374" />
-        <var name="parentNode" id="4493802879052512374" />
-      </scope>
       <scope id="4493802879052512374" at="82,0,112,0" />
       <scope id="4493802879052512374" at="118,0,148,0" />
       <scope id="4493802879052512374" at="154,0,184,0" />
@@ -369,7 +354,7 @@
       <unit id="4493802879052512374" at="113,128,148,5" name="ModelTrainLanguage.constraints.Track_Constraints$3" />
       <unit id="4493802879052512374" at="149,128,184,5" name="ModelTrainLanguage.constraints.Track_Constraints$4" />
       <unit id="4493802879052512374" at="185,128,220,5" name="ModelTrainLanguage.constraints.Track_Constraints$5" />
-      <unit id="4493802879052512374" at="35,0,256,0" name="ModelTrainLanguage.constraints.Track_Constraints" />
+      <unit id="4493802879052512374" at="35,0,241,0" name="ModelTrainLanguage.constraints.Track_Constraints" />
     </file>
   </root>
   <root nodeRef="r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)/8218298438572160962">

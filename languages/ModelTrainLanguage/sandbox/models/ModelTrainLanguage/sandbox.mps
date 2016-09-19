@@ -144,11 +144,16 @@
         <reference id="4325149779949402922" name="track1" index="me3Z_" />
         <reference id="6118429311290428321" name="track3" index="3A9cMF" />
       </concept>
+      <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo">
+        <property id="6118429311292297067" name="angle" index="3A0Oxx" />
+      </concept>
       <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
         <property id="1644507721544778590" name="angle" index="1rKzhh" />
         <property id="1644507721544778588" name="radius" index="1rKzhj" />
       </concept>
-      <concept id="6118429311291232513" name="ModelTrainLanguage.structure.TrackBuffer" flags="ng" index="3AcLob" />
+      <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
+        <property id="4325149779949401412" name="length" index="me36b" />
+      </concept>
       <concept id="296972292287259114" name="ModelTrainLanguage.structure.TrackSwitch" flags="ng" index="3LXmXj" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -163,17 +168,32 @@
       <property role="TrG5h" value="1" />
       <property role="1rKzhj" value="5" />
       <property role="1rKzhh" value="15" />
-      <ref role="me3Z$" node="7bbQqrmxmfl" resolve="Z" />
-      <ref role="me3Z_" node="7bbQqrmxmfl" resolve="Z" />
+      <ref role="me3Z_" node="6yx95KwbOCc" resolve="2" />
+    </node>
+    <node concept="3LXmNt" id="3_JNvO_1EK4" role="23Gti_">
+      <property role="TrG5h" value="5" />
+      <property role="me36b" value="3" />
     </node>
     <node concept="3LXmXj" id="6yx95KwbOCc" role="23Gti_">
       <property role="TrG5h" value="2" />
-      <ref role="me3Z$" node="7bbQqrmxmfl" resolve="Z" />
-      <ref role="3A9cMF" node="7bbQqrmxmfl" resolve="Z" />
-      <ref role="me3Z_" node="7bbQqrmxmfl" resolve="Z" />
+      <ref role="3A9cMF" node="6yx95Kwbr5C" resolve="1" />
+      <ref role="me3Z_" node="yYZ207qUnS" resolve="3" />
+      <ref role="me3Z$" node="3_JNvO_7KQw" resolve="6" />
     </node>
-    <node concept="3AcLob" id="7bbQqrmxmfl" role="23Gti_">
-      <property role="TrG5h" value="Z" />
+    <node concept="1rKzhf" id="yYZ207qUnS" role="23Gti_">
+      <property role="1rKzhh" value="45" />
+      <property role="1rKzhj" value="5" />
+      <property role="TrG5h" value="3" />
+      <ref role="me3Z_" node="6yx95KwbOCc" resolve="2" />
+    </node>
+    <node concept="3LXmNt" id="3_JNvO_1D_7" role="23Gti_">
+      <property role="TrG5h" value="4" />
+      <property role="me36b" value="5" />
+    </node>
+    <node concept="2QAMbo" id="3_JNvO_7KQw" role="23Gti_">
+      <property role="TrG5h" value="6" />
+      <property role="3A0Oxx" value="45" />
+      <ref role="me3Z_" node="6yx95KwbOCc" resolve="2" />
     </node>
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">

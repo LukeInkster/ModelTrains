@@ -121,7 +121,7 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
       return NodeFactoryManager.createNode(listOwner, editorContext, super.getElementRole());
     }
     private String getSeparatorText(EditorContext context, SNode node) {
-      return "===============================================";
+      return "=================================================================================";
     }
     public EditorCell createNodeCell(EditorContext editorContext, SNode elementNode) {
       EditorCell elementCell = super.createNodeCell(editorContext, elementNode);
