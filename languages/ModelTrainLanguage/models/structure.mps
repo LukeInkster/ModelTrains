@@ -8,7 +8,6 @@
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="4fqr" ref="r:fa713d69-08ea-4732-b1f2-cb07f9e103ef(jetbrains.mps.execution.util.structure)" implicit="true" />
-    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -188,23 +187,6 @@
     </node>
     <node concept="PrWs8" id="2pqQ2agKvFt" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="gv3FBPUA86">
-    <property role="1pbfSe" value="100044609" />
-    <property role="TrG5h" value="Vector" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="gv3FBPUA8y" role="1TKVEl">
-      <property role="TrG5h" value="x" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="gv3FBPUA8$" role="1TKVEl">
-      <property role="TrG5h" value="y" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
-    </node>
-    <node concept="1TJgyi" id="gv3FBPUA8B" role="1TKVEl">
-      <property role="TrG5h" value="z" />
-      <ref role="AX2Wp" to="tpee:4_5hYVHKxAU" resolve="_FloatNumberValue" />
     </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUA9$">

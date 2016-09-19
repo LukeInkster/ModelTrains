@@ -30,6 +30,7 @@ public class map_ModelTrainSet extends JFrame {
   private static Map<String, String> trackCross = new HashMap<String, String>();
   private static Map<String, Double> trackCrossAngles = new HashMap<String, Double>();
   private static Map<String, TrackSegment> trackPointsMap = new HashMap<String, TrackSegment>();
+  private static Map<String, String> trackCrossSwitchInfo = new HashMap<String, String>();
   private static List<TrackSegment> trackPoints = new ArrayList<TrackSegment>();
 
   private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -38,16 +39,14 @@ public class map_ModelTrainSet extends JFrame {
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
     mts.init();
-
   }
 
   public void init() {
-
-
     Color c = new Color(0, 0, 0, Color.TRANSLUCENT);
     g.setColor(c);
     g.fillRect(0, 0, width, height);
     trackCreation();
+    trackCrossSwitchCheck();
     trackTranslating();
     trackDrawing();
     setTitle("ModelTrain - " + "Example_Track");
@@ -65,6 +64,15 @@ public class map_ModelTrainSet extends JFrame {
     setVisible(true);
   }
 
+  private void trackCrossSwitchCheck() {
+    for (TrackSegment ts : trackPoints) {
+      if (trackCrossSwitchInfo.containsKey(ts.self + ts.from)) {
+        ts.from += trackCrossSwitchInfo.get(ts.self + ts.from);
+      } else if (trackCrossSwitchInfo.containsKey(ts.self + ts.to)) {
+        ts.to += trackCrossSwitchInfo.get(ts.self + ts.from);
+      }
+    }
+  }
 
   private void trackDrawing() {
     // Loop through all track pieces until all have been drawn 
@@ -316,156 +324,73 @@ public class map_ModelTrainSet extends JFrame {
     addTrackSegment(self, leftPoints, rightPoints, from, to, 0);
   }
 
+  public static void addCrossSwitchInfo(String key, String value) {
+    trackCrossSwitchInfo.put(key, value);
+  }
 
 
   private void trackCreation() {
     // Turns track pieces into sets of 3d positions 
     {
-      // Get names of connecting tracks 
       String self = "1";
-      String switchSuffix = map_ModelTrainSet.switchSuffix;
-      String crossSuffix = map_ModelTrainSet.crossSuffix;
-
       String track1Name = "Z";
-      if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track1Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
-            track1Name += crossSuffix;
-          }
-        }
-      }
       String track2Name = "Z";
-      if (!(track2Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track2Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
-            track2Name += crossSuffix;
-          }
-        }
-      }
-
-      // Create track segments based on this track piece 
-      String ang = "15";
-      String rad = "5";
-      double dAng = 0;
-      double dRad = 0;
       double dGap = map_ModelTrainSet.pointGapCurve;
       double dWid = map_ModelTrainSet.railWidth;
-      try {
-        dAng = Double.parseDouble(ang);
-        dRad = Double.parseDouble(rad);
-      } catch (NumberFormatException e) {
-        System.out.println("Curved Track " + "1" + " has an invalid angle/radius: " + ang + " " + rad);
-      }
-
+      double dAng = Double.parseDouble("15");
+      double dRad = Double.parseDouble("5");
       List<Vector3> listLeft = new ArrayList<Vector3>();
       List<Vector3> listRight = new ArrayList<Vector3>();
-
       double dm = dGap;
       if (dAng < 0) {
         dm = -dGap;
         dRad = -dRad;
       }
-
       for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
         listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
         listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-
       }
       listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
       listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-
       map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
     }
     {
       String self = "2";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
-      String crossSuffix = map_ModelTrainSet.crossSuffix;
       boolean left = false;
-
       String track1Name = "Z";
-      if (!(track1Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track1Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
-            track1Name += crossSuffix;
-          }
-        }
-      }
       String track2Name = "Z";
-      if (!(track2Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track2Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || self.equals(""))) {
-            track2Name += crossSuffix;
-          }
-        }
-      }
       String track3Name = "Z";
-      if (!(track3Name.equals(""))) {
-        String concept = "ModelTrainLanguage.structure.TrackBuffer";
-        if (!(concept.equals(""))) {
-          if (concept.endsWith(".TrackSwitch") && self.equals("")) {
-            track3Name += switchSuffix;
-          } else if (concept.endsWith(".TrackCrossing") && (self.equals("") || concept.equals(""))) {
-            track3Name += crossSuffix;
-          }
-        }
-      }
-
-
-      // Create track segments based on this track piece 
-      // Hard coded arc for split and length 
       double dAng = 45;
       double dRad = 10;
-      double dLen = 1;
+      double dLen = 8;
       double dGapC = map_ModelTrainSet.pointGapCurve;
       double dGap = map_ModelTrainSet.pointGap;
       double dWid = map_ModelTrainSet.railWidth;
-
-      // Split - Curved 
       List<Vector3> listLeft = new ArrayList<Vector3>();
       List<Vector3> listRight = new ArrayList<Vector3>();
-
       double dm = dGapC;
       if (dAng < 0) {
         dm = -dGapC;
       }
-
       for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
         listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
         listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-
       }
       listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
       listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-
       map_ModelTrainSet.addTrackSegment(self + switchSuffix, listLeft, listRight, track1Name, track3Name, dAng);
-
-      // Straight 
-      // 8 should be the closest whole length that is greater than the curve ^ 
-      dLen = 8;
+      map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
+      map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
       listLeft = new ArrayList<Vector3>();
       listRight = new ArrayList<Vector3>();
       for (double i = 0; i < dLen; i += dGap) {
         listLeft.add(new Vector3(i, 0, -dWid));
         listRight.add(new Vector3(i, 0, dWid));
-
       }
       listLeft.add(new Vector3(dLen, 0, -dWid));
       listRight.add(new Vector3(dLen, 0, dWid));
-
       map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, 0);
-
     }
     // Draw buffers or something 
   }

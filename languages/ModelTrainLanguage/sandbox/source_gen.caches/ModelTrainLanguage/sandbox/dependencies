@@ -29,7 +29,6 @@
     <classNode dependClassName="java.awt.image.BufferedImage" />
     <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.Math" />
-    <classNode dependClassName="java.lang.NumberFormatException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />

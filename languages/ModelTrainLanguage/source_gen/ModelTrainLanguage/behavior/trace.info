@@ -56,9 +56,6 @@
     <file name="Train_BehaviorDescriptor.java">
       <unit at="14,0,26,0" name="ModelTrainLanguage.behavior.Train_BehaviorDescriptor" />
     </file>
-    <file name="Vector_BehaviorDescriptor.java">
-      <unit at="12,0,21,0" name="ModelTrainLanguage.behavior.Vector_BehaviorDescriptor" />
-    </file>
   </root>
   <root nodeRef="r:d81dae09-89a7-4469-bd3e-dc1bfc7814de(ModelTrainLanguage.behavior)/1085941728142568186">
     <file name="ModelTrainSet_Behavior.java">
