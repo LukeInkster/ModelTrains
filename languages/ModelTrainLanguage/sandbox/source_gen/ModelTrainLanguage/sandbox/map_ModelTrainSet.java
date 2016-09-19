@@ -338,8 +338,8 @@ public class map_ModelTrainSet extends JFrame {
     // Turns track pieces into sets of 3d positions 
     {
       String self = "1";
-      String track1Name = "2";
-      String track2Name = "";
+      String track1Name = "";
+      String track2Name = "2";
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
@@ -366,7 +366,7 @@ public class map_ModelTrainSet extends JFrame {
     {
       String self = "5";
       String track1Name = "";
-      String track2Name = "";
+      String track2Name = "2";
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
@@ -388,9 +388,9 @@ public class map_ModelTrainSet extends JFrame {
       String self = "2";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
       boolean left = false;
-      String track1Name = "3";
-      String track2Name = "6";
-      String track3Name = "1";
+      String track1Name = "1";
+      String track2Name = "5";
+      String track3Name = "3";
       if (track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
@@ -429,7 +429,7 @@ public class map_ModelTrainSet extends JFrame {
     {
       String self = "3";
       String track1Name = "2";
-      String track2Name = "";
+      String track2Name = "6";
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
@@ -455,7 +455,7 @@ public class map_ModelTrainSet extends JFrame {
     }
     {
       String self = "4";
-      String track1Name = "";
+      String track1Name = "6";
       String track2Name = "";
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
@@ -478,9 +478,9 @@ public class map_ModelTrainSet extends JFrame {
       // Get names of connecting tracks 
       String self = "6";
       String crossSuffix = map_ModelTrainSet.crossSuffix;
-      String track1Name = "2";
+      String track1Name = "3";
       String track2Name = "";
-      String track3Name = "";
+      String track3Name = "4";
       String track4Name = "";
       if (track1Name.equals("") && track2Name.equals("") && track3Name.equals("") && track4Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
