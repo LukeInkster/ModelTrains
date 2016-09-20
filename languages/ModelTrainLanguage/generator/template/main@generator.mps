@@ -532,6 +532,29 @@
         </node>
       </node>
     </node>
+    <node concept="Wx3nA" id="6jcrxheGvrx" role="jymVt">
+      <property role="2dlcS1" value="false" />
+      <property role="2dld4O" value="false" />
+      <property role="TrG5h" value="radiusNameToValue" />
+      <property role="3TUv4t" value="false" />
+      <node concept="3Tm6S6" id="6jcrxheGttQ" role="1B3o_S" />
+      <node concept="3uibUv" id="6jcrxheGu$V" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+        <node concept="17QB3L" id="6jcrxheGuQP" role="11_B2D" />
+        <node concept="3uibUv" id="6jcrxheGvqL" role="11_B2D">
+          <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="6jcrxheGwGe" role="33vP2m">
+        <node concept="1pGfFk" id="6jcrxheGD4X" role="2ShVmc">
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
+          <node concept="17QB3L" id="6jcrxheGDWX" role="1pMfVU" />
+          <node concept="3uibUv" id="6jcrxheGErw" role="1pMfVU">
+            <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="Wx3nA" id="3K61cWEeZdu" role="jymVt">
       <property role="TrG5h" value="trackPoints" />
       <property role="2dlcS1" value="false" />

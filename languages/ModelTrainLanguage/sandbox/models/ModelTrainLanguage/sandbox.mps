@@ -199,6 +199,11 @@
       <ref role="me3Z_" node="yYZ207qUnS" resolve="3" />
       <ref role="3A9cMF" node="3_JNvO_1D_7" resolve="4" />
     </node>
+    <node concept="1rKzhf" id="6jcrxheFxNs" role="23Gti_">
+      <property role="1rKzhh" value="45" />
+      <property role="1rKzhj" value="438" />
+    </node>
+    <node concept="23Gtjv" id="6jcrxheFxN_" role="23Gti_" />
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">
     <property role="TrG5h" value="Vector3" />

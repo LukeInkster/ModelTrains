@@ -26,7 +26,7 @@ public final class TrackCurve__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.set(__thisNode__, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435eL, "angle"), "45");
-    SPropertyOperations.set(__thisNode__, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL, "radius"), "5");
+    SPropertyOperations.set(__thisNode__, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL, "radius"), "1");
   }
 
 

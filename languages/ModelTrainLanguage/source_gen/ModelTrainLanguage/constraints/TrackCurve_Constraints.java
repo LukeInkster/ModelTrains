@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
   public TrackCurve_Constraints() {
@@ -29,8 +30,31 @@ public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
       public boolean validateValue(SNode node, String propertyValue) {
         String propertyName = "angle";
         {
-          String[] angles = {"45", "30", "22.5", "15", "-45", "-30", "-22.5", "-15"};
+          String[] angles = {"45", "22.5", "-22.5", "-45"};
           return Sequence.fromIterable(Sequence.fromArray(angles)).contains((SPropertyOperations.getString(propertyValue)));
+        }
+      }
+    });
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), this) {
+      @Override
+      public boolean hasOwnGetter() {
+        return true;
+      }
+      @Override
+      public Object getValue(SNode node) {
+        String propertyName = "radius";
+        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      }
+      @Override
+      public boolean hasOwnValidator() {
+        return true;
+      }
+      @Override
+      public boolean validateValue(SNode node, String propertyValue) {
+        String propertyName = "radius";
+        {
+          String[] radii = {"1", "2", "3", "4"};
+          return Sequence.fromIterable(Sequence.fromArray(radii)).contains((SPropertyOperations.getString(propertyValue)));
         }
       }
     });
