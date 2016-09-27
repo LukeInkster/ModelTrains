@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
   public TrackCurve_Constraints() {
@@ -36,15 +35,6 @@ public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
       }
     });
     properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L, 0x16d2770f4d10435cL), this) {
-      @Override
-      public boolean hasOwnGetter() {
-        return true;
-      }
-      @Override
-      public Object getValue(SNode node) {
-        String propertyName = "radius";
-        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-      }
       @Override
       public boolean hasOwnValidator() {
         return true;

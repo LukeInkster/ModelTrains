@@ -227,6 +227,12 @@
       <node concept="3F0A7n" id="34nLjeJj$YN" role="3EZMnx">
         <ref role="1NtTu8" to="5qva:1ritKXd44ds" resolve="radius" />
       </node>
+      <node concept="3F0ifn" id="32dwHGLQ3Mh" role="3EZMnx">
+        <property role="3F0ifm" value="Left: " />
+      </node>
+      <node concept="3F0A7n" id="32dwHGLQ3MP" role="3EZMnx">
+        <ref role="1NtTu8" to="5qva:32dwHGLQ3LW" resolve="left" />
+      </node>
       <node concept="3F0ifn" id="3h6r1ol8YoQ" role="3EZMnx">
         <property role="3F0ifm" value="   Connections:" />
         <node concept="pVoyu" id="34nLjeJj$Z3" role="3F10Kt">

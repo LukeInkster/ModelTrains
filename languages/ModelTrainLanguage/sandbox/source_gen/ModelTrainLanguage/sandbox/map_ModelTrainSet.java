@@ -12,17 +12,24 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.BorderFactory;
 import java.awt.Dimension;
 
 public class map_ModelTrainSet extends JFrame {
-  public static double pointGap = 2;
+  public static double sleeperDiv = 168 / 24.0;
+  public static double sleeperWidth = sleeperDiv / 3;
+  public static double drawGap = 2;
   public static double pointGapCurve = 0.5;
-  public static double railWidth = 1;
+  public static double railWidth = 16.5;
+  public static double railThickness = 1;
   public static String switchSuffix = "_switch";
   public static String crossSuffix = "_cross";
 
   public static int width = 1000;
   public static int height = 700;
+  public static int infoWidth = 300;
   public static double startAngle = 0;
   public JPanel panel;
 
@@ -30,10 +37,14 @@ public class map_ModelTrainSet extends JFrame {
   private static Map<String, Double> trackCrossAngles = new HashMap<String, Double>();
   private static Map<String, TrackSegment> trackPointsMap = new HashMap<String, TrackSegment>();
   private static Map<String, String> trackCrossSwitchInfo = new HashMap<String, String>();
+  private static Map<String, Double> radiusNameToValue = new HashMap<String, Double>();
   private static List<TrackSegment> trackPoints = new ArrayList<TrackSegment>();
 
-  private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-  private Graphics2D g = (Graphics2D) image.createGraphics();
+  private BufferedImage trackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+  private BufferedImage infoImage = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_ARGB);
+
+  private Graphics2D gT = (Graphics2D) trackImage.createGraphics();
+  private Graphics2D gI = (Graphics2D) infoImage.createGraphics();
 
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
@@ -42,8 +53,8 @@ public class map_ModelTrainSet extends JFrame {
 
   public void init() {
     Color c = new Color(0, 0, 0, Color.TRANSLUCENT);
-    g.setColor(c);
-    g.fillRect(0, 0, width, height);
+    gT.setColor(c);
+    gT.fillRect(0, 0, width, height);
     trackCreation();
     trackCrossSwitchCheck();
     trackTranslating();
@@ -54,11 +65,31 @@ public class map_ModelTrainSet extends JFrame {
       @Override
       protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, null);
+        g.drawImage(trackImage, 0, 0, null);
       }
     };
-    add(panel);
-    panel.setPreferredSize(new Dimension(width, height));
+    this.setLayout(new GridBagLayout());
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    add(panel, gbc);
+
+    gbc.gridx = 1;
+
+    gbc.gridwidth = 1;
+    JPanel panel2 = new JPanel() {
+      @Override
+      protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(infoImage, 0, 0, null);
+      }
+    };
+    add(panel2, gbc);
+    panel2.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+
+    panel2.setPreferredSize(new Dimension(infoWidth, height));
+    panel.setPreferredSize(new Dimension(width - infoWidth, height));
     pack();
     setVisible(true);
   }
@@ -105,7 +136,7 @@ public class map_ModelTrainSet extends JFrame {
     int yOff = 10;
     double sx = 15;
     double sy = 15;
-    g.setColor(Color.BLACK);
+    gT.setColor(Color.BLACK);
     for (TrackSegment ts : trackPoints) {
       for (int i = 0; i < ts.leftPoints.size() - 1; i++) {
         double x1 = ts.leftPoints.get(i).x;
@@ -118,7 +149,7 @@ public class map_ModelTrainSet extends JFrame {
         int px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
         int py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
 
-        g.drawLine(px1, py1, px2, py2);
+        gT.drawLine(px1, py1, px2, py2);
 
         x1 = ts.rightPoints.get(i).x;
         y1 = ts.rightPoints.get(i).z;
@@ -130,7 +161,7 @@ public class map_ModelTrainSet extends JFrame {
         px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
         py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
 
-        g.drawLine(px1, py1, px2, py2);
+        gT.drawLine(px1, py1, px2, py2);
 
       }
     }
@@ -274,6 +305,14 @@ public class map_ModelTrainSet extends JFrame {
     }
   }
 
+  public static double arcLength(double r, double a) {
+    return Math.toRadians(r) * a;
+  }
+
+  public static double arcPercentLength(double len, double maxLen, double maxAngle) {
+    return maxLen / len * maxAngle;
+  }
+
   public static Vector3 arcCalc(double p, double r, double a) {
     Vector3 center = new Vector3(0, 0, r);
     Vector3 point = new Vector3(0, 0, p);
@@ -345,8 +384,8 @@ public class map_ModelTrainSet extends JFrame {
       } else {
         double dGap = map_ModelTrainSet.pointGapCurve;
         double dWid = map_ModelTrainSet.railWidth;
-        double dAng = Double.parseDouble("15");
-        double dRad = Double.parseDouble("5");
+        double dAng = Double.parseDouble("45");
+        double dRad = Double.parseDouble("4");
         List<Vector3> listLeft = new ArrayList<Vector3>();
         List<Vector3> listRight = new ArrayList<Vector3>();
         double dm = dGap;
@@ -370,7 +409,7 @@ public class map_ModelTrainSet extends JFrame {
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
-        double dGap = map_ModelTrainSet.pointGap;
+        double dGap = map_ModelTrainSet.drawGap;
         double dWid = map_ModelTrainSet.railWidth;
         double dLen = Double.parseDouble("3");
         List<Vector3> listLeft = new ArrayList<Vector3>();
@@ -398,7 +437,7 @@ public class map_ModelTrainSet extends JFrame {
         double dRad = 10;
         double dLen = 8;
         double dGapC = map_ModelTrainSet.pointGapCurve;
-        double dGap = map_ModelTrainSet.pointGap;
+        double dGap = map_ModelTrainSet.drawGap;
         double dWid = map_ModelTrainSet.railWidth;
         List<Vector3> listLeft = new ArrayList<Vector3>();
         List<Vector3> listRight = new ArrayList<Vector3>();
@@ -436,7 +475,7 @@ public class map_ModelTrainSet extends JFrame {
         double dGap = map_ModelTrainSet.pointGapCurve;
         double dWid = map_ModelTrainSet.railWidth;
         double dAng = Double.parseDouble("45");
-        double dRad = Double.parseDouble("5");
+        double dRad = Double.parseDouble("4");
         List<Vector3> listLeft = new ArrayList<Vector3>();
         List<Vector3> listRight = new ArrayList<Vector3>();
         double dm = dGap;
@@ -460,7 +499,7 @@ public class map_ModelTrainSet extends JFrame {
       if (track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
-        double dGap = map_ModelTrainSet.pointGap;
+        double dGap = map_ModelTrainSet.drawGap;
         double dWid = map_ModelTrainSet.railWidth;
         double dLen = Double.parseDouble("5");
         List<Vector3> listLeft = new ArrayList<Vector3>();
@@ -486,7 +525,7 @@ public class map_ModelTrainSet extends JFrame {
         System.out.println("Track " + self + " has no track connections.");
       } else {
         double dLen = 6;
-        double dGap = map_ModelTrainSet.pointGap;
+        double dGap = map_ModelTrainSet.drawGap;
         double dWid = map_ModelTrainSet.railWidth;
         double dAng = Double.parseDouble("45");
         List<Vector3> listLeft = new ArrayList<Vector3>();
@@ -511,6 +550,33 @@ public class map_ModelTrainSet extends JFrame {
         map_ModelTrainSet.addTrackSegment(self + crossSuffix, listLeft, listRight, track3Name, track4Name);
         map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
         map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
+      }
+    }
+    {
+      String self = "1";
+      String track1Name = "";
+      String track2Name = "";
+      if (track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dGap = map_ModelTrainSet.pointGapCurve;
+        double dWid = map_ModelTrainSet.railWidth;
+        double dAng = Double.parseDouble("45");
+        double dRad = Double.parseDouble("4");
+        List<Vector3> listLeft = new ArrayList<Vector3>();
+        List<Vector3> listRight = new ArrayList<Vector3>();
+        double dm = dGap;
+        if (dAng < 0) {
+          dm = -dGap;
+          dRad = -dRad;
+        }
+        for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
+          listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
+          listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
+        }
+        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
+        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
+        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
       }
     }
   }
