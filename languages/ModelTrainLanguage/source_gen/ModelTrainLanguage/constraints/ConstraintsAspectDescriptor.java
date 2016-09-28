@@ -23,6 +23,12 @@ public class ConstraintsAspectDescriptor implements jetbrains.mps.smodel.runtime
     if (id == 0x41f0eb9f5ea6264L) {
       return new TrackStraight_Constraints();
     }
+    if (id == 0x41f0eb9f5ea6174L) {
+      return new Station_Constraints();
+    }
+    if (id == 0x5e7da70e100fc394L) {
+      return new Train_Constraints();
+    }
     return new BaseConstraintsDescriptor(conceptId);
   }
 }

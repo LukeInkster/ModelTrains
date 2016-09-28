@@ -140,9 +140,13 @@
     <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage">
       <concept id="8871674439221071935" name="ModelTrainLanguage.structure.ModelTrainSet" flags="ng" index="23Gtjq">
         <child id="8871674439221071936" name="trackPieces" index="23Gti_" />
+        <child id="296972292287259082" name="stations" index="3LXmXN" />
       </concept>
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
+      </concept>
+      <concept id="296972292287258996" name="ModelTrainLanguage.structure.Station" flags="ng" index="3LXmZd">
+        <reference id="5956952223153013334" name="stationTrack" index="7EhCE" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -156,6 +160,10 @@
     <node concept="3LXmNt" id="32dwHGLQ3Ii" role="23Gti_">
       <property role="TrG5h" value="1" />
       <property role="me36b" value="1" />
+    </node>
+    <node concept="3LXmZd" id="5aFm7Ll0XhA" role="3LXmXN">
+      <property role="TrG5h" value="someStation" />
+      <ref role="7EhCE" node="32dwHGLQ3Ii" resolve="1" />
     </node>
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">

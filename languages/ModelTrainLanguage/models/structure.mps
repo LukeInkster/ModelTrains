@@ -62,6 +62,15 @@
     <node concept="PrWs8" id="2pqQ2agKjDS" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyj" id="5aFm7LkYY3z" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="currentRoute" />
+      <ref role="20lvS9" node="gv3FBPUAa0" resolve="Route" />
+    </node>
+    <node concept="1TJgyi" id="5aFm7LkYY3H" role="1TKVEl">
+      <property role="TrG5h" value="positionInRoute" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0B">
     <property role="1pbfSe" value="1942869260" />
@@ -70,6 +79,10 @@
     <node concept="PrWs8" id="2pqQ2agKw74" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyi" id="5aFm7LkYW5V" role="1TKVEl">
+      <property role="TrG5h" value="length" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0C">
     <property role="1pbfSe" value="1942869261" />
@@ -77,6 +90,10 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="2pqQ2agKvFX" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="5aFm7LkYW5P" role="1TKVEl">
+      <property role="TrG5h" value="length" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
   <node concept="1TIwiD" id="7GuxenSFP0U">
@@ -158,10 +175,10 @@
     <node concept="PrWs8" id="gv3FBPUA6g" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node concept="1TJgyj" id="gv3FBPUA6i" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+    <node concept="1TJgyj" id="5aFm7Ll1kBX" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="stationTrack" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
   </node>
