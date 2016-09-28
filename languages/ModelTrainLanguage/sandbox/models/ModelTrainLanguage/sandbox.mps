@@ -154,6 +154,10 @@
         <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
       <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo" />
+      <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
+        <property id="1644507721544778590" name="angle" index="1rKzhh" />
+        <property id="1644507721544778588" name="radius" index="1rKzhj" />
+      </concept>
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
       </concept>
@@ -180,6 +184,11 @@
     <node concept="3LXmXj" id="51cWn6VYt1L" role="23Gti_">
       <property role="TrG5h" value="2" />
       <ref role="3A9cMF" node="51cWn6VYt1G" resolve="1" />
+    </node>
+    <node concept="1rKzhf" id="5WnyYRvT9ev" role="23Gti_">
+      <property role="1rKzhh" value="45" />
+      <property role="1rKzhj" value="1" />
+      <property role="TrG5h" value="3" />
     </node>
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">
