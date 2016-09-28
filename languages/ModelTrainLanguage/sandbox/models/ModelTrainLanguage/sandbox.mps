@@ -142,6 +142,15 @@
         <child id="8871674439221071936" name="trackPieces" index="23Gti_" />
         <child id="296972292287259082" name="stations" index="3LXmXN" />
       </concept>
+      <concept id="8871674439221071930" name="ModelTrainLanguage.structure.Track" flags="ng" index="23Gtjv">
+        <reference id="4325149779949402923" name="track2" index="me3Z$" />
+        <reference id="4325149779949402922" name="track1" index="me3Z_" />
+      </concept>
+      <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
+        <property id="3498596363482446972" name="left" index="1lrUB" />
+        <property id="1644507721544778590" name="angle" index="1rKzhh" />
+        <property id="1644507721544778588" name="radius" index="1rKzhj" />
+      </concept>
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
       </concept>
@@ -160,6 +169,14 @@
     <node concept="3LXmNt" id="32dwHGLQ3Ii" role="23Gti_">
       <property role="TrG5h" value="1" />
       <property role="me36b" value="1" />
+      <ref role="me3Z$" node="3aSwGGRbC4V" resolve="2" />
+    </node>
+    <node concept="1rKzhf" id="3aSwGGRbC4V" role="23Gti_">
+      <property role="1rKzhh" value="45" />
+      <property role="1rKzhj" value="1" />
+      <property role="TrG5h" value="2" />
+      <property role="1lrUB" value="true" />
+      <ref role="me3Z_" node="32dwHGLQ3Ii" resolve="1" />
     </node>
     <node concept="3LXmZd" id="5aFm7Ll0XhA" role="3LXmXN">
       <property role="TrG5h" value="someStation" />
