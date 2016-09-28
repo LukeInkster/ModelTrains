@@ -18,12 +18,15 @@ import javax.swing.BorderFactory;
 import java.awt.Dimension;
 
 public class map_ModelTrainSet extends JFrame {
+  public static double standardLength = 168;
+  public static double standardBuffers = 24;
   public static double sleeperDiv = 168 / 24.0;
-  public static double sleeperWidth = sleeperDiv / 3;
-  public static double drawGap = 2;
-  public static double pointGapCurve = 0.5;
   public static double railWidth = 16.5;
   public static double railThickness = 1;
+  public static double sleeperWidth = sleeperDiv / 6;
+  public static double sleeperLength = railWidth * 0.7;
+  public static double drawGap = 2;
+  public static double pointGapCurve = 0.5;
   public static String switchSuffix = "_switch";
   public static String crossSuffix = "_cross";
 
@@ -38,6 +41,7 @@ public class map_ModelTrainSet extends JFrame {
   private static Map<String, TrackSegment> trackPointsMap = new HashMap<String, TrackSegment>();
   private static Map<String, String> trackCrossSwitchInfo = new HashMap<String, String>();
   private static Map<String, Double> radiusNameToValue = new HashMap<String, Double>();
+  private static Map<String, Double> lengthToBuffers = new HashMap<String, Double>();
   private static List<TrackSegment> trackPoints = new ArrayList<TrackSegment>();
 
   private BufferedImage trackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -52,6 +56,19 @@ public class map_ModelTrainSet extends JFrame {
   }
 
   public void init() {
+    lengthToBuffers.put("1", 84.0d);
+    lengthToBuffers.put("2", 168.0d);
+    lengthToBuffers.put("3", 336.0d);
+
+    // radiusNameToValue 
+    radiusNameToValue.put("1", 371.0d);
+    radiusNameToValue.put("2", 438.0d);
+    radiusNameToValue.put("3", 505.0d);
+    radiusNameToValue.put("4", 572.0d);
+
+
+
+
     Color c = new Color(0, 0, 0, Color.TRANSLUCENT);
     gT.setColor(c);
     gT.fillRect(0, 0, width, height);
@@ -112,17 +129,13 @@ public class map_ModelTrainSet extends JFrame {
     double zMin = Double.MAX_VALUE;
     double zMax = Double.MIN_VALUE;
     for (TrackSegment ts : trackPoints) {
-      for (Vector3 v : ts.leftPoints) {
-        xMin = Math.min(v.x, xMin);
-        xMax = Math.max(v.x, xMax);
-        zMin = Math.min(v.z, zMin);
-        zMax = Math.max(v.z, zMax);
-      }
-      for (Vector3 v : ts.rightPoints) {
-        xMin = Math.min(v.x, xMin);
-        xMax = Math.max(v.x, xMax);
-        zMin = Math.min(v.z, zMin);
-        zMax = Math.max(v.z, zMax);
+      for (Vector3[] vArray : ts.points) {
+        for (Vector3 v : vArray) {
+          xMin = Math.min(v.x, xMin);
+          xMax = Math.max(v.x, xMax);
+          zMin = Math.min(v.z, zMin);
+          zMax = Math.max(v.z, zMax);
+        }
       }
     }
     topDown(xMin, xMax, zMin, zMax);
@@ -136,33 +149,32 @@ public class map_ModelTrainSet extends JFrame {
     int yOff = 10;
     double sx = 15;
     double sy = 15;
-    gT.setColor(Color.BLACK);
     for (TrackSegment ts : trackPoints) {
-      for (int i = 0; i < ts.leftPoints.size() - 1; i++) {
-        double x1 = ts.leftPoints.get(i).x;
-        double y1 = ts.leftPoints.get(i).z;
-        double x2 = ts.leftPoints.get(i + 1).x;
-        double y2 = ts.leftPoints.get(i + 1).z;
-
-        int px1 = (int) (Math.round(sx * (x1 + cx))) + xOff;
-        int py1 = (int) (Math.round(sy * (y1 + cy))) + yOff;
-        int px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
-        int py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
-
-        gT.drawLine(px1, py1, px2, py2);
-
-        x1 = ts.rightPoints.get(i).x;
-        y1 = ts.rightPoints.get(i).z;
-        x2 = ts.rightPoints.get(i + 1).x;
-        y2 = ts.rightPoints.get(i + 1).z;
-
-        px1 = (int) (Math.round(sx * (x1 + cx))) + xOff;
-        py1 = (int) (Math.round(sy * (y1 + cy))) + yOff;
-        px2 = (int) (Math.round(sx * (x2 + cx))) + xOff;
-        py2 = (int) (Math.round(sy * (y2 + cy))) + yOff;
-
-        gT.drawLine(px1, py1, px2, py2);
-
+      // Draw rails 
+      gT.setColor(Color.black);
+      for (Vector3[] points : ts.points) {
+        int[] xPoints = new int[points.length];
+        int[] yPoints = new int[points.length];
+        int i = 0;
+        for (Vector3 v : points) {
+          xPoints[i] = (int) (Math.round(sx * (v.x + cx))) + xOff;
+          yPoints[i] = (int) (Math.round(sy * (v.z + cy))) + yOff;
+          i++;
+        }
+        gT.fillPolygon(xPoints, yPoints, i);
+      }
+      // Draw sleepers 
+      gT.setColor(Color.darkGray);
+      for (Vector3[] sleeper : ts.sleepers) {
+        int[] xPoints = new int[sleeper.length];
+        int[] yPoints = new int[sleeper.length];
+        int i = 0;
+        for (Vector3 v : sleeper) {
+          xPoints[i] = (int) (Math.round(sx * (v.x + cx))) + xOff;
+          yPoints[i] = (int) (Math.round(sy * (v.z + cy))) + yOff;
+          i++;
+        }
+        gT.fillPolygon(xPoints, yPoints, i);
       }
     }
   }
@@ -189,6 +201,8 @@ public class map_ModelTrainSet extends JFrame {
         String dir = "- F";
         TrackSegment target;
         double angle;
+        Vector3 targetPosition;
+        Vector3 originPosition;
         Vector3 targetPositionL;
         Vector3 targetPositionR;
         Vector3 originPositionL;
@@ -196,34 +210,28 @@ public class map_ModelTrainSet extends JFrame {
 
         if (angles.containsKey(ts.from)) {
           target = trackPointsMap.get(ts.from);
-          originPositionL = ts.leftPoints.get(0);
-          originPositionR = ts.rightPoints.get(0);
+          originPosition = ts.fromPoint;
           if (target.from.equals(ts.self)) {
             dir += "F";
             angle = 180 + angles.get(target.self);
-            targetPositionL = target.rightPoints.get(0);
-            targetPositionR = target.leftPoints.get(0);
+            targetPosition = target.fromPoint;
           } else {
             dir += "T";
             angle = angles.get(target.self) + target.angle;
-            targetPositionL = target.leftPoints.get(target.leftPoints.size() - 1);
-            targetPositionR = target.rightPoints.get(target.rightPoints.size() - 1);
+            targetPosition = target.toPoint;
           }
         } else if (angles.containsKey(ts.to)) {
           dir = "- T";
           target = trackPointsMap.get(ts.to);
-          originPositionL = ts.leftPoints.get(ts.leftPoints.size() - 1);
-          originPositionR = ts.rightPoints.get(ts.rightPoints.size() - 1);
+          originPosition = ts.toPoint;
           if (target.to.equals(ts.self)) {
             dir += "T";
             angle = angles.get(target.self) + target.angle + 180 - ts.angle;
-            targetPositionL = target.rightPoints.get(target.rightPoints.size() - 1);
-            targetPositionR = target.leftPoints.get(target.leftPoints.size() - 1);
+            targetPosition = target.toPoint;
           } else {
             dir += "F";
             angle = angles.get(target.self) - ts.angle;
-            targetPositionL = target.leftPoints.get(0);
-            targetPositionR = target.rightPoints.get(0);
+            targetPosition = target.fromPoint;
           }
         } else {
           continue;
@@ -236,15 +244,18 @@ public class map_ModelTrainSet extends JFrame {
         }
         angles.put(ts.self, angle);
 
-        ts.leftPoints = rotatePoints(ts.leftPoints, angle, Vector3.zero);
-        ts.rightPoints = rotatePoints(ts.rightPoints, angle, Vector3.zero);
-        Vector3 offsetL = Vector3.subtract(targetPositionL, originPositionL);
-        Vector3 offsetR = Vector3.subtract(targetPositionR, originPositionR);
-        ts.leftPoints = movePoints(ts.leftPoints, offsetL);
-        ts.rightPoints = movePoints(ts.rightPoints, offsetR);
+        ts.points[0] = rotatePoints(ts.points[0], angle, Vector3.zero);
+        ts.points[1] = rotatePoints(ts.points[1], angle, Vector3.zero);
+        ts.fromPoint = rotatePoint(ts.fromPoint, angle, Vector3.zero);
+        ts.toPoint = rotatePoint(ts.toPoint, angle, Vector3.zero);
+        Vector3 offset = Vector3.subtract(targetPosition, originPosition);
+        ts.points[0] = movePoints(ts.points[0], offset);
+        ts.points[1] = movePoints(ts.points[1], offset);
+        ts.fromPoint = movePoint(ts.fromPoint, offset);
+        ts.toPoint = movePoint(ts.toPoint, offset);
         print("Track: " + ts.self + dir);
-        print("From: Left" + ts.leftPoints.get(0) + ", Right: " + ts.rightPoints.get(0));
-        print("  To: Left" + ts.leftPoints.get(ts.leftPoints.size() - 1) + ", Right: " + ts.rightPoints.get(ts.rightPoints.size() - 1));
+        print("From: Left" + ts.points[0][0] + ", Right: " + ts.points[1][0]);
+        print("  To: Left" + ts.points[0][ts.points[0].length - 1] + ", Right: " + ts.points[1][ts.points[1].length - 1]);
         print("Angle: " + angle + "," + (angle + ts.angle));
 
         // Handle cross and switch track 
@@ -258,21 +269,30 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsCrossName.equals(""))) {
           TrackSegment tsCross = trackPointsMap.get(tsCrossName);
-          tsCross.leftPoints = rotatePoints(tsCross.leftPoints, angle, Vector3.zero);
-          tsCross.rightPoints = rotatePoints(tsCross.rightPoints, angle, Vector3.zero);
-          Vector3 moveTo = Vector3.midPoint(ts.leftPoints.get(0), ts.rightPoints.get(0));
-          tsCross.leftPoints = movePoints(tsCross.leftPoints, moveTo);
-          tsCross.rightPoints = movePoints(tsCross.rightPoints, moveTo);
+          tsCross.points[0] = rotatePoints(tsCross.points[0], angle, Vector3.zero);
+          tsCross.points[1] = rotatePoints(tsCross.points[1], angle, Vector3.zero);
+          tsCross.fromPoint = rotatePoint(tsCross.fromPoint, angle, Vector3.zero);
+          tsCross.toPoint = rotatePoint(tsCross.toPoint, angle, Vector3.zero);
+
+          Vector3 moveTo = ts.fromPoint;
+          tsCross.points[0] = movePoints(tsCross.points[0], moveTo);
+          tsCross.points[1] = movePoints(tsCross.points[1], moveTo);
+          tsCross.fromPoint = movePoint(tsCross.fromPoint, moveTo);
+          tsCross.toPoint = movePoint(tsCross.toPoint, moveTo);
+
           angle += trackCrossAngles.get(tsCrossName);
           angles.put(tsCross.self, angle);
           angle = trackCrossAngles.get(tsCrossName);
-          Vector3 center = Vector3.midPoint(Vector3.midPoint(tsCross.leftPoints.get(0), tsCross.rightPoints.get(0)), Vector3.midPoint(tsCross.leftPoints.get(tsCross.leftPoints.size() - 1), tsCross.rightPoints.get(tsCross.rightPoints.size() - 1)));
-          tsCross.leftPoints = rotatePoints(tsCross.leftPoints, angle, center);
-          tsCross.rightPoints = rotatePoints(tsCross.rightPoints, angle, center);
+          Vector3 center = Vector3.midPoint(tsCross.fromPoint, tsCross.toPoint);
+          tsCross.points[0] = rotatePoints(tsCross.points[0], angle, center);
+          tsCross.points[1] = rotatePoints(tsCross.points[1], angle, center);
+          tsCross.fromPoint = rotatePoint(tsCross.fromPoint, angle, center);
+          tsCross.toPoint = rotatePoint(tsCross.toPoint, angle, center);
+
           print("  Track: " + tsCross.self);
-          print("  From: Left" + tsCross.leftPoints.get(0) + ", Right: " + tsCross.rightPoints.get(0));
-          print("    To: Left" + tsCross.leftPoints.get(tsCross.leftPoints.size() - 1) + ", Right: " + tsCross.rightPoints.get(tsCross.rightPoints.size() - 1));
-          print("  Angle: " + angles.get(tsCross.self));
+          print("  From: Left" + tsCross.points[0][0] + ", Right: " + tsCross.points[1][0]);
+          print("    To: Left" + tsCross.points[0][tsCross.points[0].length - 1] + ", Right: " + tsCross.points[1][tsCross.points[1].length - 1]);
+          print("  Angle: " + angle + "," + (angle + ts.angle));
         }
 
         String tsSwitchName = "";
@@ -287,18 +307,23 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsSwitchName.equals(""))) {
           TrackSegment tsSwitch = trackPointsMap.get(tsSwitchName);
-          tsSwitch.leftPoints = rotatePoints(tsSwitch.leftPoints, angle, Vector3.zero);
-          tsSwitch.rightPoints = rotatePoints(tsSwitch.rightPoints, angle, Vector3.zero);
-          offsetL = Vector3.subtract(ts.leftPoints.get(0), tsSwitch.leftPoints.get(0));
-          offsetR = Vector3.subtract(ts.rightPoints.get(0), tsSwitch.rightPoints.get(0));
-          tsSwitch.leftPoints = movePoints(tsSwitch.leftPoints, offsetL);
-          tsSwitch.rightPoints = movePoints(tsSwitch.rightPoints, offsetR);
-          angles.put(tsSwitch.self, angles.get(ts.self));
-          print("  Track: " + tsSwitch.self);
-          print("  From: Left" + tsSwitch.leftPoints.get(0) + ", Right: " + tsSwitch.rightPoints.get(0));
-          print("    To: Left" + tsSwitch.leftPoints.get(tsSwitch.leftPoints.size() - 1) + ", Right: " + tsSwitch.rightPoints.get(tsSwitch.rightPoints.size() - 1));
-          print("  Angle: " + angle);
+          tsSwitch.points[0] = rotatePoints(tsSwitch.points[0], angle, Vector3.zero);
+          tsSwitch.points[1] = rotatePoints(tsSwitch.points[1], angle, Vector3.zero);
+          tsSwitch.fromPoint = rotatePoint(tsSwitch.fromPoint, angle, Vector3.zero);
+          tsSwitch.toPoint = rotatePoint(tsSwitch.toPoint, angle, Vector3.zero);
 
+          Vector3 moveTo = ts.fromPoint;
+          tsSwitch.points[0] = movePoints(tsSwitch.points[0], moveTo);
+          tsSwitch.points[1] = movePoints(tsSwitch.points[1], moveTo);
+          tsSwitch.fromPoint = movePoint(tsSwitch.fromPoint, moveTo);
+          tsSwitch.toPoint = movePoint(tsSwitch.toPoint, moveTo);
+
+          angles.put(tsSwitch.self, angles.get(ts.self));
+
+          print("  Track: " + tsSwitch.self);
+          print("  From: Left" + tsSwitch.points[0][0] + ", Right: " + tsSwitch.points[1][0]);
+          print("    To: Left" + tsSwitch.points[0][tsSwitch.points[0].length - 1] + ", Right: " + tsSwitch.points[1][tsSwitch.points[1].length - 1]);
+          print("  Angle: " + angle + "," + (angle + ts.angle));
         }
       }
       doneCounter += 1;
@@ -309,11 +334,14 @@ public class map_ModelTrainSet extends JFrame {
     return Math.toRadians(r) * a;
   }
 
-  public static double arcPercentLength(double len, double maxLen, double maxAngle) {
+  public static double arcPercentToAngle(double len, double maxLen, double maxAngle) {
     return maxLen / len * maxAngle;
   }
 
   public static Vector3 arcCalc(double p, double r, double a) {
+    if (r == 0) {
+      return new Vector3(0, 0, p);
+    }
     Vector3 center = new Vector3(0, 0, r);
     Vector3 point = new Vector3(0, 0, p);
     double d = Math.toRadians(a);
@@ -322,7 +350,11 @@ public class map_ModelTrainSet extends JFrame {
     return new Vector3(x2, 0, y2);
   }
 
-  public static List<Vector3> rotatePoints(List<Vector3> points, double angle, Vector3 rotPoint) {
+  public static Vector3 rotatePoint(Vector3 point, double angle, Vector3 rotPoint) {
+    return rotatePoints(new Vector3[]{point}, angle, rotPoint)[0];
+  }
+
+  public static Vector3[] rotatePoints(Vector3[] points, double angle, Vector3 rotPoint) {
     // Rotate list of vectors around a point 
     if (angle == 0) {
       return points;
@@ -337,9 +369,14 @@ public class map_ModelTrainSet extends JFrame {
     }
     return points;
   }
-  public static List<Vector3> movePoints(List<Vector3> points, Vector3 offset) {
-    for (int i = 0; i < points.size(); i++) {
-      points.set(i, Vector3.add(points.get(i), offset));
+
+  public static Vector3 movePoint(Vector3 point, Vector3 offset) {
+    return movePoints(new Vector3[]{point}, offset)[0];
+  }
+
+  public static Vector3[] movePoints(Vector3[] points, Vector3 offset) {
+    for (int i = 0; i < points.length; i++) {
+      points[i] = Vector3.add(points[i], offset);
     }
     return points;
   }
@@ -352,231 +389,93 @@ public class map_ModelTrainSet extends JFrame {
     System.out.println(o.toString());
   }
 
-
   public static void addTrackCross(String t1, String t2, double angle) {
     trackCross.put(t1, t2);
     trackCrossAngles.put(t1, -angle);
     trackCrossAngles.put(t2, angle);
   }
 
-  public static void addTrackSegment(String self, List<Vector3> leftPoints, List<Vector3> rightPoints, String from, String to, double angle) {
-    TrackSegment s = new TrackSegment(self, leftPoints, rightPoints, from, to, angle);
+  public static double getRadius(String type) {
+    return radiusNameToValue.get(type);
+  }
+
+  public static double getLength(String size) {
+    return lengthToBuffers.get(size);
+  }
+
+  public static void addTrackSegment(String self, Vector3[][] points, Vector3[][] sleepers, String from, String to, Vector3 fromPoint, Vector3 toPoint, double angle) {
+    TrackSegment s = new TrackSegment(self, points, sleepers, from, to, fromPoint, toPoint, angle);
     trackPoints.add(s);
     trackPointsMap.put(self, s);
   }
-  public static void addTrackSegment(String self, List<Vector3> leftPoints, List<Vector3> rightPoints, String from, String to) {
-    addTrackSegment(self, leftPoints, rightPoints, from, to, 0);
+  public static void addTrackSegment(String self, Vector3[][] points, Vector3[][] sleepers, String from, String to, Vector3 fromPoint, Vector3 toPoint) {
+    addTrackSegment(self, points, sleepers, from, to, fromPoint, toPoint, 0);
+  }
+
+  public static Vector3[] createSleeper() {
+    Vector3[] points = new Vector3[4];
+    points[0] = new Vector3(sleeperWidth, 0, -sleeperLength);
+    points[1] = new Vector3(sleeperWidth, 0, sleeperLength);
+    points[2] = new Vector3(-sleeperWidth, 0, sleeperLength);
+    points[3] = new Vector3(-sleeperWidth, 0, -sleeperLength);
+    return points;
   }
 
   public static void addCrossSwitchInfo(String key, String value) {
     trackCrossSwitchInfo.put(key, value);
   }
 
-
   private void trackCreation() {
     // Turns track pieces into sets of 3d positions 
-    {
-      String self = "1";
-      String track1Name = "";
-      String track2Name = "2";
-      if (track1Name.equals("") && track2Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dGap = map_ModelTrainSet.pointGapCurve;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dAng = Double.parseDouble("45");
-        double dRad = Double.parseDouble("4");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        double dm = dGap;
-        if (dAng < 0) {
-          dm = -dGap;
-          dRad = -dRad;
-        }
-        for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
-          listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
-          listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-        }
-        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
-        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
-      }
-    }
-    {
-      String self = "5";
-      String track1Name = "";
-      String track2Name = "2";
-      if (track1Name.equals("") && track2Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dGap = map_ModelTrainSet.drawGap;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dLen = Double.parseDouble("3");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        for (double i = 0; i < dLen; i += dGap) {
-          listLeft.add(new Vector3(i, 0, -dWid));
-          listRight.add(new Vector3(i, 0, dWid));
-        }
-        listLeft.add(new Vector3(dLen, 0, -dWid));
-        listRight.add(new Vector3(dLen, 0, dWid));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
-      }
-    }
-    {
-      String self = "2";
-      String switchSuffix = map_ModelTrainSet.switchSuffix;
-      boolean left = false;
-      String track1Name = "1";
-      String track2Name = "5";
-      String track3Name = "3";
-      if (track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dAng = 45;
-        double dRad = 10;
-        double dLen = 8;
-        double dGapC = map_ModelTrainSet.pointGapCurve;
-        double dGap = map_ModelTrainSet.drawGap;
-        double dWid = map_ModelTrainSet.railWidth;
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        double dm = dGapC;
-        if (dAng < 0) {
-          dm = -dGapC;
-        }
-        for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
-          listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
-          listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-        }
-        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
-        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-        map_ModelTrainSet.addTrackSegment(self + switchSuffix, listLeft, listRight, track1Name, track3Name, dAng);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
-        listLeft = new ArrayList<Vector3>();
-        listRight = new ArrayList<Vector3>();
-        for (double i = 0; i < dLen; i += dGap) {
-          listLeft.add(new Vector3(i, 0, -dWid));
-          listRight.add(new Vector3(i, 0, dWid));
-        }
-        listLeft.add(new Vector3(dLen, 0, -dWid));
-        listRight.add(new Vector3(dLen, 0, dWid));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, 0);
-      }
-    }
-    {
-      String self = "3";
-      String track1Name = "2";
-      String track2Name = "6";
-      if (track1Name.equals("") && track2Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dGap = map_ModelTrainSet.pointGapCurve;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dAng = Double.parseDouble("45");
-        double dRad = Double.parseDouble("4");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        double dm = dGap;
-        if (dAng < 0) {
-          dm = -dGap;
-          dRad = -dRad;
-        }
-        for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
-          listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
-          listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-        }
-        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
-        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
-      }
-    }
-    {
-      String self = "4";
-      String track1Name = "6";
-      String track2Name = "";
-      if (track1Name.equals("") && track2Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dGap = map_ModelTrainSet.drawGap;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dLen = Double.parseDouble("5");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        for (double i = 0; i < dLen; i += dGap) {
-          listLeft.add(new Vector3(i, 0, -dWid));
-          listRight.add(new Vector3(i, 0, dWid));
-        }
-        listLeft.add(new Vector3(dLen, 0, -dWid));
-        listRight.add(new Vector3(dLen, 0, dWid));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
-      }
-    }
-    {
-      // Get names of connecting tracks 
-      String self = "6";
-      String crossSuffix = map_ModelTrainSet.crossSuffix;
-      String track1Name = "3";
-      String track2Name = "";
-      String track3Name = "4";
-      String track4Name = "";
-      if (track1Name.equals("") && track2Name.equals("") && track3Name.equals("") && track4Name.equals("")) {
-        System.out.println("Track " + self + " has no track connections.");
-      } else {
-        double dLen = 6;
-        double dGap = map_ModelTrainSet.drawGap;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dAng = Double.parseDouble("45");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        for (double i = 0; i < dLen; i += dGap) {
-          listLeft.add(new Vector3(i, 0, -dWid));
-          listRight.add(new Vector3(i, 0, dWid));
-        }
-        listLeft.add(new Vector3(dLen, 0, -dWid));
-        listRight.add(new Vector3(dLen, 0, dWid));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name);
-        map_ModelTrainSet.addTrackCross(self, self + crossSuffix, dAng);
-        listLeft = new ArrayList<Vector3>();
-        listRight = new ArrayList<Vector3>();
-        for (double i = 0; i < dLen; i += dGap) {
-          listLeft.add(new Vector3(i, 0, -dWid));
-          listRight.add(new Vector3(i, 0, dWid));
-        }
-        listLeft.add(new Vector3(dLen, 0, -dWid));
-        listRight.add(new Vector3(dLen, 0, dWid));
-        Vector3 mid = Vector3.midPoint(Vector3.midPoint(listLeft.get(0), listRight.get(0)), Vector3.midPoint(listLeft.get(listLeft.size() - 1), listRight.get(listRight.size() - 1)));
-        map_ModelTrainSet.addTrackSegment(self + crossSuffix, listLeft, listRight, track3Name, track4Name);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
-      }
-    }
+    // Heaps of generated code: 
     {
       String self = "1";
       String track1Name = "";
       String track2Name = "";
-      if (track1Name.equals("") && track2Name.equals("")) {
+      boolean first = true;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
-        double dGap = map_ModelTrainSet.pointGapCurve;
-        double dWid = map_ModelTrainSet.railWidth;
-        double dAng = Double.parseDouble("45");
-        double dRad = Double.parseDouble("4");
-        List<Vector3> listLeft = new ArrayList<Vector3>();
-        List<Vector3> listRight = new ArrayList<Vector3>();
-        double dm = dGap;
-        if (dAng < 0) {
-          dm = -dGap;
-          dRad = -dRad;
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dThk = map_ModelTrainSet.railThickness;
+        double len = map_ModelTrainSet.getLength("1");
+        Vector3[][] points = new Vector3[2][4];
+        Vector3[] leftRail = new Vector3[4];
+        leftRail[0] = new Vector3(0, 0, -dWid - dThk);
+        leftRail[1] = new Vector3(len, 0, -dWid - dThk);
+        leftRail[2] = new Vector3(len, 0, -dWid);
+        leftRail[3] = new Vector3(0, 0, -dWid);
+        Vector3[] rightRail = new Vector3[4];
+        rightRail[0] = new Vector3(0, 0, dWid + dThk);
+        rightRail[1] = new Vector3(len, 0, dWid + dThk);
+        rightRail[2] = new Vector3(len, 0, dWid);
+        rightRail[3] = new Vector3(0, 0, dWid);
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+        double xStart = map_ModelTrainSet.sleeperWidth;
+        double xEnd = len - xStart;
+        double xLen = xEnd - xStart;
+        double xPos = xStart;
+        int sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        System.out.println("Sleepers: " + sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers][];
+        sleepers -= 1;
+        double xInc = xLen / sleepers;
+        System.out.println("xStart: " + xStart + ", xEnd: " + xEnd + ", xLen: " + xLen + ", xInc: " + xInc);
+        int j = 0;
+        while (xPos <= xEnd) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i].x += xPos;
+          }
+          System.out.println("xPos: " + xPos);
+          sleeperList[j] = s;
+          xPos += xInc;
+          j++;
         }
-        for (double i = 0; Math.abs(i) < Math.abs(dAng); i += dm) {
-          listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, i));
-          listRight.add(map_ModelTrainSet.arcCalc(1, dRad, i));
-        }
-        listLeft.add(map_ModelTrainSet.arcCalc(-1, dRad, dAng));
-        listRight.add(map_ModelTrainSet.arcCalc(1, dRad, dAng));
-        map_ModelTrainSet.addTrackSegment(self, listLeft, listRight, track1Name, track2Name, dAng);
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint);
       }
     }
   }

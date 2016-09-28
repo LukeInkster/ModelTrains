@@ -1123,11 +1123,8 @@
                 <node concept="Xl_RD" id="6yx95KwcyEh" role="2BsfMF">
                   <property role="Xl_RC" value="22.5" />
                 </node>
-                <node concept="Xl_RD" id="6yx95Kwcz0d" role="2BsfMF">
-                  <property role="Xl_RC" value="-22.5" />
-                </node>
-                <node concept="Xl_RD" id="6yx95Kwcz7n" role="2BsfMF">
-                  <property role="Xl_RC" value="-45" />
+                <node concept="Xl_RD" id="3aSwGGR29Lh" role="2BsfMF">
+                  <property role="Xl_RC" value="11.25" />
                 </node>
               </node>
             </node>

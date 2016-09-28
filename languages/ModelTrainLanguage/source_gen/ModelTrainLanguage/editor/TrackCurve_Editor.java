@@ -32,9 +32,11 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_a6bl5g_e0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_a6bl5g_f0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_g0(editorContext, node));
-    editorCell.addEditorCell(this.createRefCell_a6bl5g_h0(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_a6bl5g_h0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_a6bl5g_i0(editorContext, node));
     editorCell.addEditorCell(this.createRefCell_a6bl5g_j0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_a6bl5g_k0(editorContext, node));
+    editorCell.addEditorCell(this.createRefCell_a6bl5g_l0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_a6bl5g_a0(EditorContext editorContext, SNode node) {
@@ -104,25 +106,18 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
     return editorCell;
   }
   private EditorCell createConstant_a6bl5g_g0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "   Connections:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Left: ");
     editorCell.setCellId("Constant_a6bl5g_g0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
-    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefCell_a6bl5g_h0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefCellCellProvider(node, editorContext);
-    provider.setRole("track1");
-    provider.setNoTargetText("<no track1>");
+  private EditorCell createProperty_a6bl5g_h0(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("left");
+    provider.setNoTargetText("<no left>");
     EditorCell editorCell;
-    provider.setAuxiliaryCellProvider(new TrackCurve_Editor._Inline_a6bl5g_a7a());
     editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setReferenceCell(true);
-      editorCell.setRole("track1");
-    }
+    editorCell.setCellId("property_left");
     editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
     SNode attributeConcept = provider.getRoleAttribute();
     Class attributeKind = provider.getRoleAttributeClass();
@@ -132,50 +127,25 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
     } else
     return editorCell;
   }
-  public static class _Inline_a6bl5g_a7a extends InlineCellProvider {
-    public _Inline_a6bl5g_a7a() {
-      super();
-    }
-    public EditorCell createEditorCell(EditorContext editorContext) {
-      return this.createEditorCell(editorContext, this.getSNode());
-    }
-    public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-      return this.createProperty_a6bl5g_a0h0(editorContext, node);
-    }
-    private EditorCell createProperty_a6bl5g_a0h0(EditorContext editorContext, SNode node) {
-      CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
-      provider.setRole("name");
-      provider.setNoTargetText("<no name>");
-      provider.setReadOnly(true);
-      EditorCell editorCell;
-      editorCell = provider.createEditorCell(editorContext);
-      editorCell.setCellId("property_name_1");
-      editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-      SNode attributeConcept = provider.getRoleAttribute();
-      Class attributeKind = provider.getRoleAttributeClass();
-      if (attributeConcept != null) {
-        EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
-        return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
-      } else
-      return editorCell;
-    }
-  }
   private EditorCell createConstant_a6bl5g_i0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ",");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "   Connections:");
     editorCell.setCellId("Constant_a6bl5g_i0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefCell_a6bl5g_j0(EditorContext editorContext, SNode node) {
     CellProviderWithRole provider = new RefCellCellProvider(node, editorContext);
-    provider.setRole("track2");
-    provider.setNoTargetText("<no track2>");
+    provider.setRole("track1");
+    provider.setNoTargetText("<no track1>");
     EditorCell editorCell;
     provider.setAuxiliaryCellProvider(new TrackCurve_Editor._Inline_a6bl5g_a9a());
     editorCell = provider.createEditorCell(editorContext);
     if (editorCell.getRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setRole("track2");
+      editorCell.setRole("track1");
     }
     editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
     SNode attributeConcept = provider.getRoleAttribute();
@@ -197,6 +167,60 @@ public class TrackCurve_Editor extends DefaultNodeEditor {
       return this.createProperty_a6bl5g_a0j0(editorContext, node);
     }
     private EditorCell createProperty_a6bl5g_a0j0(EditorContext editorContext, SNode node) {
+      CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+      provider.setRole("name");
+      provider.setNoTargetText("<no name>");
+      provider.setReadOnly(true);
+      EditorCell editorCell;
+      editorCell = provider.createEditorCell(editorContext);
+      editorCell.setCellId("property_name_1");
+      editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+      SNode attributeConcept = provider.getRoleAttribute();
+      Class attributeKind = provider.getRoleAttributeClass();
+      if (attributeConcept != null) {
+        EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+        return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+      } else
+      return editorCell;
+    }
+  }
+  private EditorCell createConstant_a6bl5g_k0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ",");
+    editorCell.setCellId("Constant_a6bl5g_k0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefCell_a6bl5g_l0(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new RefCellCellProvider(node, editorContext);
+    provider.setRole("track2");
+    provider.setNoTargetText("<no track2>");
+    EditorCell editorCell;
+    provider.setAuxiliaryCellProvider(new TrackCurve_Editor._Inline_a6bl5g_a11a());
+    editorCell = provider.createEditorCell(editorContext);
+    if (editorCell.getRole() == null) {
+      editorCell.setReferenceCell(true);
+      editorCell.setRole("track2");
+    }
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
+    return editorCell;
+  }
+  public static class _Inline_a6bl5g_a11a extends InlineCellProvider {
+    public _Inline_a6bl5g_a11a() {
+      super();
+    }
+    public EditorCell createEditorCell(EditorContext editorContext) {
+      return this.createEditorCell(editorContext, this.getSNode());
+    }
+    public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
+      return this.createProperty_a6bl5g_a0l0(editorContext, node);
+    }
+    private EditorCell createProperty_a6bl5g_a0l0(EditorContext editorContext, SNode node) {
       CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
       provider.setRole("name");
       provider.setNoTargetText("<no name>");

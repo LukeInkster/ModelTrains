@@ -345,10 +345,10 @@
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
       </node>
       <node concept="3F0ifn" id="5jD1KEMU$Tk" role="3EZMnx">
-        <property role="3F0ifm" value=", Crossing Angle: " />
+        <property role="3F0ifm" value=", Left: " />
       </node>
       <node concept="3F0A7n" id="6yx95KwbOKj" role="3EZMnx">
-        <ref role="1NtTu8" to="5qva:5jD1KEMU$XF" resolve="angle" />
+        <ref role="1NtTu8" to="5qva:3aSwGGR38oU" resolve="left" />
       </node>
       <node concept="3F0ifn" id="5jD1KEMU$Tm" role="3EZMnx">
         <property role="3F0ifm" value="   Connections:" />

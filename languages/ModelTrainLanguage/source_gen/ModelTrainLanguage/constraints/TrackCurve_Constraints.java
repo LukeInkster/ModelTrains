@@ -29,7 +29,7 @@ public class TrackCurve_Constraints extends BaseConstraintsDescriptor {
       public boolean validateValue(SNode node, String propertyValue) {
         String propertyName = "angle";
         {
-          String[] angles = {"45", "22.5", "-22.5", "-45"};
+          String[] angles = {"45", "22.5", "11.25"};
           return Sequence.fromIterable(Sequence.fromArray(angles)).contains((SPropertyOperations.getString(propertyValue)));
         }
       }

@@ -220,12 +220,12 @@
     <property role="1pbfSe" value="1222847716" />
     <property role="TrG5h" value="TrackCrossing" />
     <ref role="1TJDcQ" node="7GuxenSFP0U" resolve="Track" />
-    <node concept="1TJgyi" id="5jD1KEMU$XF" role="1TKVEl">
-      <property role="TrG5h" value="angle" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
     <node concept="PrWs8" id="2pqQ2agKvFV" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="3aSwGGR38oU" role="1TKVEl">
+      <property role="TrG5h" value="left" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="1TIwiD" id="1ritKXd44d0">
