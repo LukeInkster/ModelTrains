@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,12 +48,9 @@ public class TrackStraight_Constraints extends BaseConstraintsDescriptor {
       @Override
       public boolean validateValue(SNode node, String propertyValue) {
         String propertyName = "length";
-        try {
-          Double.parseDouble((SPropertyOperations.getString(propertyValue)));
-          System.out.println(Double.parseDouble((SPropertyOperations.getString(propertyValue))));
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
+        {
+          String[] radii = {"1", "2", "3"};
+          return Sequence.fromIterable(Sequence.fromArray(radii)).contains((SPropertyOperations.getString(propertyValue)));
         }
       }
     });

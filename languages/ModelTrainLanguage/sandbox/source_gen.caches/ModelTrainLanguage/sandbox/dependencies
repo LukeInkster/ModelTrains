@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="ModelTrainLanguage.sandbox.Pair" file="Pair.java" />
+  <dependency className="ModelTrainLanguage.sandbox.RawImage" file="RawImage.java" />
   <dependency className="ModelTrainLanguage.sandbox.StringUtils" file="StringUtils.java">
     <classNode dependClassName="java.lang.String" />
   </dependency>

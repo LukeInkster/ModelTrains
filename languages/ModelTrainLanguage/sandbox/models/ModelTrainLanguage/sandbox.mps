@@ -97,6 +97,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
@@ -134,29 +135,29 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
+        <property id="6329021646629104958" name="text" index="3SKdUp" />
+      </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage">
       <concept id="8871674439221071935" name="ModelTrainLanguage.structure.ModelTrainSet" flags="ng" index="23Gtjq">
         <child id="8871674439221071936" name="trackPieces" index="23Gti_" />
-        <child id="296972292287259082" name="stations" index="3LXmXN" />
       </concept>
       <concept id="8871674439221071930" name="ModelTrainLanguage.structure.Track" flags="ng" index="23Gtjv">
         <reference id="4325149779949402923" name="track2" index="me3Z$" />
-        <reference id="4325149779949402922" name="track1" index="me3Z_" />
+        <reference id="6118429311290428321" name="track3" index="3A9cMF" />
+        <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
-      <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
-        <property id="3498596363482446972" name="left" index="1lrUB" />
-        <property id="1644507721544778590" name="angle" index="1rKzhh" />
-        <property id="1644507721544778588" name="radius" index="1rKzhj" />
-      </concept>
+      <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo" />
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
       </concept>
-      <concept id="296972292287258996" name="ModelTrainLanguage.structure.Station" flags="ng" index="3LXmZd">
-        <reference id="5956952223153013334" name="stationTrack" index="7EhCE" />
-      </concept>
+      <concept id="296972292287259114" name="ModelTrainLanguage.structure.TrackSwitch" flags="ng" index="3LXmXj" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -166,21 +167,19 @@
   </registry>
   <node concept="23Gtjq" id="7GuxenSFZ8v">
     <property role="TrG5h" value="Example_Track" />
-    <node concept="3LXmNt" id="32dwHGLQ3Ii" role="23Gti_">
+    <node concept="3LXmNt" id="51cWn6VZlGI" role="23Gti_">
+      <property role="TrG5h" value="0" />
+      <property role="me36b" value="2" />
+      <ref role="me3Z$" node="51cWn6VYt1G" resolve="1" />
+    </node>
+    <node concept="2QAMbo" id="51cWn6VYt1G" role="23Gti_">
       <property role="TrG5h" value="1" />
-      <property role="me36b" value="1" />
-      <ref role="me3Z$" node="3aSwGGRbC4V" resolve="2" />
+      <ref role="3A9cMG" node="51cWn6VZlGI" resolve="0" />
+      <ref role="me3Z$" node="51cWn6VYt1L" resolve="2" />
     </node>
-    <node concept="1rKzhf" id="3aSwGGRbC4V" role="23Gti_">
-      <property role="1rKzhh" value="45" />
-      <property role="1rKzhj" value="1" />
+    <node concept="3LXmXj" id="51cWn6VYt1L" role="23Gti_">
       <property role="TrG5h" value="2" />
-      <property role="1lrUB" value="true" />
-      <ref role="me3Z_" node="32dwHGLQ3Ii" resolve="1" />
-    </node>
-    <node concept="3LXmZd" id="5aFm7Ll0XhA" role="3LXmXN">
-      <property role="TrG5h" value="someStation" />
-      <ref role="7EhCE" node="32dwHGLQ3Ii" resolve="1" />
+      <ref role="3A9cMF" node="51cWn6VYt1G" resolve="1" />
     </node>
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">
@@ -1064,6 +1063,23 @@
     <node concept="3uibUv" id="7bbQqrmEnKl" role="1zkMxy">
       <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
     </node>
+  </node>
+  <node concept="312cEu" id="ow69FCP_Ln">
+    <property role="TrG5h" value="RawImage" />
+    <node concept="3clFbW" id="ow69FCP_Vp" role="jymVt">
+      <node concept="3cqZAl" id="ow69FCP_Vr" role="3clF45" />
+      <node concept="3Tm1VV" id="ow69FCP_Vs" role="1B3o_S" />
+      <node concept="3clFbS" id="ow69FCP_Vt" role="3clF47">
+        <node concept="3SKdUt" id="ow69FCPA0C" role="3cqZAp">
+          <node concept="3SKdUq" id="ow69FCPA0D" role="3SKWNk">
+            <property role="3SKdUp" value="Pure rawness" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="ow69FCPA0G" role="3cqZAp" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="ow69FCP_MS" role="jymVt" />
+    <node concept="3Tm1VV" id="ow69FCP_Lo" role="1B3o_S" />
   </node>
 </model>
 
