@@ -104,10 +104,32 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetPropertyValue_441379817092706612(final PropertyMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.getParent(_context.getNode()))).first() == _context.getNode();
   }
+  public static Object propertyMacro_GetPropertyValue_8890001954128608172(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+  }
+  public static Object propertyMacro_GetPropertyValue_8890001954128565627(final PropertyMacroContext _context) {
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x5e7da70e100fc394L, 0x7b1e84e5f8af502bL, "trainCar"))).count();
+  }
+  public static Object propertyMacro_GetPropertyValue_8890001954128572732(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x5e7da70e100fc394L, 0x52ab587c54fbe0e3L, "currentRoute")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+  }
+  public static Object propertyMacro_GetPropertyValue_8791164729728108288(final PropertyMacroContext _context) {
+    SNode n = (SNode) SNodeOperations.getParent(_context.getNode());
+    return SPropertyOperations.getString(n, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+  }
+  public static Object propertyMacro_GetPropertyValue_8791164729728112670(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x5f178beddff4cf0fL, 0x5f178beddff4cf2dL, "track")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+  }
+  public static Iterable<SNode> sourceNodesQuery_6359371039846944561(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5042L, "trains"));
+  }
   public static Iterable<SNode> sourceNodesQuery_2398683314538062(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x5f178beddfed179aL, "routes"));
   }
   public static Iterable<SNode> sourceNodesQuery_4209318209804269716(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
+  }
+  public static Iterable<SNode> sourceNodesQuery_8791164729728119505(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6280L, 0x5f178beddff4cf2fL, "tracks"));
   }
 }

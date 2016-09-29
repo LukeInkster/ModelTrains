@@ -25,6 +25,9 @@ public class Vector3 {
   public static Vector3 subtract(Vector3 a, Vector3 b) {
     return new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
   }
+  public static Double distance(Vector3 a, Vector3 b) {
+    return Math.sqrt((Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2)));
+  }
   @Override
   public String toString() {
     return "(" + x + "," + y + "," + z + ")";
