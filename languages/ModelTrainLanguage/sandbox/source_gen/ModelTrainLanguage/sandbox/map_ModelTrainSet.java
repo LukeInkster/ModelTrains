@@ -711,7 +711,7 @@ public class map_ModelTrainSet extends JFrame {
       }
     }
     {
-      String self = "1";
+      String self = "3";
       String track1Name = "";
       String track2Name = "";
       boolean dir = false;

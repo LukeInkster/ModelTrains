@@ -10,6 +10,7 @@
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="jan3" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.image(JDK/)" />
+    <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -145,8 +146,16 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage">
+      <concept id="8871674439221071911" name="ModelTrainLanguage.structure.TrainEngine" flags="ng" index="23Gtj2">
+        <property id="5956952223152587131" name="length" index="6k9$7" />
+      </concept>
+      <concept id="8871674439221071912" name="ModelTrainLanguage.structure.TrainCar" flags="ng" index="23Gtjd">
+        <property id="5956952223152587125" name="length" index="6k9$9" />
+      </concept>
       <concept id="8871674439221071935" name="ModelTrainLanguage.structure.ModelTrainSet" flags="ng" index="23Gtjq">
         <child id="8871674439221071936" name="trackPieces" index="23Gti_" />
+        <child id="8871674439221071938" name="trains" index="23GtiB" />
+        <child id="296972292287259082" name="stations" index="3LXmXN" />
       </concept>
       <concept id="8871674439221071930" name="ModelTrainLanguage.structure.Track" flags="ng" index="23Gtjv">
         <reference id="4325149779949402923" name="track2" index="me3Z$" />
@@ -154,6 +163,11 @@
         <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
       <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo" />
+      <concept id="6808781890494907284" name="ModelTrainLanguage.structure.Train" flags="ng" index="1esAiq">
+        <property id="5956952223152595181" name="positionInRoute" index="6kbyh" />
+        <child id="8871674439221071913" name="trainEngine" index="23Gtjc" />
+        <child id="8871674439221071915" name="trainCar" index="23Gtje" />
+      </concept>
       <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
         <property id="1644507721544778590" name="angle" index="1rKzhh" />
         <property id="1644507721544778588" name="radius" index="1rKzhj" />
@@ -162,6 +176,9 @@
         <property id="4325149779949401412" name="length" index="me36b" />
       </concept>
       <concept id="296972292287259114" name="ModelTrainLanguage.structure.TrackSwitch" flags="ng" index="3LXmXj" />
+      <concept id="296972292287258996" name="ModelTrainLanguage.structure.Station" flags="ng" index="3LXmZd">
+        <reference id="5956952223153211901" name="stationTrack" index="7Fx61" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -189,6 +206,22 @@
       <property role="1rKzhh" value="45" />
       <property role="1rKzhj" value="1" />
       <property role="TrG5h" value="3" />
+    </node>
+    <node concept="3LXmZd" id="5WnyYRvUaV2" role="3LXmXN">
+      <property role="TrG5h" value="s" />
+      <ref role="7Fx61" node="51cWn6VZlGI" resolve="0" />
+    </node>
+    <node concept="1esAiq" id="5WnyYRvVgdk" role="23GtiB">
+      <property role="TrG5h" value="train" />
+      <property role="6kbyh" value="0" />
+      <node concept="23Gtj2" id="5WnyYRvVgdl" role="23Gtjc">
+        <property role="TrG5h" value="e" />
+        <property role="6k9$7" value="5" />
+      </node>
+      <node concept="23Gtjd" id="5WnyYRvVgdo" role="23Gtje">
+        <property role="TrG5h" value="c" />
+        <property role="6k9$9" value="5" />
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="7bbQqrmDFXS">
