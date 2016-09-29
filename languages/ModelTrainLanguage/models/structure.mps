@@ -232,11 +232,11 @@
     <node concept="PrWs8" id="2pqQ2agKjDO" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node concept="1TJgyj" id="2pqQ2agKzhY" role="1TKVEi">
+    <node concept="1TJgyj" id="5WnyYRvXcWJ" role="1TKVEi">
       <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="Paths" />
+      <property role="20kJfa" value="tracks" />
       <property role="20lbJX" value="1..n" />
-      <ref role="20lvS9" node="2pqQ2agKzhh" resolve="Path" />
+      <ref role="20lvS9" node="5WnyYRvXcWf" resolve="TrackReference" />
     </node>
   </node>
   <node concept="1TIwiD" id="2pqQ2agKvFU">
@@ -306,6 +306,17 @@
     </node>
     <node concept="PrWs8" id="6ATDvmtd_Vd" role="PzmwI">
       <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5WnyYRvXcWf">
+    <property role="1pbfSe" value="1057774332" />
+    <property role="TrG5h" value="TrackReference" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5WnyYRvXcWH" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="track" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
   </node>
 </model>

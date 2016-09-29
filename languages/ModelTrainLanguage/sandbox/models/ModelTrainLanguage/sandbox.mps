@@ -190,6 +190,9 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="e93fac6b-76ff-4453-a267-93a92c7c2879" name="ModelTrainLanguage">
+      <concept id="6852099211848371983" name="ModelTrainLanguage.structure.TrackReference" flags="ng" index="20SOjy">
+        <reference id="6852099211848372013" name="track" index="20SOj0" />
+      </concept>
       <concept id="8871674439221071911" name="ModelTrainLanguage.structure.TrainEngine" flags="ng" index="23Gtj2">
         <property id="5956952223152587131" name="length" index="6k9$7" />
       </concept>
@@ -208,11 +211,6 @@
         <reference id="6118429311290428321" name="track3" index="3A9cMF" />
         <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
-      <concept id="2763758964314354769" name="ModelTrainLanguage.structure.Path" flags="ng" index="2QAeLN">
-        <reference id="6852099211848187688" name="To" index="20TBj5" />
-        <reference id="6852099211848187682" name="From" index="20TBjf" />
-        <reference id="6852099211848187675" name="On" index="20TBjQ" />
-      </concept>
       <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo" />
       <concept id="6808781890494907284" name="ModelTrainLanguage.structure.Train" flags="ng" index="1esAiq">
         <property id="5956952223152595181" name="positionInRoute" index="6kbyh" />
@@ -225,7 +223,7 @@
         <property id="1644507721544778588" name="radius" index="1rKzhj" />
       </concept>
       <concept id="296972292287259264" name="ModelTrainLanguage.structure.Route" flags="ng" index="3LXmKT">
-        <child id="2763758964314354814" name="Paths" index="2QAeLs" />
+        <child id="6852099211848372015" name="tracks" index="20SOj2" />
       </concept>
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
@@ -270,7 +268,7 @@
     <node concept="1esAiq" id="5WnyYRvVgdk" role="23GtiB">
       <property role="TrG5h" value="train" />
       <property role="6kbyh" value="0" />
-      <ref role="6kbyv" node="5WnyYRvWvWb" resolve="r" />
+      <ref role="6kbyv" node="5WnyYRvXB1$" resolve="r" />
       <node concept="23Gtj2" id="5WnyYRvVgdl" role="23Gtjc">
         <property role="TrG5h" value="e" />
         <property role="6k9$7" value="5" />
@@ -280,19 +278,16 @@
         <property role="6k9$9" value="5" />
       </node>
     </node>
-    <node concept="3LXmKT" id="5WnyYRvWvWb" role="20YDLR">
+    <node concept="3LXmKT" id="5WnyYRvXB1$" role="20YDLR">
       <property role="TrG5h" value="r" />
-      <node concept="2QAeLN" id="5WnyYRvWTsw" role="2QAeLs">
-        <property role="TrG5h" value="p1" />
-        <ref role="20TBjQ" node="51cWn6VYt1G" resolve="1" />
-        <ref role="20TBjf" node="51cWn6VZlGI" resolve="0" />
-        <ref role="20TBj5" node="51cWn6VYt1L" resolve="2" />
+      <node concept="20SOjy" id="5WnyYRvXB1_" role="20SOj2">
+        <ref role="20SOj0" node="51cWn6VZlGI" resolve="0" />
       </node>
-      <node concept="2QAeLN" id="5WnyYRvX7Df" role="2QAeLs">
-        <property role="TrG5h" value="p2" />
-        <ref role="20TBjQ" node="51cWn6VYt1L" resolve="2" />
-        <ref role="20TBjf" node="51cWn6VYt1G" resolve="1" />
-        <ref role="20TBj5" node="5WnyYRvT9ev" resolve="3" />
+      <node concept="20SOjy" id="5WnyYRvXB1D" role="20SOj2">
+        <ref role="20SOj0" node="51cWn6VYt1G" resolve="1" />
+      </node>
+      <node concept="20SOjy" id="5WnyYRvXB1G" role="20SOj2">
+        <ref role="20SOj0" node="51cWn6VYt1L" resolve="2" />
       </node>
     </node>
   </node>
