@@ -153,6 +153,7 @@
         <property id="5956952223152587125" name="length" index="6k9$9" />
       </concept>
       <concept id="8871674439221071935" name="ModelTrainLanguage.structure.ModelTrainSet" flags="ng" index="23Gtjq">
+        <child id="6852099211847866266" name="routes" index="20YDLR" />
         <child id="8871674439221071936" name="trackPieces" index="23Gti_" />
         <child id="8871674439221071938" name="trains" index="23GtiB" />
         <child id="296972292287259082" name="stations" index="3LXmXN" />
@@ -162,15 +163,24 @@
         <reference id="6118429311290428321" name="track3" index="3A9cMF" />
         <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
+      <concept id="2763758964314354769" name="ModelTrainLanguage.structure.Path" flags="ng" index="2QAeLN">
+        <reference id="6852099211848187688" name="To" index="20TBj5" />
+        <reference id="6852099211848187682" name="From" index="20TBjf" />
+        <reference id="6852099211848187675" name="On" index="20TBjQ" />
+      </concept>
       <concept id="2763758964314340090" name="ModelTrainLanguage.structure.TrackCrossing" flags="ng" index="2QAMbo" />
       <concept id="6808781890494907284" name="ModelTrainLanguage.structure.Train" flags="ng" index="1esAiq">
         <property id="5956952223152595181" name="positionInRoute" index="6kbyh" />
+        <reference id="5956952223152595171" name="currentRoute" index="6kbyv" />
         <child id="8871674439221071913" name="trainEngine" index="23Gtjc" />
         <child id="8871674439221071915" name="trainCar" index="23Gtje" />
       </concept>
       <concept id="1644507721544778560" name="ModelTrainLanguage.structure.TrackCurve" flags="ng" index="1rKzhf">
         <property id="1644507721544778590" name="angle" index="1rKzhh" />
         <property id="1644507721544778588" name="radius" index="1rKzhj" />
+      </concept>
+      <concept id="296972292287259264" name="ModelTrainLanguage.structure.Route" flags="ng" index="3LXmKT">
+        <child id="2763758964314354814" name="Paths" index="2QAeLs" />
       </concept>
       <concept id="296972292287259236" name="ModelTrainLanguage.structure.TrackStraight" flags="ng" index="3LXmNt">
         <property id="4325149779949401412" name="length" index="me36b" />
@@ -214,6 +224,7 @@
     <node concept="1esAiq" id="5WnyYRvVgdk" role="23GtiB">
       <property role="TrG5h" value="train" />
       <property role="6kbyh" value="0" />
+      <ref role="6kbyv" node="5WnyYRvWvWb" resolve="r" />
       <node concept="23Gtj2" id="5WnyYRvVgdl" role="23Gtjc">
         <property role="TrG5h" value="e" />
         <property role="6k9$7" value="5" />
@@ -221,6 +232,14 @@
       <node concept="23Gtjd" id="5WnyYRvVgdo" role="23Gtje">
         <property role="TrG5h" value="c" />
         <property role="6k9$9" value="5" />
+      </node>
+    </node>
+    <node concept="3LXmKT" id="5WnyYRvWvWb" role="20YDLR">
+      <property role="TrG5h" value="r" />
+      <node concept="2QAeLN" id="5WnyYRvWTsw" role="2QAeLs">
+        <ref role="20TBjQ" node="51cWn6VYt1G" resolve="1" />
+        <ref role="20TBjf" node="51cWn6VZlGI" resolve="0" />
+        <ref role="20TBj5" node="51cWn6VYt1L" resolve="2" />
       </node>
     </node>
   </node>

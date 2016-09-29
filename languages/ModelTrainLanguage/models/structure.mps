@@ -157,6 +157,12 @@
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="gv3FBPUA5O" resolve="Station" />
     </node>
+    <node concept="1TJgyj" id="5WnyYRvVhuq" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="routes" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="gv3FBPUAa0" resolve="Route" />
+    </node>
     <node concept="PrWs8" id="2pqQ2agKzi5" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -269,26 +275,26 @@
     <property role="1pbfSe" value="1222833037" />
     <property role="TrG5h" value="Path" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="2pqQ2agKzhH" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+    <node concept="PrWs8" id="2pqQ2agKzi3" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyj" id="5WnyYRvWvWr" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="On" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
-    <node concept="1TJgyj" id="2pqQ2agKzhN" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+    <node concept="1TJgyj" id="5WnyYRvWvWy" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="From" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
     </node>
-    <node concept="1TJgyj" id="2pqQ2agKzhQ" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+    <node concept="1TJgyj" id="5WnyYRvWvWC" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="To" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="7GuxenSFP0U" resolve="Track" />
-    </node>
-    <node concept="PrWs8" id="2pqQ2agKzi3" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
   <node concept="1TIwiD" id="5jD1KEMQx41">
