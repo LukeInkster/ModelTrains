@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="ModelTrainLanguage.sandbox.Pair" file="Pair.java" />
-  <dependency className="ModelTrainLanguage.sandbox.RawImage" file="RawImage.java" />
+  <dependency className="ModelTrainLanguage.sandbox.RawImage" file="RawImage.java">
+    <classNode dependClassName="java.awt.Image" />
+    <classNode dependClassName="java.awt.image.BufferedImage" />
+    <classNode dependClassName="java.awt.image.WritableRaster" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.String" />
+  </dependency>
   <dependency className="ModelTrainLanguage.sandbox.StringUtils" file="StringUtils.java">
     <classNode dependClassName="java.lang.String" />
   </dependency>
   <dependency className="ModelTrainLanguage.sandbox.TrackSegment" file="TrackSegment.java">
     <classNode dependClassName="ModelTrainLanguage.sandbox.Vector3" />
     <classNode dependClassName="java.lang.String" />
+  </dependency>
+  <dependency className="ModelTrainLanguage.sandbox.Train" file="Train.java">
+    <classNode dependClassName="ModelTrainLanguage.sandbox.Pair" />
+    <classNode dependClassName="ModelTrainLanguage.sandbox.RawImage" />
+    <classNode dependClassName="ModelTrainLanguage.sandbox.Vector3" />
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.util.ArrayDeque" />
+    <classNode dependClassName="java.util.Queue" />
   </dependency>
   <dependency className="ModelTrainLanguage.sandbox.Vector3" file="Vector3.java">
     <classNode dependClassName="java.lang.Override" />

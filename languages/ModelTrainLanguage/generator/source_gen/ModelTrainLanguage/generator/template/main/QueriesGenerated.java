@@ -104,6 +104,9 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetPropertyValue_441379817092706612(final PropertyMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.getParent(_context.getNode()))).first() == _context.getNode();
   }
+  public static Iterable<SNode> sourceNodesQuery_2398683314538062(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x5f178beddfed179aL, "routes"));
+  }
   public static Iterable<SNode> sourceNodesQuery_4209318209804269716(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"));
   }

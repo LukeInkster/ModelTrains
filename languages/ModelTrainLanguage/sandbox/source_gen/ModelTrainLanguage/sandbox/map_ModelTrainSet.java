@@ -29,6 +29,8 @@ public class map_ModelTrainSet extends JFrame {
   public static double pointGapCurve = 0.5;
   public static String switchSuffix = "_switch";
   public static String crossSuffix = "_cross";
+  public static double trainSpeed = 5;
+  public static int fps = 10;
 
   public static int width = 1000;
   public static int height = 700;
@@ -47,8 +49,8 @@ public class map_ModelTrainSet extends JFrame {
   private BufferedImage trackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
   private BufferedImage infoImage = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_ARGB);
 
-  private Graphics2D gT = (Graphics2D) trackImage.createGraphics();
-  private Graphics2D gI = (Graphics2D) infoImage.createGraphics();
+  private Graphics2D gT = trackImage.createGraphics();
+  private Graphics2D gI = infoImage.createGraphics();
 
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
@@ -66,9 +68,6 @@ public class map_ModelTrainSet extends JFrame {
     radiusNameToValue.put("3", 505.0d);
     radiusNameToValue.put("4", 572.0d);
 
-
-
-
     Color c = new Color(0, 0, 0, Color.TRANSLUCENT);
     gT.setColor(c);
     gT.fillRect(0, 0, width, height);
@@ -76,6 +75,7 @@ public class map_ModelTrainSet extends JFrame {
     trackCrossSwitchCheck();
     trackTranslating();
     trackDrawing();
+
     setTitle("ModelTrain - " + "Example_Track");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     panel = new JPanel() {
@@ -109,22 +109,34 @@ public class map_ModelTrainSet extends JFrame {
     panel.setPreferredSize(new Dimension(width - infoWidth, height));
     pack();
     setVisible(true);
+  }
+
+  private void trainSetup() {
+    // Create trains, assign them routes, and start the timertask 
 
   }
 
+
   private void trackCrossSwitchCheck() {
+    // Update track connections with switch and crossing info 
+    // i.e. A 1 -> 2 connection could become 1_cross -> 2 
     for (TrackSegment ts : trackPoints) {
-      if (trackCrossSwitchInfo.containsKey(ts.self + ts.from)) {
-        ts.from += trackCrossSwitchInfo.get(ts.self + ts.from);
-      } else if (trackCrossSwitchInfo.containsKey(ts.self + ts.to)) {
-        ts.to += trackCrossSwitchInfo.get(ts.self + ts.from);
+      String n1 = ts.self;
+      if (ts.self.contains(crossSuffix)) {
+        n1 = ts.self.replace(crossSuffix, "");
+      } else if (ts.self.contains(switchSuffix)) {
+        n1 = ts.self.replace(switchSuffix, "");
+      }
+      if (trackCrossSwitchInfo.containsKey(n1 + ts.from)) {
+        ts.from += trackCrossSwitchInfo.get(n1 + ts.from);
+      } else if (trackCrossSwitchInfo.containsKey(n1 + ts.to)) {
+        ts.to += trackCrossSwitchInfo.get(n1 + ts.to);
       }
     }
   }
 
   private void trackDrawing() {
-    // Loop through all track pieces until all have been drawn 
-    // First find range of x,y,z - y currently not used (no height) 
+    // First find range of x and z 
     double xMin = Double.MAX_VALUE;
     double xMax = Double.MIN_VALUE;
     double zMin = Double.MAX_VALUE;
@@ -145,6 +157,7 @@ public class map_ModelTrainSet extends JFrame {
   private void topDown(double xMin, double xMax, double zMin, double zMax) {
     // Orthogonal projection 
 
+    // Image padding 
     int xOff = 20;
     int yOff = 10;
 
@@ -203,13 +216,13 @@ public class map_ModelTrainSet extends JFrame {
         }
         done = false;
 
-        if (!(started)) {
-        }
         String dir = "- F";
         TrackSegment target;
         double angle;
         Vector3 targetPosition;
         Vector3 originPosition;
+
+        print("#Track: " + ts.self + ", from: " + ts.from + ", to: " + ts.to);
 
         if (angles.containsKey(ts.from)) {
           target = trackPointsMap.get(ts.from);
@@ -280,6 +293,8 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsCrossName.equals(""))) {
           TrackSegment tsCross = trackPointsMap.get(tsCrossName);
+          print("#Track: " + tsCross.self + ", from: " + tsCross.from + ", to: " + tsCross.to);
+
           tsCross.points[0] = rotatePoints(tsCross.points[0], angle, Vector3.zero);
           tsCross.points[1] = rotatePoints(tsCross.points[1], angle, Vector3.zero);
           tsCross.sleepers = rotateAllPoints(tsCross.sleepers, angle, Vector3.zero);
@@ -320,6 +335,7 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsSwitchName.equals(""))) {
           TrackSegment tsSwitch = trackPointsMap.get(tsSwitchName);
+          print("#Track: " + tsSwitch.self + ", from: " + tsSwitch.from + ", to: " + tsSwitch.to);
           tsSwitch.points[0] = rotatePoints(tsSwitch.points[0], angle, Vector3.zero);
           tsSwitch.points[1] = rotatePoints(tsSwitch.points[1], angle, Vector3.zero);
           tsSwitch.sleepers = rotateAllPoints(tsSwitch.sleepers, angle, Vector3.zero);
@@ -451,6 +467,11 @@ public class map_ModelTrainSet extends JFrame {
 
   public static void addCrossSwitchInfo(String key, String value) {
     trackCrossSwitchInfo.put(key, value);
+  }
+
+
+
+  private void createRoutes() {
   }
 
   private void trackCreation() {
@@ -594,10 +615,13 @@ public class map_ModelTrainSet extends JFrame {
           xPos += xInc;
           j++;
         }
+        System.out.println("Track: " + self + crossSuffix + ", track3: " + track3Name + ", track4: " + track4Name);
         map_ModelTrainSet.addTrackSegment(self + crossSuffix, points, sleeperList, track3Name, track4Name, fromPoint, toPoint);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
-
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
+        } else if (!(track4Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
+        }
       }
     }
     {
@@ -670,8 +694,11 @@ public class map_ModelTrainSet extends JFrame {
         }
 
         map_ModelTrainSet.addTrackSegment(self + switchSuffix, points, sleeperList, track1Name, track3Name, fromPoint, toPoint, dAng);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
+        } else if (!(track1Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+        }
 
 
         double len = 168;

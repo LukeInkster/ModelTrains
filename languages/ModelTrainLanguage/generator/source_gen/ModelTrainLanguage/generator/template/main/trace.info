@@ -3,7 +3,7 @@
   <concept fqn="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="15,0,111,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
+      <unit at="15,0,114,0" name="ModelTrainLanguage.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/1644507721544961483">
@@ -83,9 +83,11 @@
   <root nodeRef="r:95541da7-21a0-4c95-b89d-9aca15e2b5cb(ModelTrainLanguage.generator.template.main@generator)/8871674439221113429">
     <file name="QueriesGenerated.java">
       <node id="1085941728143586686" at="17,112,18,175" concept="0" />
-      <node id="4209318209804269718" at="107,120,108,197" concept="0" />
+      <node id="2398683314538069" at="107,117,108,192" concept="0" />
+      <node id="4209318209804269718" at="110,120,111,197" concept="0" />
       <scope id="1085941728143583334" at="17,112,18,175" />
-      <scope id="4209318209804269717" at="107,120,108,197" />
+      <scope id="2398683314538063" at="107,117,108,192" />
+      <scope id="4209318209804269717" at="110,120,111,197" />
     </file>
   </root>
 </debug-info>
