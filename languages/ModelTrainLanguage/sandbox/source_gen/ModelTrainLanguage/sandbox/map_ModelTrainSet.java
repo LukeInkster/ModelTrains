@@ -47,8 +47,8 @@ public class map_ModelTrainSet extends JFrame {
   private BufferedImage trackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
   private BufferedImage infoImage = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_ARGB);
 
-  private Graphics2D gT = (Graphics2D) trackImage.createGraphics();
-  private Graphics2D gI = (Graphics2D) infoImage.createGraphics();
+  private Graphics2D gT = trackImage.createGraphics();
+  private Graphics2D gI = infoImage.createGraphics();
 
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
@@ -65,8 +65,6 @@ public class map_ModelTrainSet extends JFrame {
     radiusNameToValue.put("2", 438.0d);
     radiusNameToValue.put("3", 505.0d);
     radiusNameToValue.put("4", 572.0d);
-
-
 
 
     Color c = new Color(0, 0, 0, Color.TRANSLUCENT);
@@ -113,11 +111,24 @@ public class map_ModelTrainSet extends JFrame {
   }
 
   private void trackCrossSwitchCheck() {
+    for (Map.Entry<String, String> pair : trackCrossSwitchInfo.entrySet()) {
+      print(pair.getKey() + ", " + pair.getValue());
+    }
+
+
     for (TrackSegment ts : trackPoints) {
-      if (trackCrossSwitchInfo.containsKey(ts.self + ts.from)) {
-        ts.from += trackCrossSwitchInfo.get(ts.self + ts.from);
-      } else if (trackCrossSwitchInfo.containsKey(ts.self + ts.to)) {
-        ts.to += trackCrossSwitchInfo.get(ts.self + ts.from);
+      print("Track: " + ts.self + ", f: " + ts.self + ts.from + ", t: " + ts.self + ts.to);
+      String n1 = ts.self;
+
+      if (ts.self.contains(crossSuffix)) {
+        n1 = ts.self.replace(crossSuffix, "");
+      } else if (ts.self.contains(switchSuffix)) {
+        n1 = ts.self.replace(switchSuffix, "");
+      }
+      if (trackCrossSwitchInfo.containsKey(n1 + ts.from)) {
+        ts.from += trackCrossSwitchInfo.get(n1 + ts.from);
+      } else if (trackCrossSwitchInfo.containsKey(n1 + ts.to)) {
+        ts.to += trackCrossSwitchInfo.get(n1 + ts.to);
       }
     }
   }
@@ -211,6 +222,8 @@ public class map_ModelTrainSet extends JFrame {
         Vector3 targetPosition;
         Vector3 originPosition;
 
+        print("#Track: " + ts.self + ", from: " + ts.from + ", to: " + ts.to);
+
         if (angles.containsKey(ts.from)) {
           target = trackPointsMap.get(ts.from);
           originPosition = ts.fromPoint;
@@ -280,6 +293,8 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsCrossName.equals(""))) {
           TrackSegment tsCross = trackPointsMap.get(tsCrossName);
+          print("#Track: " + tsCross.self + ", from: " + tsCross.from + ", to: " + tsCross.to);
+
           tsCross.points[0] = rotatePoints(tsCross.points[0], angle, Vector3.zero);
           tsCross.points[1] = rotatePoints(tsCross.points[1], angle, Vector3.zero);
           tsCross.sleepers = rotateAllPoints(tsCross.sleepers, angle, Vector3.zero);
@@ -320,6 +335,7 @@ public class map_ModelTrainSet extends JFrame {
         }
         if (!(tsSwitchName.equals(""))) {
           TrackSegment tsSwitch = trackPointsMap.get(tsSwitchName);
+          print("#Track: " + tsSwitch.self + ", from: " + tsSwitch.from + ", to: " + tsSwitch.to);
           tsSwitch.points[0] = rotatePoints(tsSwitch.points[0], angle, Vector3.zero);
           tsSwitch.points[1] = rotatePoints(tsSwitch.points[1], angle, Vector3.zero);
           tsSwitch.sleepers = rotateAllPoints(tsSwitch.sleepers, angle, Vector3.zero);
@@ -594,19 +610,22 @@ public class map_ModelTrainSet extends JFrame {
           xPos += xInc;
           j++;
         }
+        System.out.println("Track: " + self + crossSuffix + ", track3: " + track3Name + ", track4: " + track4Name);
         map_ModelTrainSet.addTrackSegment(self + crossSuffix, points, sleeperList, track3Name, track4Name, fromPoint, toPoint);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
-
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, crossSuffix);
+        } else if (!(track4Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
+        }
       }
     }
     {
       String self = "2";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
       boolean dir = false;
-      String track1Name = "";
+      String track1Name = "1";
       String track2Name = "";
-      String track3Name = "1";
+      String track3Name = "3";
       boolean first = false;
       if (!(first) && track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
@@ -670,8 +689,11 @@ public class map_ModelTrainSet extends JFrame {
         }
 
         map_ModelTrainSet.addTrackSegment(self + switchSuffix, points, sleeperList, track1Name, track3Name, fromPoint, toPoint, dAng);
-        map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
-        map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
+        } else if (!(track1Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+        }
 
 
         double len = 168;
