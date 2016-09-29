@@ -469,9 +469,10 @@ public class map_ModelTrainSet extends JFrame {
     trackCrossSwitchInfo.put(key, value);
   }
 
-
-
   private void createRoutes() {
+    
+    {
+    };
   }
 
   private void trackCreation() {
@@ -628,9 +629,9 @@ public class map_ModelTrainSet extends JFrame {
       String self = "2";
       String switchSuffix = map_ModelTrainSet.switchSuffix;
       boolean dir = false;
-      String track1Name = "";
+      String track1Name = "1";
       String track2Name = "";
-      String track3Name = "1";
+      String track3Name = "3";
       boolean first = false;
       if (!(first) && track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");

@@ -204,6 +204,7 @@
       </concept>
       <concept id="8871674439221071930" name="ModelTrainLanguage.structure.Track" flags="ng" index="23Gtjv">
         <reference id="4325149779949402923" name="track2" index="me3Z$" />
+        <reference id="4325149779949402922" name="track1" index="me3Z_" />
         <reference id="6118429311290428321" name="track3" index="3A9cMF" />
         <reference id="6118429311290428326" name="track4" index="3A9cMG" />
       </concept>
@@ -254,7 +255,8 @@
     </node>
     <node concept="3LXmXj" id="51cWn6VYt1L" role="23Gti_">
       <property role="TrG5h" value="2" />
-      <ref role="3A9cMF" node="51cWn6VYt1G" resolve="1" />
+      <ref role="3A9cMF" node="5WnyYRvT9ev" resolve="3" />
+      <ref role="me3Z_" node="51cWn6VYt1G" resolve="1" />
     </node>
     <node concept="1rKzhf" id="5WnyYRvT9ev" role="23Gti_">
       <property role="1rKzhh" value="45" />
@@ -281,9 +283,16 @@
     <node concept="3LXmKT" id="5WnyYRvWvWb" role="20YDLR">
       <property role="TrG5h" value="r" />
       <node concept="2QAeLN" id="5WnyYRvWTsw" role="2QAeLs">
+        <property role="TrG5h" value="p1" />
         <ref role="20TBjQ" node="51cWn6VYt1G" resolve="1" />
         <ref role="20TBjf" node="51cWn6VZlGI" resolve="0" />
         <ref role="20TBj5" node="51cWn6VYt1L" resolve="2" />
+      </node>
+      <node concept="2QAeLN" id="5WnyYRvX7Df" role="2QAeLs">
+        <property role="TrG5h" value="p2" />
+        <ref role="20TBjQ" node="51cWn6VYt1L" resolve="2" />
+        <ref role="20TBjf" node="51cWn6VYt1G" resolve="1" />
+        <ref role="20TBj5" node="5WnyYRvT9ev" resolve="3" />
       </node>
     </node>
   </node>
