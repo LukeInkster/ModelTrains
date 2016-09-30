@@ -167,6 +167,18 @@
       <property role="TrG5h" value="startAngle" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="1TJgyi" id="1SsAnUAZm6R" role="1TKVEl">
+      <property role="TrG5h" value="price" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="1SsAnUAZmnZ" role="1TKVEl">
+      <property role="TrG5h" value="trainSpeed" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="1SsAnUAZmo3" role="1TKVEl">
+      <property role="TrG5h" value="fps" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
   <node concept="1TIwiD" id="gv3FBPUA5O">
     <property role="1pbfSe" value="100044755" />

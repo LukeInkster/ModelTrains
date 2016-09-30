@@ -15,6 +15,8 @@ import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellProvider;
 import jetbrains.mps.nodeEditor.EditorManager;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.editor.runtime.style.TableComponent;
@@ -86,26 +88,348 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, 0, true);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(this.createConstant_2jo8ok_a0c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_b0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_b0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_c0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_d0c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_e0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_e0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_f0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_g0c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_h0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_h0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_i0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_j0c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_k0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_k0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_l0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_m0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_n0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_o0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_p0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_q0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_r0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_s0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_t0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_u0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_v0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_w0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_x0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_y0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_z0c0(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_ab0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_bb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_cb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_db0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_eb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_fb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_gb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_hb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_ib0c0(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_jb0c0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_2jo8ok_a0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "TrackPieces:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Instructions:");
     editorCell.setCellId("Constant_2jo8ok_a0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    style.set(StyleAttributes.FONT_STYLE, 0, MPSFonts.BOLD);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNodeList_2jo8ok_b0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.trackPiecesListHandler_2jo8ok_b0c0(node, "trackPieces", editorContext);
+  private EditorCell createConstant_2jo8ok_b0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Track connections are set up by assigning Track pieces to the track1, track2, etc fields for each Track piece.");
+    editorCell.setCellId("Constant_2jo8ok_b0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_c0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "The track1 field represents the preceeding track, while track2 represents the next track in the sequence.");
+    editorCell.setCellId("Constant_2jo8ok_c0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_d0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "For split track track3 represents the outward direction of the split.");
+    editorCell.setCellId("Constant_2jo8ok_d0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_e0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "For crossings track3 is the preceeding track of the extra crossing track piece, with track4 being the outward end.");
+    editorCell.setCellId("Constant_2jo8ok_e0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_f0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Tracks can connect to any of these points but a connection must go both ways.");
+    editorCell.setCellId("Constant_2jo8ok_f0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_g0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "E.g. If Track: 1 connects to Track: 2 then Track: 2 must also have a link to Track: 1");
+    editorCell.setCellId("Constant_2jo8ok_g0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_h0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_h0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_i0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Stations are limited to a single piece of Straight Track and the visualisation will show stations in red.");
+    editorCell.setCellId("Constant_2jo8ok_i0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_j0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_j0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_k0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Routes represent a series of connected Track pieces that a train can traverse.");
+    editorCell.setCellId("Constant_2jo8ok_k0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_l0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "To function properly a route needs at least 2 Track pieces in it.");
+    editorCell.setCellId("Constant_2jo8ok_l0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_m0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_m0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_n0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Trains are represented with a single example model, as such TrainEngine and TrainCars currently do nothing.");
+    editorCell.setCellId("Constant_2jo8ok_n0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_o0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "However a train with an assigned Route will drive along its route in the visualisation.");
+    editorCell.setCellId("Constant_2jo8ok_o0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_p0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_p0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_q0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "New structure instances can be added by pressing <Enter> with the cursor positioned at the end of another structure.");
+    editorCell.setCellId("Constant_2jo8ok_q0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_r0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Keep in mind the 1st Track piece in the list is always the starting piece for visualisation purposes.");
+    editorCell.setCellId("Constant_2jo8ok_r0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_s0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_s0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_t0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Adjustable Model Values:");
+    editorCell.setCellId("Constant_2jo8ok_t0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createCollection_2jo8ok_u0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
+    editorCell.setCellId("Collection_2jo8ok_u0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, 0, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a02a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b02a2a(editorContext, node));
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_a02a2a(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Staring Angle of Track: (default 0 direction is \"->\")");
+    editorCell.setCellId("Constant_2jo8ok_a02a2a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createProperty_2jo8ok_b02a2a(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("startAngle");
+    provider.setNoTargetText("<no startAngle>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_startAngle");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
+    return editorCell;
+  }
+  private EditorCell createCollection_2jo8ok_v0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
+    editorCell.setCellId("Collection_2jo8ok_v0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, 0, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a12a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b12a2a(editorContext, node));
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_a12a2a(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Train speed in mm/s: ");
+    editorCell.setCellId("Constant_2jo8ok_a12a2a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createProperty_2jo8ok_b12a2a(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("trainSpeed");
+    provider.setNoTargetText("<no trainSpeed>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_trainSpeed");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
+    return editorCell;
+  }
+  private EditorCell createCollection_2jo8ok_w0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
+    editorCell.setCellId("Collection_2jo8ok_w0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, 0, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a22a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b22a2a(editorContext, node));
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_a22a2a(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Train updates per second: ");
+    editorCell.setCellId("Constant_2jo8ok_a22a2a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createProperty_2jo8ok_b22a2a(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("fps");
+    provider.setNoTargetText("<no fps>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_fps");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
+    return editorCell;
+  }
+  private EditorCell createCollection_2jo8ok_x0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
+    editorCell.setCellId("Collection_2jo8ok_x0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, 0, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a32a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b32a2a(editorContext, node));
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_a32a2a(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Price per Centimeter of track: ");
+    editorCell.setCellId("Constant_2jo8ok_a32a2a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createProperty_2jo8ok_b32a2a(EditorContext editorContext, SNode node) {
+    CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
+    provider.setRole("price");
+    provider.setNoTargetText("<no price>");
+    EditorCell editorCell;
+    editorCell = provider.createEditorCell(editorContext);
+    editorCell.setCellId("property_price");
+    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
+    SNode attributeConcept = provider.getRoleAttribute();
+    Class attributeKind = provider.getRoleAttributeClass();
+    if (attributeConcept != null) {
+      EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
+      return manager.createNodeRoleAttributeCell(attributeConcept, attributeKind, editorCell);
+    } else
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_y0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_y0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_z0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "TrackPieces:");
+    editorCell.setCellId("Constant_2jo8ok_z0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNodeList_2jo8ok_ab0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.trackPiecesListHandler_2jo8ok_ab0c0(node, "trackPieces", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_trackPieces");
     Style style = new StyleImpl();
@@ -115,8 +439,8 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class trackPiecesListHandler_2jo8ok_b0c0 extends RefNodeListHandler {
-    public trackPiecesListHandler_2jo8ok_b0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class trackPiecesListHandler_2jo8ok_ab0c0 extends RefNodeListHandler {
+    public trackPiecesListHandler_2jo8ok_ab0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
@@ -151,7 +475,7 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     }
     @Override
     public EditorCell createSeparatorCell(EditorContext editorContext, SNode prevNode, SNode nextNode) {
-      EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, this.getOwner(), trackPiecesListHandler_2jo8ok_b0c0.this.getSeparatorText(editorContext, prevNode));
+      EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, this.getOwner(), trackPiecesListHandler_2jo8ok_ab0c0.this.getSeparatorText(editorContext, prevNode));
       editorCell.setSelectable(false);
       Style style = new StyleImpl();
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "");
@@ -162,27 +486,27 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
       return editorCell;
     }
   }
-  private EditorCell createConstant_2jo8ok_c0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_bb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
-    editorCell.setCellId("Constant_2jo8ok_c0c0");
+    editorCell.setCellId("Constant_2jo8ok_bb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_d0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_cb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Stations:");
-    editorCell.setCellId("Constant_2jo8ok_d0c0");
+    editorCell.setCellId("Constant_2jo8ok_cb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNodeList_2jo8ok_e0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.stationsListHandler_2jo8ok_e0c0(node, "stations", editorContext);
+  private EditorCell createRefNodeList_2jo8ok_db0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.stationsListHandler_2jo8ok_db0c0(node, "stations", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_stations");
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class stationsListHandler_2jo8ok_e0c0 extends RefNodeListHandler {
-    public stationsListHandler_2jo8ok_e0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class stationsListHandler_2jo8ok_db0c0 extends RefNodeListHandler {
+    public stationsListHandler_2jo8ok_db0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
@@ -213,27 +537,27 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
       }
     }
   }
-  private EditorCell createConstant_2jo8ok_f0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_eb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
-    editorCell.setCellId("Constant_2jo8ok_f0c0");
+    editorCell.setCellId("Constant_2jo8ok_eb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_g0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_fb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Routes:");
-    editorCell.setCellId("Constant_2jo8ok_g0c0");
+    editorCell.setCellId("Constant_2jo8ok_fb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNodeList_2jo8ok_h0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.routesListHandler_2jo8ok_h0c0(node, "routes", editorContext);
+  private EditorCell createRefNodeList_2jo8ok_gb0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.routesListHandler_2jo8ok_gb0c0(node, "routes", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_routes");
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class routesListHandler_2jo8ok_h0c0 extends RefNodeListHandler {
-    public routesListHandler_2jo8ok_h0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class routesListHandler_2jo8ok_gb0c0 extends RefNodeListHandler {
+    public routesListHandler_2jo8ok_gb0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
@@ -264,27 +588,27 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
       }
     }
   }
-  private EditorCell createConstant_2jo8ok_i0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_hb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
-    editorCell.setCellId("Constant_2jo8ok_i0c0");
+    editorCell.setCellId("Constant_2jo8ok_hb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_j0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_ib0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Trains:");
-    editorCell.setCellId("Constant_2jo8ok_j0c0");
+    editorCell.setCellId("Constant_2jo8ok_ib0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNodeList_2jo8ok_k0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.trainsListHandler_2jo8ok_k0c0(node, "trains", editorContext);
+  private EditorCell createRefNodeList_2jo8ok_jb0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.trainsListHandler_2jo8ok_jb0c0(node, "trains", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_trains");
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class trainsListHandler_2jo8ok_k0c0 extends RefNodeListHandler {
-    public trainsListHandler_2jo8ok_k0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class trainsListHandler_2jo8ok_jb0c0 extends RefNodeListHandler {
+    public trainsListHandler_2jo8ok_jb0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {

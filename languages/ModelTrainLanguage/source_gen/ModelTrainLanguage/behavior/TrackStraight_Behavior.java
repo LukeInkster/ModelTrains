@@ -8,5 +8,5 @@ package ModelTrainLanguage.behavior;
  * Need to support the legacy static direct method calls
  */
 @Deprecated
-public class TrackSwitch_Behavior {
+public class TrackStraight_Behavior {
 }

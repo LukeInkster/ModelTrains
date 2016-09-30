@@ -14,6 +14,7 @@ public class TrackSegment {
   public double angle;
   public double length;
   public Vector3 rotationPoint;
+  public boolean isStation;
   public TrackSegment(String self, Vector3[][] points, Vector3[][] sleepers, String from, String to, Vector3 fromPoint, Vector3 toPoint, double length, double angle, Vector3 rotationPoint) {
     this.self = self;
     this.points = points;

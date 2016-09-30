@@ -18,8 +18,12 @@ import java.awt.GridBagConstraints;
 import javax.swing.BorderFactory;
 import java.awt.Dimension;
 import java.util.TimerTask;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.RenderingHints;
 
 public class map_ModelTrainSet extends JFrame {
   public static double standardLength = 168;
@@ -33,8 +37,10 @@ public class map_ModelTrainSet extends JFrame {
   public static double pointGapCurve = 0.5;
   public static String switchSuffix = "_switch";
   public static String crossSuffix = "_cross";
-  public static double trainSpeed = 5;
+  public static double trainSpeed = 100;
   public static int fps = 20;
+  public static double pricePerCM = 5;
+
 
   public static int width = 1000;
   public static int height = 700;
@@ -53,6 +59,9 @@ public class map_ModelTrainSet extends JFrame {
   private static List<TrackSegment> trackPoints = new ArrayList<TrackSegment>();
   private static Map<String, Double> angles = new HashMap<String, Double>();
   private static Map<String, List<Pair<Vector3, Double>>> routeDrawLocations = new HashMap<String, List<Pair<Vector3, Double>>>();
+  private static Map<String, Integer> trackCounter = new HashMap<String, Integer>();
+  private static Map<String, Double> trackPriceCounter = new HashMap<String, Double>();
+
 
   private BufferedImage trackImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
   private BufferedImage infoImage = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_ARGB);
@@ -61,10 +70,12 @@ public class map_ModelTrainSet extends JFrame {
   private Graphics2D gI = infoImage.createGraphics();
 
   private Timer trainDrawer = new Timer();
-  private boolean trainDrawn = false;
   private static double scale;
   private static double cx;
   private static double cy;
+  private double modelWidth;
+  private double modelHeight;
+
 
   public static void main(String[] args) {
     map_ModelTrainSet mts = new map_ModelTrainSet();
@@ -88,6 +99,7 @@ public class map_ModelTrainSet extends JFrame {
     trackCreation();
     trackCrossSwitchCheck();
     trackTranslating();
+    trackStation();
     trackDrawing();
 
     createRoutes();
@@ -97,6 +109,7 @@ public class map_ModelTrainSet extends JFrame {
     trainCreateRoutePoints();
 
     setTitle("ModelTrain - " + "Example_Track");
+    setResizable(false);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     panel = new JPanel() {
       @Override
@@ -122,7 +135,6 @@ public class map_ModelTrainSet extends JFrame {
 
           }
         }
-
       }
     };
     this.setLayout(new GridBagLayout());
@@ -159,60 +171,57 @@ public class map_ModelTrainSet extends JFrame {
       }
     }, 500, 1000 / fps);
 
-
-  }
-
-  private void trainDrawing() {
-    for (Map.Entry<String, Train> pair : trains.entrySet()) {
-      Train t = pair.getValue();
-      double startRot = 90;
-
-      List<String> route = routes.get(t.routeName);
-      if (route == null || route.size() < 2) {
-        print("Cannot send train on a route with only 1 track piece");
-        continue;
+    this.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        trainDrawer.cancel();
+        System.exit(0);
       }
+    });
 
-      print("TrainDrawing");
-      print("Route 0: " + route.get(0));
+    // Info Panel 
+    panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+    double totalPrice = 0;
+    int totalTrack = 0;
+    JLabel sub1 = new JLabel("Track Pieces: ");
+    sub1.setFont(new Font("Serif", Font.BOLD, 18));
+    panel2.add(sub1);
+    int countDistance = 27;
+    int priceDistance = 32;
+    for (Map.Entry<String, Integer> pair : trackCounter.entrySet()) {
+      String t = " | " + pair.getKey();
+      double price = trackPriceCounter.get(pair.getKey());
+      totalPrice += price;
+      totalTrack += pair.getValue();
 
-      TrackSegment ts = trackPointsMap.get(route.get(0));
-      print("TrainDrawing - Starting on track piece: " + ts.self);
-      double angle = angles.get(ts.self) - startRot;
-      Vector3 from = ts.fromPoint;
-      Vector3 to = ts.toPoint;
-      double fAngle = 0;
-      double tAngle = ts.angle;
-      if (ts.from.equals(route.get(1))) {
-        angle += 180;
-        from = ts.toPoint;
-        to = ts.fromPoint;
-        fAngle = ts.angle;
-        tAngle = 0;
+      while (t.length() < countDistance) {
+        t += " ";
       }
-
-      while (angle > 360) {
-        angle -= 360;
+      t += "x" + pair.getValue();
+      while (t.length() < priceDistance) {
+        t += " ";
       }
-      while (angle < -360) {
-        angle += 360;
-      }
-
-      Vector3 trainOrigin;
-      if (fAngle == tAngle) {
-        // Straight 
-        trainOrigin = Vector3.midPoint(from, to);
-      } else {
-        // Curved 
-        double rAng = tAngle - fAngle;
-        trainOrigin = rotatePoint(from, rAng * 0.5, ts.rotationPoint);
-        angle += rAng * 0.5;
-      }
-
-      t.pos = trainOrigin;
-      t.rot = angle;
+      t += "$" + String.format("%6.2f", price);
+      JLabel tmp = new JLabel(t);
+      tmp.setFont(new Font("Monospaced", Font.PLAIN, 11));
+      panel2.add(tmp);
     }
+    JLabel line;
+    line = new JLabel(" ----------------------");
+    panel2.add(line);
+    JLabel tmp = new JLabel(" | Total Pieces:    " + totalTrack);
+    tmp.setFont(new Font("Monospaced", Font.PLAIN, 11));
+    panel2.add(tmp);
+    tmp = new JLabel(" | Total Price :    $" + String.format("%.2f", totalPrice));
+    tmp.setFont(new Font("Monospaced", Font.PLAIN, 11));
+    panel2.add(tmp);
+    line = new JLabel(" ----------------------");
+    panel2.add(line);
+    tmp = new JLabel(" Space required: " + String.format("%.2f", modelWidth / 100.0) + " cm x " + String.format("%.2f", modelHeight / 100.0) + " cm");
+    tmp.setFont(new Font("Monospaced", Font.PLAIN, 11));
+    panel2.add(tmp);
+
   }
+
 
   private static void trainCreateRoutePoints() {
     for (Map.Entry<String, List<String>> pair : routes.entrySet()) {
@@ -223,6 +232,7 @@ public class map_ModelTrainSet extends JFrame {
       for (int i = 0; i < tracks.size(); i++) {
         TrackSegment ts = trackPointsMap.get(tracks.get(i));
         double len = ts.length;
+        double trainSpeed = map_ModelTrainSet.trainSpeed / fps;
         double updates = len / trainSpeed;
 
         if (ts.angle != 0) {
@@ -277,7 +287,6 @@ public class map_ModelTrainSet extends JFrame {
         }
       }
       routeDrawLocations.put(pair.getKey(), points);
-
     }
   }
 
@@ -300,7 +309,10 @@ public class map_ModelTrainSet extends JFrame {
       return;
     }
 
-
+    if (t.currentPoint < t.pointsFromTrackEdge) {
+      t.currentPoint += 1;
+      return;
+    }
     t.currentPoint += 1;
     List<Pair<Vector3, Double>> points = routeDrawLocations.get(t.routeName);
     if (t.currentPoint < routeDrawLocations.get(t.routeName).size() - t.pointsFromTrackEdge) {
@@ -319,44 +331,11 @@ public class map_ModelTrainSet extends JFrame {
       t.yLoc = y;
       t.rot = pair.b - 90;
       panel.repaint();
+    } else {
+      t.currentPoint = -100;
     }
   }
 
-  private void topDownTrain() {
-    double targetTrackWidth = railWidth * scale;
-
-    for (Map.Entry<String, Train> trains : trains.entrySet()) {
-      Train train = trains.getValue();
-
-      double scale = targetTrackWidth / (train.widthOriginal + 0.0);
-      train.heightScaled = (int) (train.heightOriginal * scale);
-      train.widthScaled = (int) (train.widthOriginal * scale);
-      train.scale = scale;
-
-      double cx = map_ModelTrainSet.cx;
-      double cy = map_ModelTrainSet.cy;
-      double sx = map_ModelTrainSet.scale;
-      double sy = map_ModelTrainSet.scale;
-
-      int x = (int) (Math.round(sx * (train.pos.x + cx))) + 20;
-      int y = (int) (Math.round(sy * (train.pos.z + cy))) + 10;
-
-
-      print("T - " + x + "," + y);
-
-      double rot = Math.toRadians(train.rot);
-      double xLoc = train.trainImage.img.getWidth() / 2;
-      double yLoc = train.trainImage.img.getHeight() / 2;
-      AffineTransform tx = AffineTransform.getRotateInstance(rot, xLoc, yLoc);
-      AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-      train.op = op;
-      train.xLoc = x;
-      train.yLoc = y;
-      print("trainPos: " + train.pos);
-
-
-    }
-  }
 
 
 
@@ -405,8 +384,8 @@ public class map_ModelTrainSet extends JFrame {
     int xOff = 20;
     int yOff = 10;
 
-    double modelWidth = xMax - xMin;
-    double modelHeight = zMax - zMin;
+    modelWidth = xMax - xMin;
+    modelHeight = zMax - zMin;
     print("xScale: " + ((width - infoWidth - xOff * 2) / modelWidth));
     print("yScale: " + ((height - yOff * 2) / modelHeight));
     scale = Math.min((width - infoWidth - xOff * 2) / modelWidth, (height - yOff * 2) / modelHeight);
@@ -418,28 +397,17 @@ public class map_ModelTrainSet extends JFrame {
     double cy = -zMin;
     double sx = scale;
     double sy = scale;
+    int[] xPoints = null;
+    int[] yPoints = null;
+
+    gT.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     for (TrackSegment ts : trackPoints) {
-      if (ts.self.equals("0")) {
-        Vector3 mid = Vector3.midPoint(ts.fromPoint, ts.toPoint);
-        int x = (int) (Math.round(sx * (mid.x + cx))) + xOff;
-        int y = (int) (Math.round(sy * (mid.z + cy))) + yOff;
-        print("0 - " + x + "," + y);
-
-        int x1 = (int) (Math.round(sx * (ts.fromPoint.x + cx))) + xOff;
-        int y1 = (int) (Math.round(sy * (ts.fromPoint.z + cy))) + yOff;
-        int x2 = (int) (Math.round(sx * (ts.toPoint.x + cx))) + xOff;
-        int y2 = (int) (Math.round(sy * (ts.toPoint.z + cy))) + yOff;
-
-
-
-      }
-
 
       // Draw sleepers 
       gT.setColor(Color.black);
       for (Vector3[] sleeper : ts.sleepers) {
-        int[] xPoints = new int[sleeper.length];
-        int[] yPoints = new int[sleeper.length];
+        xPoints = new int[sleeper.length];
+        yPoints = new int[sleeper.length];
         int i = 0;
         for (Vector3 v : sleeper) {
           xPoints[i] = (int) (Math.round(sx * (v.x + cx))) + xOff;
@@ -449,21 +417,24 @@ public class map_ModelTrainSet extends JFrame {
         gT.fillPolygon(xPoints, yPoints, i);
       }
       // Draw rails 
-      gT.setColor(Color.darkGray);
       for (Vector3[] points : ts.points) {
-        int[] xPoints = new int[points.length];
-        int[] yPoints = new int[points.length];
+        gT.setColor(Color.darkGray);
+
+        xPoints = new int[points.length];
+        yPoints = new int[points.length];
         int i = 0;
         for (Vector3 v : points) {
           xPoints[i] = (int) (Math.round(sx * (v.x + cx))) + xOff;
           yPoints[i] = (int) (Math.round(sy * (v.z + cy))) + yOff;
-          if (ts.self.equals("0") && i == 0 || i == points.length - 1) {
-          }
-
           i++;
         }
+        if (ts.isStation && ts.angle == 0) {
+          gT.setColor(Color.RED);
+        }
+
         gT.fillPolygon(xPoints, yPoints, i);
       }
+
     }
   }
 
@@ -799,14 +770,36 @@ public class map_ModelTrainSet extends JFrame {
     routes.put(name, tracks);
   }
 
+
+  public static void addToTrackCounter(String trackType, double price) {
+    if (trackPriceCounter.containsKey(trackType)) {
+      trackPriceCounter.put(trackType, trackPriceCounter.get(trackType) + price);
+      trackCounter.put(trackType, trackCounter.get(trackType) + 1);
+    } else {
+      trackPriceCounter.put(trackType, price);
+      trackCounter.put(trackType, 1);
+    }
+  }
+
+  public static void setStationStatus(String trackName) {
+    trackPointsMap.get(trackName).isStation = true;
+  }
+
   public static void addTrain(String name, Train t) {
     trains.put(name, t);
+  }
+
+  private void trackStation() {
+    
+    {
+      map_ModelTrainSet.setStationStatus("10");
+    };
   }
 
   private void trainSetup() {
     
     {
-      String self = "train";
+      String self = "Train1";
       int nCars = 1;
       String route = "r";
       map_ModelTrainSet.addTrain(self, new Train(self, nCars, route));
@@ -839,7 +832,7 @@ public class map_ModelTrainSet extends JFrame {
       String track1Name = "";
       String track2Name = "10";
       boolean dir = false;
-      boolean first = true;
+      boolean first = false;
       if (!(first) && track1Name.equals("") && track2Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
@@ -900,6 +893,11 @@ public class map_ModelTrainSet extends JFrame {
         }
 
         map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String r = "1";
+        String a = "45";
+        map_ModelTrainSet.addToTrackCounter("Curve " + ((dir ? "Left" : "Right")) + " R:" + r + " A:" + a, ((dLen) / 100 * priceMod));
+
       }
     }
     {
@@ -949,6 +947,10 @@ public class map_ModelTrainSet extends JFrame {
         }
 
         map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, len);
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String l = "1";
+        map_ModelTrainSet.addToTrackCounter("Straight " + " L:" + l, ((len) / 100 * priceMod));
+
       }
     }
     {
@@ -1049,6 +1051,8 @@ public class map_ModelTrainSet extends JFrame {
           map_ModelTrainSet.addCrossSwitchInfo(track4Name + self, crossSuffix);
 
         }
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        map_ModelTrainSet.addToTrackCounter("Crossing " + ((dir ? "Left" : "Right")), ((len + len2) / 100 * priceMod));
       }
     }
   }

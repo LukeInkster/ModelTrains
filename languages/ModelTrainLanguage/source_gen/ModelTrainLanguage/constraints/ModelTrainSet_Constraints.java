@@ -4,9 +4,99 @@ package ModelTrainLanguage.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import java.util.Map;
+import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
+import java.util.HashMap;
+import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelTrainSet_Constraints extends BaseConstraintsDescriptor {
   public ModelTrainSet_Constraints() {
     super(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL));
+  }
+  @Override
+  protected Map<SPropertyId, PropertyConstraintsDescriptor> getNotDefaultSProperties() {
+    Map<SPropertyId, PropertyConstraintsDescriptor> properties = new HashMap<SPropertyId, PropertyConstraintsDescriptor>();
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd65ffL), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd65ffL), this) {
+      @Override
+      public boolean hasOwnValidator() {
+        return true;
+      }
+      @Override
+      public boolean validateValue(SNode node, String propertyValue) {
+        String propertyName = "trainSpeed";
+        if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd65ffL, "trainSpeed")) == null) {
+          return false;
+        }
+        try {
+          Double.parseDouble(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd65ffL, "trainSpeed")));
+          return true;
+        } catch (NumberFormatException e) {
+          return false;
+        }
+      }
+    });
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L), this) {
+      @Override
+      public boolean hasOwnValidator() {
+        return true;
+      }
+      @Override
+      public boolean validateValue(SNode node, String propertyValue) {
+        String propertyName = "fps";
+        if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L, "fps")) == null) {
+          return false;
+        }
+        try {
+          Integer.parseInt(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L, "fps")));
+          return true;
+        } catch (NumberFormatException e) {
+          return false;
+        }
+      }
+    });
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L), this) {
+      @Override
+      public boolean hasOwnValidator() {
+        return true;
+      }
+      @Override
+      public boolean validateValue(SNode node, String propertyValue) {
+        String propertyName = "price";
+        if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L, "price")) == null) {
+          return false;
+        }
+        try {
+          Double.parseDouble(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L, "price")));
+          return true;
+        } catch (NumberFormatException e) {
+          return false;
+        }
+      }
+    });
+    properties.put(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L), this) {
+      @Override
+      public boolean hasOwnValidator() {
+        return true;
+      }
+      @Override
+      public boolean validateValue(SNode node, String propertyValue) {
+        String propertyName = "startAngle";
+        if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L, "startAngle")) == null) {
+          return false;
+        }
+        try {
+          double d = Double.parseDouble(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L, "startAngle")));
+          Double.parseDouble(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L, "startAngle")));
+          return d >= -360 || d <= 360;
+        } catch (NumberFormatException e) {
+          return false;
+        }
+      }
+    });
+    return properties;
   }
 }

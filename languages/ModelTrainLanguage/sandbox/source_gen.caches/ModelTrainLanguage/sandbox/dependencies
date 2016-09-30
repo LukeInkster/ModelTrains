@@ -30,11 +30,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
   </dependency>
-  <dependency className="ModelTrainLanguage.sandbox.VisualisationPanel" file="VisualisationPanel.java">
-    <classNode dependClassName="java.awt.Graphics2D" />
-    <classNode dependClassName="java.awt.image.BufferedImage" />
-    <classNode extendsClassName="javax.swing.JPanel" />
-  </dependency>
   <dependency className="ModelTrainLanguage.sandbox.map_ModelTrainSet" file="map_ModelTrainSet.java">
     <classNode dependClassName="ModelTrainLanguage.sandbox.Pair" />
     <classNode dependClassName="ModelTrainLanguage.sandbox.StringUtils" />
@@ -43,14 +38,17 @@
     <classNode dependClassName="ModelTrainLanguage.sandbox.Vector3" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Dimension" />
+    <classNode dependClassName="java.awt.Font" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.awt.Graphics2D" />
     <classNode dependClassName="java.awt.GridBagConstraints" />
     <classNode dependClassName="java.awt.GridBagLayout" />
-    <classNode dependClassName="java.awt.geom.AffineTransform" />
-    <classNode dependClassName="java.awt.image.AffineTransformOp" />
+    <classNode dependClassName="java.awt.RenderingHints" />
+    <classNode dependClassName="java.awt.event.WindowAdapter" />
+    <classNode dependClassName="java.awt.event.WindowEvent" />
     <classNode dependClassName="java.awt.image.BufferedImage" />
     <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Math" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -63,6 +61,8 @@
     <classNode dependClassName="java.util.Timer" />
     <classNode dependClassName="java.util.TimerTask" />
     <classNode dependClassName="javax.swing.BorderFactory" />
+    <classNode dependClassName="javax.swing.BoxLayout" />
+    <classNode dependClassName="javax.swing.JLabel" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode extendsClassName="javax.swing.JFrame" />
   </dependency>

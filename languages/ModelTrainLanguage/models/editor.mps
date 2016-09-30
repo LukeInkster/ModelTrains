@@ -17,6 +17,7 @@
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
+        <property id="1140524450557" name="separatorText" index="2czwfO" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="928328222691832421" name="separatorTextQuery" index="2gpyvW" />
       </concept>
@@ -31,9 +32,13 @@
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
+      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
+        <property id="1186403713874" name="color" index="Vb096" />
+      </concept>
       <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
         <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
+      <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -108,6 +113,150 @@
           <property role="VOm3f" value="false" />
         </node>
         <node concept="3EZMnI" id="6yx95Kw6JlI" role="3EZMnx">
+          <node concept="3F0ifn" id="1SsAnUAYT2E" role="3EZMnx">
+            <property role="3F0ifm" value="Instructions:" />
+            <node concept="VechU" id="1SsAnUAYT5g" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+            <node concept="Vb9p2" id="1SsAnUAYT8L" role="3F10Kt">
+              <property role="Vbekb" value="BOLD" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYT33" role="3EZMnx">
+            <property role="3F0ifm" value="Track connections are set up by assigning Track pieces to the track1, track2, etc fields for each Track piece." />
+            <node concept="VechU" id="1SsAnUAYT4k" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYT9n" role="3EZMnx">
+            <property role="3F0ifm" value="The track1 field represents the preceeding track, while track2 represents the next track in the sequence." />
+            <node concept="VechU" id="1SsAnUAYTaU" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTaX" role="3EZMnx">
+            <property role="3F0ifm" value="For split track track3 represents the outward direction of the split." />
+            <node concept="VechU" id="1SsAnUAYTcZ" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTbt" role="3EZMnx">
+            <property role="3F0ifm" value="For crossings track3 is the preceeding track of the extra crossing track piece, with track4 being the outward end." />
+            <node concept="VechU" id="1SsAnUAYTd2" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTbW" role="3EZMnx">
+            <property role="3F0ifm" value="Tracks can connect to any of these points but a connection must go both ways." />
+            <node concept="VechU" id="1SsAnUAYTd5" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTcs" role="3EZMnx">
+            <property role="3F0ifm" value="E.g. If Track: 1 connects to Track: 2 then Track: 2 must also have a link to Track: 1" />
+            <node concept="VechU" id="1SsAnUAYTd8" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYThs" role="3EZMnx" />
+          <node concept="3F0ifn" id="1SsAnUAYTi4" role="3EZMnx">
+            <property role="3F0ifm" value="Stations are limited to a single piece of Straight Track and the visualisation will show stations in red." />
+            <node concept="VechU" id="1SsAnUAYTiH" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTiX" role="3EZMnx" />
+          <node concept="3F0ifn" id="1SsAnUAYTjC" role="3EZMnx">
+            <property role="3F0ifm" value="Routes represent a series of connected Track pieces that a train can traverse." />
+            <node concept="VechU" id="1SsAnUAYTkk" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTkx" role="3EZMnx">
+            <property role="3F0ifm" value="To function properly a route needs at least 2 Track pieces in it." />
+            <node concept="VechU" id="1SsAnUAYTlf" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTl_" role="3EZMnx" />
+          <node concept="3F0ifn" id="1SsAnUAYTmj" role="3EZMnx">
+            <property role="3F0ifm" value="Trains are represented with a single example model, as such TrainEngine and TrainCars currently do nothing." />
+            <node concept="VechU" id="1SsAnUAYTn4" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAYTnw" role="3EZMnx">
+            <property role="3F0ifm" value="However a train with an assigned Route will drive along its route in the visualisation." />
+            <node concept="VechU" id="1SsAnUAYToj" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAZ7FE" role="3EZMnx" />
+          <node concept="3F0ifn" id="1SsAnUAZm3r" role="3EZMnx">
+            <property role="3F0ifm" value="New structure instances can be added by pressing &lt;Enter&gt; with the cursor positioned at the end of another structure." />
+            <node concept="VechU" id="1SsAnUAZm4h" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAZm5a" role="3EZMnx">
+            <property role="3F0ifm" value="Keep in mind the 1st Track piece in the list is always the starting piece for visualisation purposes." />
+            <node concept="VechU" id="1SsAnUAZm62" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="1SsAnUAZm7l" role="3EZMnx" />
+          <node concept="3F0ifn" id="1SsAnUAZmap" role="3EZMnx">
+            <property role="3F0ifm" value="Adjustable Model Values:" />
+          </node>
+          <node concept="3EZMnI" id="1SsAnUAZmkT" role="3EZMnx">
+            <node concept="VPM3Z" id="1SsAnUAZmkV" role="3F10Kt">
+              <property role="VOm3f" value="false" />
+            </node>
+            <node concept="3F0ifn" id="1SsAnUAZmgr" role="3EZMnx">
+              <property role="3F0ifm" value="Staring Angle of Track: (default 0 direction is &quot;-&gt;&quot;)" />
+            </node>
+            <node concept="3F0A7n" id="1SsAnUAZmhF" role="3EZMnx">
+              <ref role="1NtTu8" to="5qva:7bbQqrm$Qu4" resolve="startAngle" />
+            </node>
+            <node concept="2iRfu4" id="1SsAnUAZmkY" role="2iSdaV" />
+          </node>
+          <node concept="3EZMnI" id="1SsAnUAZmmh" role="3EZMnx">
+            <node concept="VPM3Z" id="1SsAnUAZmmj" role="3F10Kt">
+              <property role="VOm3f" value="false" />
+            </node>
+            <node concept="3F0ifn" id="1SsAnUAZmml" role="3EZMnx">
+              <property role="3F0ifm" value="Train speed in mm/s: " />
+            </node>
+            <node concept="3F0A7n" id="1SsAnUB0KLC" role="3EZMnx">
+              <ref role="1NtTu8" to="5qva:1SsAnUAZmnZ" resolve="trainSpeed" />
+            </node>
+            <node concept="2iRfu4" id="1SsAnUAZmmm" role="2iSdaV" />
+          </node>
+          <node concept="3EZMnI" id="1SsAnUB0KO4" role="3EZMnx">
+            <node concept="VPM3Z" id="1SsAnUB0KO6" role="3F10Kt">
+              <property role="VOm3f" value="false" />
+            </node>
+            <node concept="3F0ifn" id="1SsAnUB0KO8" role="3EZMnx">
+              <property role="3F0ifm" value="Train updates per second: " />
+            </node>
+            <node concept="3F0A7n" id="1SsAnUB0KPo" role="3EZMnx">
+              <ref role="1NtTu8" to="5qva:1SsAnUAZmo3" resolve="fps" />
+            </node>
+            <node concept="2iRfu4" id="1SsAnUB0KO9" role="2iSdaV" />
+          </node>
+          <node concept="3EZMnI" id="1SsAnUAZmf8" role="3EZMnx">
+            <node concept="VPM3Z" id="1SsAnUAZmfa" role="3F10Kt">
+              <property role="VOm3f" value="false" />
+            </node>
+            <node concept="3F0ifn" id="1SsAnUAZmfc" role="3EZMnx">
+              <property role="3F0ifm" value="Price per Centimeter of track: " />
+            </node>
+            <node concept="3F0A7n" id="1SsAnUAZmgi" role="3EZMnx">
+              <ref role="1NtTu8" to="5qva:1SsAnUAZm6R" resolve="price" />
+            </node>
+            <node concept="2iRfu4" id="1SsAnUAZmfd" role="2iSdaV" />
+          </node>
+          <node concept="3F0ifn" id="1SsAnUB0KPs" role="3EZMnx" />
           <node concept="VPM3Z" id="6yx95Kw6JlK" role="3F10Kt">
             <property role="VOm3f" value="false" />
           </node>
@@ -413,6 +562,86 @@
         </node>
       </node>
       <node concept="l2Vlx" id="5jD1KEMU$Tx" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1SsAnUAY0Q$">
+    <ref role="1XX52x" to="5qva:gv3FBPUA5O" resolve="Station" />
+    <node concept="3EZMnI" id="1SsAnUAY0Q_" role="2wV5jI">
+      <node concept="3F0ifn" id="1SsAnUAY0QA" role="3EZMnx">
+        <property role="3F0ifm" value="Station:" />
+      </node>
+      <node concept="3F0A7n" id="1SsAnUAY0QB" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAY0T5" role="3EZMnx">
+        <property role="3F0ifm" value="  Track: " />
+      </node>
+      <node concept="l2Vlx" id="1SsAnUAY0QW" role="2iSdaV" />
+      <node concept="1iCGBv" id="1SsAnUAY0Tf" role="3EZMnx">
+        <ref role="1NtTu8" to="5qva:5aFm7Ll1kBX" />
+        <node concept="1sVBvm" id="1SsAnUAY0Th" role="1sWHZn">
+          <node concept="3F0A7n" id="1SsAnUAY0Tu" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1SsAnUAY0Tx">
+    <ref role="1XX52x" to="5qva:5WnyYRvXcWf" resolve="TrackReference" />
+    <node concept="1iCGBv" id="1SsAnUAY0TW" role="2wV5jI">
+      <ref role="1NtTu8" to="5qva:5WnyYRvXcWH" />
+      <node concept="1sVBvm" id="1SsAnUAY0TX" role="1sWHZn">
+        <node concept="3F0A7n" id="1SsAnUAY0U2" role="2wV5jI">
+          <property role="1Intyy" value="true" />
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1SsAnUAY0W8">
+    <ref role="1XX52x" to="5qva:gv3FBPUAa0" resolve="Route" />
+    <node concept="3EZMnI" id="1SsAnUAY0Wi" role="2wV5jI">
+      <node concept="3F0ifn" id="1SsAnUAYeQZ" role="3EZMnx">
+        <property role="3F0ifm" value="Route Name: " />
+      </node>
+      <node concept="3F0A7n" id="1SsAnUAYeR9" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAYeRl" role="3EZMnx">
+        <property role="3F0ifm" value="  Tracks: " />
+      </node>
+      <node concept="3F2HdR" id="1SsAnUAY0Wp" role="3EZMnx">
+        <property role="2czwfO" value="," />
+        <ref role="1NtTu8" to="5qva:5WnyYRvXcWJ" />
+        <node concept="2iRfu4" id="1SsAnUAY0Wr" role="2czzBx" />
+      </node>
+      <node concept="2iRfu4" id="1SsAnUAY0Wl" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1SsAnUAYsQf">
+    <ref role="1XX52x" to="5qva:5TXDKSg3Wek" resolve="Train" />
+    <node concept="3EZMnI" id="1SsAnUAYsQk" role="2wV5jI">
+      <node concept="3F0ifn" id="1SsAnUAYsRy" role="3EZMnx">
+        <property role="3F0ifm" value="Name: " />
+      </node>
+      <node concept="3F0A7n" id="1SsAnUAYsRM" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAYsQm" role="3EZMnx">
+        <property role="3F0ifm" value="  TrainEngine: " />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAYsQu" role="3EZMnx">
+        <property role="3F0ifm" value="Default" />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAYsQA" role="3EZMnx">
+        <property role="3F0ifm" value="  TrainCars: " />
+      </node>
+      <node concept="3F0ifn" id="1SsAnUAYsR0" role="3EZMnx">
+        <property role="3F0ifm" value="0" />
+      </node>
+      <node concept="2iRfu4" id="1SsAnUAYsQn" role="2iSdaV" />
     </node>
   </node>
 </model>

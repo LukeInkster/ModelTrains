@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import java.util.Arrays;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
-  private final BHDescriptor myTrackSwitch__BehaviorDescriptor = new TrackSwitch__BehaviorDescriptor();
+  private final BHDescriptor myTrackStraight__BehaviorDescriptor = new TrackStraight__BehaviorDescriptor();
   private final BHDescriptor myTrackCurve__BehaviorDescriptor = new TrackCurve__BehaviorDescriptor();
   private final BHDescriptor myModelTrainSet__BehaviorDescriptor = new ModelTrainSet__BehaviorDescriptor();
 
@@ -20,7 +20,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
 
   public BehaviorAspectDescriptor() {
     myConceptBehaviorIds = new long[3];
-    myConceptBehaviorIds[0] = 0x41f0eb9f5ea61eaL;
+    myConceptBehaviorIds[0] = 0x41f0eb9f5ea6264L;
     myConceptBehaviorIds[1] = 0x16d2770f4d104340L;
     myConceptBehaviorIds[2] = 0x7b1e84e5f8af503fL;
   }
@@ -37,7 +37,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     int behaviorIndex = Arrays.binarySearch(myConceptBehaviorIds, conceptId.getIdValue());
     switch (behaviorIndex) {
       case 0:
-        return myTrackSwitch__BehaviorDescriptor;
+        return myTrackStraight__BehaviorDescriptor;
       case 1:
         return myTrackCurve__BehaviorDescriptor;
       case 2:
