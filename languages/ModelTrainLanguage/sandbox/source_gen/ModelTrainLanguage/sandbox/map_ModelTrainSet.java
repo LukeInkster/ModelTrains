@@ -634,30 +634,11 @@ public class map_ModelTrainSet extends JFrame {
   }
 
   private void trainSetup() {
-    
-    {
-      String self = "train";
-      int nCars = 1;
-      String route = "r";
-      map_ModelTrainSet.addTrain(self, new Train(self, nCars, route));
-    };
   }
 
   private void createRoutes() {
     
     {
-      
-      {
-        map_ModelTrainSet.addRouteSegment("r", "0");
-      };
-      
-      {
-        map_ModelTrainSet.addRouteSegment("r", "1");
-      };
-      
-      {
-        map_ModelTrainSet.addRouteSegment("r", "2");
-      };
     };
   }
 
