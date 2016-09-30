@@ -687,18 +687,12 @@ public class map_ModelTrainSet extends JFrame {
   }
 
   private void trainSetup() {
-    
-    {
-      String self = "train";
-      int nCars = 1;
-      String route = "r";
-      map_ModelTrainSet.addTrain(self, new Train(self, nCars, route));
-    };
   }
 
   private void createRoutes() {
     
     {
+<<<<<<< HEAD
       
       {
         map_ModelTrainSet.addRouteSegment("r", "9");
@@ -707,6 +701,8 @@ public class map_ModelTrainSet extends JFrame {
       {
         map_ModelTrainSet.addRouteSegment("r", "10");
       };
+=======
+>>>>>>> b0fef51ca983523a65093243a30825e6445e5032
     };
   }
 

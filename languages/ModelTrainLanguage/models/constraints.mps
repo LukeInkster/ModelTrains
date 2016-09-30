@@ -1264,21 +1264,11 @@
                 </node>
               </node>
             </node>
-            <node concept="22lmx$" id="5aFm7LkYYEh" role="3uHU7B">
-              <node concept="2OqwBi" id="5aFm7LkYYoX" role="3uHU7B">
-                <node concept="nLn13" id="5aFm7LkYYn9" role="2Oq$k0" />
-                <node concept="1mIQ4w" id="5aFm7LkYYyW" role="2OqNvi">
-                  <node concept="chp4Y" id="5aFm7LkYY$B" role="cj9EA">
-                    <ref role="cht4Q" to="5qva:gv3FBPUA5O" resolve="Station" />
-                  </node>
-                </node>
-              </node>
-              <node concept="2OqwBi" id="5aFm7LkYYJ_" role="3uHU7w">
-                <node concept="nLn13" id="5aFm7LkYYGQ" role="2Oq$k0" />
-                <node concept="1mIQ4w" id="5aFm7LkYYP4" role="2OqNvi">
-                  <node concept="chp4Y" id="5aFm7LkYYZm" role="cj9EA">
-                    <ref role="cht4Q" to="5qva:2pqQ2agKzhh" resolve="Path" />
-                  </node>
+            <node concept="2OqwBi" id="5aFm7LkYYoX" role="3uHU7B">
+              <node concept="nLn13" id="5aFm7LkYYn9" role="2Oq$k0" />
+              <node concept="1mIQ4w" id="5aFm7LkYYyW" role="2OqNvi">
+                <node concept="chp4Y" id="5aFm7LkYY$B" role="cj9EA">
+                  <ref role="cht4Q" to="5qva:gv3FBPUA5O" resolve="Station" />
                 </node>
               </node>
             </node>
