@@ -22,6 +22,8 @@ public class Train {
   public int yLoc;
   public double scale;
   private boolean drawCars = false;
+  public int currentPoint = 5;
+  public int pointsFromTrackEdge = 5;
   private Queue<Pair<Vector3, Double>> positionalHistory = new ArrayDeque<Pair<Vector3, Double>>();
 
   public Train(String self, int nCars, String route) {

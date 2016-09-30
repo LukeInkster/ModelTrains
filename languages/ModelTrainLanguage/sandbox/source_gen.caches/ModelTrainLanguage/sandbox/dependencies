@@ -36,6 +36,7 @@
     <classNode extendsClassName="javax.swing.JPanel" />
   </dependency>
   <dependency className="ModelTrainLanguage.sandbox.map_ModelTrainSet" file="map_ModelTrainSet.java">
+    <classNode dependClassName="ModelTrainLanguage.sandbox.Pair" />
     <classNode dependClassName="ModelTrainLanguage.sandbox.StringUtils" />
     <classNode dependClassName="ModelTrainLanguage.sandbox.TrackSegment" />
     <classNode dependClassName="ModelTrainLanguage.sandbox.Train" />
@@ -60,6 +61,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Timer" />
+    <classNode dependClassName="java.util.TimerTask" />
     <classNode dependClassName="javax.swing.BorderFactory" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode extendsClassName="javax.swing.JFrame" />

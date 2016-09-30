@@ -12,6 +12,9 @@ public class Vector3 {
     this.y = y;
     this.z = z;
   }
+  public Vector3 copy() {
+    return new Vector3(x, y, z);
+  }
   public static final Vector3 zero = new Vector3(0, 0, 0);
   public Vector3 subtract(Vector3 other) {
     return new Vector3(x - other.x, y - other.y, z - other.z);
@@ -27,6 +30,13 @@ public class Vector3 {
   }
   public static Double distance(Vector3 a, Vector3 b) {
     return Math.sqrt((Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2)));
+  }
+  public static Vector3 lerp(Vector3 a, Vector3 b, double t) {
+    double xF = b.x - a.x;
+    double yF = b.y - a.y;
+    double zF = b.z - a.z;
+    return new Vector3(a.x + xF * t, a.y + yF * t, a.z + zF * t);
+
   }
   @Override
   public String toString() {
