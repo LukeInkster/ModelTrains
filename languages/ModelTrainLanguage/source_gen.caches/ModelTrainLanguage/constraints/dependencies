@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="ModelTrainLanguage.constraints.ConstraintsAspectDescriptor" file="ConstraintsAspectDescriptor.java">
     <classNode dependClassName="ModelTrainLanguage.constraints.ModelTrainSet_Constraints" />
+    <classNode dependClassName="ModelTrainLanguage.constraints.Route_Constraints" />
     <classNode dependClassName="ModelTrainLanguage.constraints.Station_Constraints" />
     <classNode dependClassName="ModelTrainLanguage.constraints.TrackCurve_Constraints" />
     <classNode dependClassName="ModelTrainLanguage.constraints.TrackStraight_Constraints" />
@@ -14,6 +15,19 @@
   </dependency>
   <dependency className="ModelTrainLanguage.constraints.ModelTrainSet_Constraints" file="ModelTrainSet_Constraints.java">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
+  </dependency>
+  <dependency className="ModelTrainLanguage.constraints.Route_Constraints" file="Route_Constraints.java">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.IOperationContext" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.CheckingNodeContext" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
   <dependency className="ModelTrainLanguage.constraints.Station_Constraints" file="Station_Constraints.java">

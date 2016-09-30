@@ -57,7 +57,7 @@ public class TrackStraight_Constraints extends BaseConstraintsDescriptor {
     return properties;
   }
   public static boolean static_canBeAChild(SNode node, SNode parentNode, SNode link, SNode childConcept, final IOperationContext operationContext) {
-    return SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6174L, "ModelTrainLanguage.structure.Station")) || SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c23451L, "ModelTrainLanguage.structure.Path")) || SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, "ModelTrainLanguage.structure.ModelTrainSet"));
+    return SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6174L, "ModelTrainLanguage.structure.Station")) || SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, "ModelTrainLanguage.structure.ModelTrainSet"));
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "5956952223152595219");
 }
