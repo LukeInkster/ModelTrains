@@ -20,6 +20,7 @@ public class Train {
   public AffineTransformOp op;
   public int xLoc;
   public int yLoc;
+  public double scale;
   private boolean drawCars = false;
   private Queue<Pair<Vector3, Double>> positionalHistory = new ArrayDeque<Pair<Vector3, Double>>();
 
