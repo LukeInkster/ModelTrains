@@ -14,17 +14,17 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 
 @Generated
 public class QueriesGenerated {
-  public static Object propertyMacro_GetPropertyValue_2169777889732427771(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetPropertyValue_2169777889733758798(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd65ffL, "trainSpeed"));
   }
-  public static Object propertyMacro_GetPropertyValue_2169777889732462244(final PropertyMacroContext _context) {
-    return Integer.parseInt(SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L, "fps")));
-  }
-  public static Object propertyMacro_GetPropertyValue_2169777889732535007(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L, "price"));
-  }
-  public static Object propertyMacro_GetPropertyValue_2169777889732541645(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetPropertyValue_2169777889733765748(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x72cbd9a6d6936784L, "startAngle"));
+  }
+  public static Object propertyMacro_GetPropertyValue_2169777889733770149(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd6603L, "fps"));
+  }
+  public static Object propertyMacro_GetPropertyValue_2169777889733774257(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x1e1c997ea6fd61b7L, "price"));
   }
   public static Object propertyMacro_GetPropertyValue_1085941728143583333(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));

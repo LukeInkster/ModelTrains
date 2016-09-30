@@ -82,7 +82,17 @@ public class map_ModelTrainSet extends JFrame {
     mts.init();
   }
 
+
   public void init() {
+    String speed = "100";
+    String angle = "0";
+    String fps = "20";
+    String cost = "5.0";
+    checkVars(speed, angle, fps, cost);
+
+
+
+
     lengthToBuffers.put("1", 84.0d);
     lengthToBuffers.put("2", 168.0d);
     lengthToBuffers.put("3", 336.0d);
@@ -169,7 +179,7 @@ public class map_ModelTrainSet extends JFrame {
       public void run() {
         TrainPositionUpdate();
       }
-    }, 500, 1000 / fps);
+    }, 500, 1000 / map_ModelTrainSet.fps);
 
     this.addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
@@ -780,6 +790,30 @@ public class map_ModelTrainSet extends JFrame {
       trackCounter.put(trackType, 1);
     }
   }
+
+  private void checkVars(String s, String a, String f, String p) {
+    try {
+      double d = Double.parseDouble(s);
+      trainSpeed = d;
+    } catch (NumberFormatException e) {
+    }
+    try {
+      double d = Double.parseDouble(a);
+      startAngle = d;
+    } catch (NumberFormatException e) {
+    }
+    try {
+      double d = Double.parseDouble(p);
+      pricePerCM = d;
+    } catch (NumberFormatException e) {
+    }
+    try {
+      int d = Integer.parseInt(f);
+      fps = d;
+    } catch (NumberFormatException e) {
+    }
+  }
+
 
   public static void setStationStatus(String trackName) {
     trackPointsMap.get(trackName).isStation = true;

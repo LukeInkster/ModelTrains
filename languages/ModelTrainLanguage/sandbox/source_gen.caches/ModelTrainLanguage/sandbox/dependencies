@@ -21,6 +21,7 @@
     <classNode dependClassName="java.awt.image.AffineTransformOp" />
     <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.util.ArrayDeque" />
     <classNode dependClassName="java.util.Queue" />
   </dependency>
@@ -50,6 +51,7 @@
     <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Math" />
+    <classNode dependClassName="java.lang.NumberFormatException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
