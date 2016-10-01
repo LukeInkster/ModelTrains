@@ -29,7 +29,6 @@ public class Train {
   public Train(String self, int nCars, String route) {
     routeName = route;
     trainImage = RawImage.createRawTrain();
-    System.out.println("Image: " + trainImage.img.toString());
     widthOriginal = trainImage.width;
     heightOriginal = trainImage.height;
 

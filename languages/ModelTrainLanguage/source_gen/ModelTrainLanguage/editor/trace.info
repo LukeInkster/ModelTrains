@@ -10,7 +10,7 @@
   <concept fqn="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="14,0,55,0" name="ModelTrainLanguage.editor.EditorAspectDescriptorImpl" />
+      <unit at="14,0,52,0" name="ModelTrainLanguage.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:51ecb49e-d730-42c9-9c71-39758524ac0b(ModelTrainLanguage.editor)/2169777889731939748">
@@ -2877,90 +2877,6 @@
       <unit id="6118429311289532342" at="167,0,195,0" name="ModelTrainLanguage.editor.TrackSwitch_Editor$_Inline_cxxyo6_a7a" />
       <unit id="6118429311290552885" at="221,0,249,0" name="ModelTrainLanguage.editor.TrackSwitch_Editor$_Inline_cxxyo6_a9a" />
       <unit id="6118429311289532329" at="20,0,250,0" name="ModelTrainLanguage.editor.TrackSwitch_Editor" />
-    </file>
-  </root>
-  <root nodeRef="r:51ecb49e-d730-42c9-9c71-39758524ac0b(ModelTrainLanguage.editor)/6118429311291232613">
-    <file name="TrackBuffer_Editor.java">
-      <node id="6118429311291232613" at="16,79,17,63" concept="6" />
-      <node id="6118429311291232613" at="19,89,20,96" concept="5" />
-      <node id="6118429311291232613" at="20,96,21,48" concept="2" />
-      <node id="6118429311291232613" at="21,48,22,28" concept="2" />
-      <node id="6118429311291232613" at="22,28,23,81" concept="0" />
-      <node id="6118429311291232613" at="22,28,23,81" concept="2" />
-      <node id="6118429311291232613" at="23,81,24,81" concept="0" />
-      <node id="6118429311291232613" at="23,81,24,81" concept="2" />
-      <node id="6118429311291232613" at="24,81,25,81" concept="0" />
-      <node id="6118429311291232613" at="24,81,25,81" concept="2" />
-      <node id="6118429311291232613" at="25,81,26,22" concept="6" />
-      <node id="6118429311291232649" at="28,88,29,89" concept="5" />
-      <node id="6118429311291232649" at="29,89,30,47" concept="2" />
-      <node id="6118429311291232649" at="30,47,31,34" concept="2" />
-      <node id="6118429311291232649" at="31,34,32,22" concept="6" />
-      <node id="6118429311291232656" at="34,88,35,82" concept="5" />
-      <node id="6118429311291232656" at="35,82,36,29" concept="2" />
-      <node id="6118429311291232656" at="36,29,37,42" concept="2" />
-      <node id="6118429311291232656" at="37,42,38,26" concept="5" />
-      <node id="6118429311291232656" at="38,26,39,58" concept="2" />
-      <node id="6118429311291232656" at="39,58,40,42" concept="2" />
-      <node id="6118429311291232656" at="40,42,41,73" concept="2" />
-      <node id="6118429311291232656" at="41,73,42,57" concept="5" />
-      <node id="6118429311291232656" at="42,57,43,59" concept="5" />
-      <node id="6118429311291232656" at="44,35,45,82" concept="5" />
-      <node id="6118429311291232656" at="45,82,46,94" concept="6" />
-      <node id="6118429311291232656" at="47,10,48,22" concept="6" />
-      <node id="6118429311291232664" at="50,88,51,99" concept="5" />
-      <node id="6118429311291232664" at="51,99,52,47" concept="2" />
-      <node id="6118429311291232664" at="52,47,53,34" concept="2" />
-      <node id="6118429311291232664" at="53,34,54,22" concept="6" />
-      <node id="6118429311291232613" at="16,0,19,0" concept="4" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6118429311291232656" at="43,59,48,22" concept="3" />
-      <node id="6118429311291232649" at="28,0,34,0" concept="4" trace="createConstant_kid20w_a0#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6118429311291232664" at="50,0,56,0" concept="4" trace="createConstant_kid20w_c0#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6118429311291232613" at="19,0,28,0" concept="4" trace="createCollection_kid20w_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6118429311291232656" at="34,0,50,0" concept="4" trace="createProperty_kid20w_b0#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="6118429311291232613" at="16,79,17,63" />
-      <scope id="6118429311291232613" at="22,28,23,81" />
-      <scope id="6118429311291232613" at="23,81,24,81" />
-      <scope id="6118429311291232613" at="24,81,25,81" />
-      <scope id="6118429311291232656" at="44,35,46,94">
-        <var name="manager" id="6118429311291232656" />
-      </scope>
-      <scope id="6118429311291232613" at="16,0,19,0">
-        <var name="editorContext" id="6118429311291232613" />
-        <var name="node" id="6118429311291232613" />
-      </scope>
-      <scope id="6118429311291232649" at="28,88,32,22">
-        <var name="editorCell" id="6118429311291232649" />
-      </scope>
-      <scope id="6118429311291232664" at="50,88,54,22">
-        <var name="editorCell" id="6118429311291232664" />
-      </scope>
-      <scope id="6118429311291232649" at="28,0,34,0">
-        <var name="editorContext" id="6118429311291232649" />
-        <var name="node" id="6118429311291232649" />
-      </scope>
-      <scope id="6118429311291232664" at="50,0,56,0">
-        <var name="editorContext" id="6118429311291232664" />
-        <var name="node" id="6118429311291232664" />
-      </scope>
-      <scope id="6118429311291232613" at="19,89,26,22">
-        <var name="editorCell" id="6118429311291232613" />
-      </scope>
-      <scope id="6118429311291232613" at="19,0,28,0">
-        <var name="editorContext" id="6118429311291232613" />
-        <var name="node" id="6118429311291232613" />
-      </scope>
-      <scope id="6118429311291232656" at="34,88,48,22">
-        <var name="attributeConcept" id="6118429311291232656" />
-        <var name="attributeKind" id="6118429311291232656" />
-        <var name="editorCell" id="6118429311291232656" />
-        <var name="provider" id="6118429311291232656" />
-      </scope>
-      <scope id="6118429311291232656" at="34,0,50,0">
-        <var name="editorContext" id="6118429311291232656" />
-        <var name="node" id="6118429311291232656" />
-      </scope>
-      <unit id="6118429311291232613" at="15,0,57,0" name="ModelTrainLanguage.editor.TrackBuffer_Editor" />
     </file>
   </root>
   <root nodeRef="r:51ecb49e-d730-42c9-9c71-39758524ac0b(ModelTrainLanguage.editor)/6118429311292296784">

@@ -82,7 +82,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
               }).first();
               Iterable<SNode> tracks = ListSequence.fromList(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer")) || neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(it, _context.getContextNode());
+                  return neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c(it, _context.getContextNode());
                 }
               });
               return new ListScope(tracks) {
@@ -118,7 +118,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
               }).first();
               Iterable<SNode> tracks = ListSequence.fromList(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer")) || neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) && neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2(it, _context.getContextNode());
+                  return neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c(it, _context.getContextNode());
                 }
               });
               return new ListScope(tracks) {
@@ -154,7 +154,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
               }).first();
               Iterable<SNode> tracks = ListSequence.fromList(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer")) || neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2(it, _context.getContextNode());
+                  return neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba6L, "track4"))) && neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c(it, _context.getContextNode());
                 }
               });
               return new ListScope(tracks) {
@@ -190,7 +190,7 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
               }).first();
               Iterable<SNode> tracks = ListSequence.fromList(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503fL, 0x7b1e84e5f8af5040L, "trackPieces"))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer")) || neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a4a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1")));
+                  return neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a4a2(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2bL, "track2"))) && neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a4a2_0(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x54e9070ab2cdcba1L, "track3"))) && neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c(it, SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, "ModelTrainLanguage.structure.Track")), MetaAdapterFactory.getReferenceLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL, 0x3c0604cf2a3e3b2aL, "track1")));
                 }
               });
               return new ListScope(tracks) {
@@ -205,49 +205,49 @@ public class Track_Constraints extends BaseConstraintsDescriptor {
     });
     return references;
   }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(Object a, Object b) {
-    return !(((a != null ? a.equals(b) : a == b)));
-  }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(Object a, Object b) {
-    return !(((a != null ? a.equals(b) : a == b)));
-  }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2_0(Object a, Object b) {
+  private static boolean neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2(Object a, Object b) {
+  private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0b0c_0(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2_0(Object a, Object b) {
+  private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a1a2(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
+  private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c_0(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a2a2(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2(Object a, Object b) {
-    return !(((a != null ? a.equals(b) : a == b)));
-  }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2_0(Object a, Object b) {
+  private static boolean neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0c0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
+  private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c_0(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a3a2(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c(Object a, Object b) {
-    return !(((a != null ? a.equals(b) : a == b)));
-  }
-  private static boolean neq_uxez5t_a0a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c_0(Object a, Object b) {
+  private static boolean neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0d0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
   private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a4a2(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
+  private static boolean neq_uxez5t_a0a0a0a0a0a0a1a0a1a0a0a1a0b0a4a2_0(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
+  private static boolean neq_uxez5t_a0a0a0a0a0a0b0a0b0a0a0b0a1a0e0c(Object a, Object b) {
     return !(((a != null ? a.equals(b) : a == b)));
   }
   private static SNodePointer breakingNode_uxez5t_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:9cbcfe70-e7e5-4f07-a4e0-8faa02683e09(ModelTrainLanguage.constraints)", "7539347229290695288");

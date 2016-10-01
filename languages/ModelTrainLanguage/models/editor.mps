@@ -477,21 +477,6 @@
       <node concept="l2Vlx" id="5jD1KEMK1YU" role="2iSdaV" />
     </node>
   </node>
-  <node concept="24kQdi" id="5jD1KEMQx5_">
-    <ref role="1XX52x" to="5qva:5jD1KEMQx41" resolve="TrackBuffer" />
-    <node concept="3EZMnI" id="5jD1KEMQx65" role="2wV5jI">
-      <node concept="l2Vlx" id="5jD1KEMQx66" role="2iSdaV" />
-      <node concept="3F0ifn" id="5jD1KEMQx69" role="3EZMnx">
-        <property role="3F0ifm" value="ID:" />
-      </node>
-      <node concept="3F0A7n" id="5jD1KEMQx6g" role="3EZMnx">
-        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-      </node>
-      <node concept="3F0ifn" id="5jD1KEMQx6o" role="3EZMnx">
-        <property role="3F0ifm" value=", End of Line" />
-      </node>
-    </node>
-  </node>
   <node concept="24kQdi" id="5jD1KEMU$Tg">
     <ref role="1XX52x" to="5qva:2pqQ2agKvFU" resolve="TrackCrossing" />
     <node concept="3EZMnI" id="5jD1KEMU$Th" role="2wV5jI">

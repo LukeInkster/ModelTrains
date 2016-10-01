@@ -16,7 +16,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptRoute = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.Route", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6280L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).childDescriptors(new ConceptDescriptorBuilder.Link(6852099211848372015L, "tracks", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x5f178beddff4cf0fL), false, true, false)).children(new String[]{"tracks"}, new boolean[]{true}).create();
   /*package*/ final ConceptDescriptor myConceptStation = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.Station", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6174L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(5956952223153211901L, "stationTrack", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), false)).references("stationTrack").create();
   /*package*/ final ConceptDescriptor myConceptTrack = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.Track", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL)).super_("jetbrains.mps.lang.core.structure.BaseConcept").super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(4325149779949402922L, "track1", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), true), new ConceptDescriptorBuilder.Ref(4325149779949402923L, "track2", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), true), new ConceptDescriptorBuilder.Ref(6118429311290428321L, "track3", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), true), new ConceptDescriptorBuilder.Ref(6118429311290428326L, "track4", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), true)).references("track1", "track2", "track3", "track4").abstract_().create();
-  /*package*/ final ConceptDescriptor myConceptTrackBuffer = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.TrackBuffer", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L)).super_("ModelTrainLanguage.structure.Track").super_(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL)).parents("ModelTrainLanguage.structure.Track", "jetbrains.mps.lang.core.structure.INamedConcept", "jetbrains.mps.lang.core.structure.IDontSubstituteByDefault").parentIds(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL)).create();
   /*package*/ final ConceptDescriptor myConceptTrackCrossing = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.TrackCrossing", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL)).super_("ModelTrainLanguage.structure.Track").super_(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL)).parents("ModelTrainLanguage.structure.Track", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).propertyDescriptors(new ConceptDescriptorBuilder.Prop(3654814906924697146L, "left")).properties("left").create();
   /*package*/ final ConceptDescriptor myConceptTrackCurve = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.TrackCurve", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x16d2770f4d104340L)).super_("ModelTrainLanguage.structure.Track").super_(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL)).parents("ModelTrainLanguage.structure.Track", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).propertyDescriptors(new ConceptDescriptorBuilder.Prop(1644507721544778588L, "radius"), new ConceptDescriptorBuilder.Prop(1644507721544778590L, "angle"), new ConceptDescriptorBuilder.Prop(3498596363482446972L, "left")).properties("radius", "angle", "left").create();
   /*package*/ final ConceptDescriptor myConceptTrackReference = new ConceptDescriptorBuilder("ModelTrainLanguage.structure.TrackReference", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x5f178beddff4cf0fL)).super_("jetbrains.mps.lang.core.structure.BaseConcept").super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(6852099211848372013L, "track", MetaIdFactory.conceptId(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x7b1e84e5f8af503aL), false)).references("track").create();
@@ -28,13 +27,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptModelTrainSet, myConceptRoute, myConceptStation, myConceptTrack, myConceptTrackBuffer, myConceptTrackCrossing, myConceptTrackCurve, myConceptTrackReference, myConceptTrackStraight, myConceptTrackSwitch, myConceptTrain, myConceptTrainCar, myConceptTrainEngine);
+    return Arrays.asList(myConceptModelTrainSet, myConceptRoute, myConceptStation, myConceptTrack, myConceptTrackCrossing, myConceptTrackCurve, myConceptTrackReference, myConceptTrackStraight, myConceptTrackSwitch, myConceptTrain, myConceptTrainCar, myConceptTrainEngine);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(String conceptFqName) {
-    switch (Arrays.binarySearch(stringSwitchCases_1htk8d_a0a0r, conceptFqName)) {
+    switch (Arrays.binarySearch(stringSwitchCases_1htk8d_a0a0q, conceptFqName)) {
       case 0:
         return myConceptModelTrainSet;
       case 1:
@@ -44,26 +43,24 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
       case 3:
         return myConceptTrack;
       case 4:
-        return myConceptTrackBuffer;
-      case 5:
         return myConceptTrackCrossing;
-      case 6:
+      case 5:
         return myConceptTrackCurve;
-      case 7:
+      case 6:
         return myConceptTrackReference;
-      case 8:
+      case 7:
         return myConceptTrackStraight;
-      case 9:
+      case 8:
         return myConceptTrackSwitch;
-      case 10:
+      case 9:
         return myConceptTrain;
-      case 11:
+      case 10:
         return myConceptTrainCar;
-      case 12:
+      case 11:
         return myConceptTrainEngine;
       default:
         return null;
     }
   }
-  private static String[] stringSwitchCases_1htk8d_a0a0r = new String[]{"ModelTrainLanguage.structure.ModelTrainSet", "ModelTrainLanguage.structure.Route", "ModelTrainLanguage.structure.Station", "ModelTrainLanguage.structure.Track", "ModelTrainLanguage.structure.TrackBuffer", "ModelTrainLanguage.structure.TrackCrossing", "ModelTrainLanguage.structure.TrackCurve", "ModelTrainLanguage.structure.TrackReference", "ModelTrainLanguage.structure.TrackStraight", "ModelTrainLanguage.structure.TrackSwitch", "ModelTrainLanguage.structure.Train", "ModelTrainLanguage.structure.TrainCar", "ModelTrainLanguage.structure.TrainEngine"};
+  private static String[] stringSwitchCases_1htk8d_a0a0q = new String[]{"ModelTrainLanguage.structure.ModelTrainSet", "ModelTrainLanguage.structure.Route", "ModelTrainLanguage.structure.Station", "ModelTrainLanguage.structure.Track", "ModelTrainLanguage.structure.TrackCrossing", "ModelTrainLanguage.structure.TrackCurve", "ModelTrainLanguage.structure.TrackReference", "ModelTrainLanguage.structure.TrackStraight", "ModelTrainLanguage.structure.TrackSwitch", "ModelTrainLanguage.structure.Train", "ModelTrainLanguage.structure.TrainCar", "ModelTrainLanguage.structure.TrainEngine"};
 }

@@ -24,9 +24,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6174L, "ModelTrainLanguage.structure.Station"))) {
         return Collections.<ConceptEditor>singletonList(new Station_Editor());
       }
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x54e9070ab2da1101L, "ModelTrainLanguage.structure.TrackBuffer"))) {
-        return Collections.<ConceptEditor>singletonList(new TrackBuffer_Editor());
-      }
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getConcept(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x265ad82290c1fafaL, "ModelTrainLanguage.structure.TrackCrossing"))) {
         return Collections.<ConceptEditor>singletonList(new TrackCrossing_Editor());
       }
