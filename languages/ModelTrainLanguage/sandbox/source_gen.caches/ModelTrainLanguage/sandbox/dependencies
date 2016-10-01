@@ -46,6 +46,7 @@
     <classNode dependClassName="java.awt.RenderingHints" />
     <classNode dependClassName="java.awt.event.WindowAdapter" />
     <classNode dependClassName="java.awt.event.WindowEvent" />
+    <classNode dependClassName="java.awt.geom.Path2D" />
     <classNode dependClassName="java.awt.image.BufferedImage" />
     <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.Integer" />

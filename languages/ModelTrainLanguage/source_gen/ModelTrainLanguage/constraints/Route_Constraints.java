@@ -32,6 +32,9 @@ public class Route_Constraints extends BaseConstraintsDescriptor {
     return result;
   }
   public static boolean static_canBeAChild(SNode node, SNode parentNode, SNode link, SNode childConcept, final IOperationContext operationContext) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6280L, 0x5f178beddff4cf2fL, "tracks"))).count() < 2) {
+      return false;
+    }
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xe93fac6b76ff4453L, 0xa26793a92c7c2879L, 0x41f0eb9f5ea6280L, 0x5f178beddff4cf2fL, "tracks"))).count(); i++) {
       if (i == 0) {
         // The first track is connected to the second track 
