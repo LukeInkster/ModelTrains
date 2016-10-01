@@ -870,6 +870,10 @@ public class map_ModelTrainSet extends JFrame {
       };
       
       {
+        map_ModelTrainSet.addRouteSegment("r", "17");
+      };
+      
+      {
         map_ModelTrainSet.addRouteSegment("r", "4");
       };
       
@@ -894,6 +898,10 @@ public class map_ModelTrainSet extends JFrame {
       };
       
       {
+        map_ModelTrainSet.addRouteSegment("r", "18");
+      };
+      
+      {
         map_ModelTrainSet.addRouteSegment("r", "10");
       };
       
@@ -903,6 +911,62 @@ public class map_ModelTrainSet extends JFrame {
       
       {
         map_ModelTrainSet.addRouteSegment("r", "12");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "1");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "2");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "3");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "17");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "4");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "5");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "6");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "7");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "13");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "16");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "15");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "14");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "12");
+      };
+      
+      {
+        map_ModelTrainSet.addRouteSegment("r", "1");
       };
     };
   }
@@ -1037,7 +1101,7 @@ public class map_ModelTrainSet extends JFrame {
     {
       String self = "3";
       String track1Name = "2";
-      String track2Name = "4";
+      String track2Name = "17";
       boolean dir = false;
       boolean first = false;
       if (!(first) && track1Name.equals("") && track2Name.equals("")) {
@@ -1108,8 +1172,59 @@ public class map_ModelTrainSet extends JFrame {
       }
     }
     {
-      String self = "4";
+      String self = "17";
       String track1Name = "3";
+      String track2Name = "4";
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dThk = map_ModelTrainSet.railThickness;
+        double len = map_ModelTrainSet.getLength("1");
+        Vector3[][] points = new Vector3[2][4];
+        Vector3[] leftRail = new Vector3[4];
+        leftRail[0] = new Vector3(0, 0, -dWid - dThk);
+        leftRail[1] = new Vector3(len, 0, -dWid - dThk);
+        leftRail[2] = new Vector3(len, 0, -dWid);
+        leftRail[3] = new Vector3(0, 0, -dWid);
+        Vector3[] rightRail = new Vector3[4];
+        rightRail[0] = new Vector3(0, 0, dWid + dThk);
+        rightRail[1] = new Vector3(len, 0, dWid + dThk);
+        rightRail[2] = new Vector3(len, 0, dWid);
+        rightRail[3] = new Vector3(0, 0, dWid);
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+        double xStart = map_ModelTrainSet.sleeperWidth;
+        double xEnd = len - xStart;
+        double xLen = xEnd - xStart;
+        double xPos = xStart;
+        int sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double xInc = xLen / sleepers;
+        int j = 0;
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i].x += xPos;
+          }
+          sleeperList[j] = s;
+          xPos += xInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, len);
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String l = "1";
+        map_ModelTrainSet.addToTrackCounter("Straight " + " L:" + l, ((len) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "4";
+      String track1Name = "17";
       String track2Name = "5";
       boolean dir = false;
       boolean first = false;
@@ -1306,38 +1421,106 @@ public class map_ModelTrainSet extends JFrame {
     }
     {
       String self = "7";
+      String switchSuffix = map_ModelTrainSet.switchSuffix;
+      boolean dir = false;
       String track1Name = "6";
       String track2Name = "8";
+      String track3Name = "13";
       boolean first = false;
-      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+      if (!(first) && track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
+
+        double dGap = map_ModelTrainSet.pointGapCurve;
         double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = 22.5;
+        double dRad = 438;
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
         double dThk = map_ModelTrainSet.railThickness;
-        double len = map_ModelTrainSet.getLength("1");
-        Vector3[][] points = new Vector3[2][4];
-        Vector3[] leftRail = new Vector3[4];
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self + switchSuffix, points, sleeperList, track1Name, track3Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
+        }
+        if (!(track1Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+
+        }
+
+        double len = 168;
+        points = new Vector3[2][4];
+        leftRail = new Vector3[4];
         leftRail[0] = new Vector3(0, 0, -dWid - dThk);
         leftRail[1] = new Vector3(len, 0, -dWid - dThk);
         leftRail[2] = new Vector3(len, 0, -dWid);
         leftRail[3] = new Vector3(0, 0, -dWid);
-        Vector3[] rightRail = new Vector3[4];
+        rightRail = new Vector3[4];
         rightRail[0] = new Vector3(0, 0, dWid + dThk);
         rightRail[1] = new Vector3(len, 0, dWid + dThk);
         rightRail[2] = new Vector3(len, 0, dWid);
         rightRail[3] = new Vector3(0, 0, dWid);
-        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
-        Vector3 toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
+        fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
         points[0] = leftRail;
         points[1] = rightRail;
         double xStart = map_ModelTrainSet.sleeperWidth;
         double xEnd = len - xStart;
         double xLen = xEnd - xStart;
         double xPos = xStart;
-        int sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
-        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleeperList = new Vector3[sleepers + 1][];
         double xInc = xLen / sleepers;
-        int j = 0;
+        j = 0;
         while (j <= sleepers) {
           Vector3[] s = map_ModelTrainSet.createSleeper();
           for (int i = 0; i < s.length; i++) {
@@ -1347,11 +1530,9 @@ public class map_ModelTrainSet extends JFrame {
           xPos += xInc;
           j++;
         }
-
         map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, len);
         double priceMod = map_ModelTrainSet.pricePerCM;
-        String l = "1";
-        map_ModelTrainSet.addToTrackCounter("Straight " + " L:" + l, ((len) / 100 * priceMod));
+        map_ModelTrainSet.addToTrackCounter("Switch " + ((dir ? "Left" : "Right")), ((dLen + len) / 100 * priceMod));
 
       }
     }
@@ -1431,7 +1612,7 @@ public class map_ModelTrainSet extends JFrame {
     {
       String self = "9";
       String track1Name = "8";
-      String track2Name = "10";
+      String track2Name = "18";
       boolean dir = false;
       boolean first = false;
       if (!(first) && track1Name.equals("") && track2Name.equals("")) {
@@ -1502,8 +1683,59 @@ public class map_ModelTrainSet extends JFrame {
       }
     }
     {
-      String self = "10";
+      String self = "18";
       String track1Name = "9";
+      String track2Name = "10";
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dThk = map_ModelTrainSet.railThickness;
+        double len = map_ModelTrainSet.getLength("1");
+        Vector3[][] points = new Vector3[2][4];
+        Vector3[] leftRail = new Vector3[4];
+        leftRail[0] = new Vector3(0, 0, -dWid - dThk);
+        leftRail[1] = new Vector3(len, 0, -dWid - dThk);
+        leftRail[2] = new Vector3(len, 0, -dWid);
+        leftRail[3] = new Vector3(0, 0, -dWid);
+        Vector3[] rightRail = new Vector3[4];
+        rightRail[0] = new Vector3(0, 0, dWid + dThk);
+        rightRail[1] = new Vector3(len, 0, dWid + dThk);
+        rightRail[2] = new Vector3(len, 0, dWid);
+        rightRail[3] = new Vector3(0, 0, dWid);
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+        double xStart = map_ModelTrainSet.sleeperWidth;
+        double xEnd = len - xStart;
+        double xLen = xEnd - xStart;
+        double xPos = xStart;
+        int sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double xInc = xLen / sleepers;
+        int j = 0;
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i].x += xPos;
+          }
+          sleeperList[j] = s;
+          xPos += xInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, len);
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String l = "1";
+        map_ModelTrainSet.addToTrackCounter("Straight " + " L:" + l, ((len) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "10";
+      String track1Name = "18";
       String track2Name = "11";
       boolean dir = false;
       boolean first = false;
@@ -1649,38 +1881,106 @@ public class map_ModelTrainSet extends JFrame {
     }
     {
       String self = "12";
-      String track1Name = "11";
-      String track2Name = "1";
+      String switchSuffix = map_ModelTrainSet.switchSuffix;
+      boolean dir = true;
+      String track1Name = "1";
+      String track2Name = "11";
+      String track3Name = "14";
       boolean first = false;
-      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+      if (!(first) && track1Name.equals("") && track2Name.equals("") && track3Name.equals("")) {
         System.out.println("Track " + self + " has no track connections.");
       } else {
+
+        double dGap = map_ModelTrainSet.pointGapCurve;
         double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = 22.5;
+        double dRad = 438;
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
         double dThk = map_ModelTrainSet.railThickness;
-        double len = map_ModelTrainSet.getLength("1");
-        Vector3[][] points = new Vector3[2][4];
-        Vector3[] leftRail = new Vector3[4];
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self + switchSuffix, points, sleeperList, track1Name, track3Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        if (!(track3Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track3Name + self, switchSuffix);
+        }
+        if (!(track1Name.equals(""))) {
+          map_ModelTrainSet.addCrossSwitchInfo(track1Name + self, switchSuffix);
+
+        }
+
+        double len = 168;
+        points = new Vector3[2][4];
+        leftRail = new Vector3[4];
         leftRail[0] = new Vector3(0, 0, -dWid - dThk);
         leftRail[1] = new Vector3(len, 0, -dWid - dThk);
         leftRail[2] = new Vector3(len, 0, -dWid);
         leftRail[3] = new Vector3(0, 0, -dWid);
-        Vector3[] rightRail = new Vector3[4];
+        rightRail = new Vector3[4];
         rightRail[0] = new Vector3(0, 0, dWid + dThk);
         rightRail[1] = new Vector3(len, 0, dWid + dThk);
         rightRail[2] = new Vector3(len, 0, dWid);
         rightRail[3] = new Vector3(0, 0, dWid);
-        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
-        Vector3 toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
+        fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        toPoint = Vector3.midPoint(leftRail[1], rightRail[1]);
         points[0] = leftRail;
         points[1] = rightRail;
         double xStart = map_ModelTrainSet.sleeperWidth;
         double xEnd = len - xStart;
         double xLen = xEnd - xStart;
         double xPos = xStart;
-        int sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
-        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        sleepers = ((int) Math.round(len / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleeperList = new Vector3[sleepers + 1][];
         double xInc = xLen / sleepers;
-        int j = 0;
+        j = 0;
         while (j <= sleepers) {
           Vector3[] s = map_ModelTrainSet.createSleeper();
           for (int i = 0; i < s.length; i++) {
@@ -1690,11 +1990,301 @@ public class map_ModelTrainSet extends JFrame {
           xPos += xInc;
           j++;
         }
-
         map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, len);
         double priceMod = map_ModelTrainSet.pricePerCM;
-        String l = "1";
-        map_ModelTrainSet.addToTrackCounter("Straight " + " L:" + l, ((len) / 100 * priceMod));
+        map_ModelTrainSet.addToTrackCounter("Switch " + ((dir ? "Left" : "Right")), ((dLen + len) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "13";
+      String track1Name = "7";
+      String track2Name = "16";
+      boolean dir = false;
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dGap = map_ModelTrainSet.pointGapCurve;
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = Double.parseDouble("45");
+        double dRad = map_ModelTrainSet.getRadius("2");
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
+        double dThk = map_ModelTrainSet.railThickness;
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String r = "2";
+        String a = "45";
+        map_ModelTrainSet.addToTrackCounter("Curve " + ((dir ? "Left" : "Right")) + " R:" + r + " A:" + a, ((dLen) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "14";
+      String track1Name = "12";
+      String track2Name = "15";
+      boolean dir = true;
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dGap = map_ModelTrainSet.pointGapCurve;
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = Double.parseDouble("45");
+        double dRad = map_ModelTrainSet.getRadius("2");
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
+        double dThk = map_ModelTrainSet.railThickness;
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String r = "2";
+        String a = "45";
+        map_ModelTrainSet.addToTrackCounter("Curve " + ((dir ? "Left" : "Right")) + " R:" + r + " A:" + a, ((dLen) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "15";
+      String track1Name = "14";
+      String track2Name = "16";
+      boolean dir = true;
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dGap = map_ModelTrainSet.pointGapCurve;
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = Double.parseDouble("22.5");
+        double dRad = map_ModelTrainSet.getRadius("1");
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
+        double dThk = map_ModelTrainSet.railThickness;
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String r = "1";
+        String a = "22.5";
+        map_ModelTrainSet.addToTrackCounter("Curve " + ((dir ? "Left" : "Right")) + " R:" + r + " A:" + a, ((dLen) / 100 * priceMod));
+
+      }
+    }
+    {
+      String self = "16";
+      String track1Name = "13";
+      String track2Name = "15";
+      boolean dir = false;
+      boolean first = false;
+      if (!(first) && track1Name.equals("") && track2Name.equals("")) {
+        System.out.println("Track " + self + " has no track connections.");
+      } else {
+        double dGap = map_ModelTrainSet.pointGapCurve;
+        double dWid = map_ModelTrainSet.railWidth * 0.5;
+        double dAng = Double.parseDouble("22.5");
+        double dRad = map_ModelTrainSet.getRadius("1");
+        if (dir) {
+          dRad = -dRad;
+          dAng = -dAng;
+        }
+        double dThk = map_ModelTrainSet.railThickness;
+        double dLen = map_ModelTrainSet.arcLength(dRad, dAng);
+        int dPoints = ((int) (dAng / dGap));
+        dPoints = Math.abs(dPoints);
+
+        Vector3[][] points = new Vector3[2][];
+        Vector3[] leftRail = new Vector3[dPoints * 2];
+        Vector3[] rightRail = new Vector3[dPoints * 2];
+        double angleMod = dAng / dPoints;
+        double angle = 0;
+        for (int i = 0; i < dPoints * 2; i++) {
+          if (i < dPoints) {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid - dThk, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid + dThk, dRad, angle);
+            if (dPoints - i != 1) {
+              angle += angleMod;
+            }
+          } else {
+            leftRail[i] = map_ModelTrainSet.arcCalc(-dWid, dRad, angle);
+            rightRail[i] = map_ModelTrainSet.arcCalc(dWid, dRad, angle);
+            angle -= angleMod;
+          }
+        }
+        Vector3 fromPoint = Vector3.midPoint(leftRail[0], rightRail[0]);
+        Vector3 toPoint = Vector3.midPoint(leftRail[dPoints - 1], rightRail[dPoints - 1]);
+        points[0] = leftRail;
+        points[1] = rightRail;
+
+        double angleStart = map_ModelTrainSet.arcPercentToAngle(map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleEnd = map_ModelTrainSet.arcPercentToAngle(dLen - map_ModelTrainSet.sleeperWidth, dLen, dAng);
+        double angleLen = angleEnd - angleStart;
+        angle = angleStart;
+        int sleepers = ((int) Math.round(dLen / map_ModelTrainSet.standardLength * map_ModelTrainSet.standardBuffers));
+        sleepers = Math.abs(sleepers);
+        Vector3[][] sleeperList = new Vector3[sleepers + 1][];
+        double angleInc = angleLen / sleepers;
+        int j = 0;
+        Vector3 p = new Vector3(0, 0, dRad);
+        while (j <= sleepers) {
+          Vector3[] s = map_ModelTrainSet.createSleeper();
+          for (int i = 0; i < s.length; i++) {
+            s[i] = map_ModelTrainSet.rotatePoint(s[i], angle, p);
+          }
+          sleeperList[j] = s;
+          angle += angleInc;
+          j++;
+        }
+
+        map_ModelTrainSet.addTrackSegment(self, points, sleeperList, track1Name, track2Name, fromPoint, toPoint, dLen, dAng, new Vector3(0, 0, dRad));
+        double priceMod = map_ModelTrainSet.pricePerCM;
+        String r = "1";
+        String a = "22.5";
+        map_ModelTrainSet.addToTrackCounter("Curve " + ((dir ? "Left" : "Right")) + " R:" + r + " A:" + a, ((dLen) / 100 * priceMod));
 
       }
     }
