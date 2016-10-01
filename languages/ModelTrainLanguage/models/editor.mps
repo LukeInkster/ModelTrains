@@ -205,6 +205,19 @@
             </node>
           </node>
           <node concept="3F0ifn" id="1SsAnUAZm7l" role="3EZMnx" />
+          <node concept="3F0ifn" id="29QOYbJYhRk" role="3EZMnx">
+            <property role="3F0ifm" value="Straight track has 3 lengths: 1,2,3" />
+            <node concept="VechU" id="29QOYbJYhV2" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="29QOYbJYhV4" role="3EZMnx">
+            <property role="3F0ifm" value="Curved track has 4 radii: 1,2,3,4  and allows angles of 22.5 and 45" />
+            <node concept="VechU" id="29QOYbJYhWm" role="3F10Kt">
+              <property role="Vb096" value="DARK_GREEN" />
+            </node>
+          </node>
+          <node concept="3F0ifn" id="29QOYbJYhTM" role="3EZMnx" />
           <node concept="3F0ifn" id="1SsAnUAZmap" role="3EZMnx">
             <property role="3F0ifm" value="Adjustable Model Values:" />
           </node>
@@ -613,6 +626,18 @@
       </node>
       <node concept="3F0A7n" id="1SsAnUAYsRM" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="29QOYbJBA20" role="3EZMnx">
+        <property role="3F0ifm" value=" Route: " />
+      </node>
+      <node concept="1iCGBv" id="29QOYbJBA2i" role="3EZMnx">
+        <ref role="1NtTu8" to="5qva:5aFm7LkYY3z" />
+        <node concept="1sVBvm" id="29QOYbJBA2k" role="1sWHZn">
+          <node concept="3F0A7n" id="29QOYbJBA2_" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
       </node>
       <node concept="3F0ifn" id="1SsAnUAYsQm" role="3EZMnx">
         <property role="3F0ifm" value="  TrainEngine: " />

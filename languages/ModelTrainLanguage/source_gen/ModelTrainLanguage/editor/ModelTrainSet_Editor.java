@@ -107,13 +107,13 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_2jo8ok_r0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_s0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_t0c0(editorContext, node));
-    editorCell.addEditorCell(this.createCollection_2jo8ok_u0c0(editorContext, node));
-    editorCell.addEditorCell(this.createCollection_2jo8ok_v0c0(editorContext, node));
-    editorCell.addEditorCell(this.createCollection_2jo8ok_w0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_u0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_v0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_w0c0(editorContext, node));
     editorCell.addEditorCell(this.createCollection_2jo8ok_x0c0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_2jo8ok_y0c0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_2jo8ok_z0c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_ab0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_y0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_z0c0(editorContext, node));
+    editorCell.addEditorCell(this.createCollection_2jo8ok_ab0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_bb0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_cb0c0(editorContext, node));
     editorCell.addEditorCell(this.createRefNodeList_2jo8ok_db0c0(editorContext, node));
@@ -123,6 +123,9 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createConstant_2jo8ok_hb0c0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_2jo8ok_ib0c0(editorContext, node));
     editorCell.addEditorCell(this.createRefNodeList_2jo8ok_jb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_kb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_lb0c0(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_2jo8ok_mb0c0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_2jo8ok_a0c0(EditorContext editorContext, SNode node) {
@@ -283,28 +286,52 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     return editorCell;
   }
   private EditorCell createConstant_2jo8ok_t0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Adjustable Model Values:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Straight track has 3 lengths: 1,2,3");
     editorCell.setCellId("Constant_2jo8ok_t0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createCollection_2jo8ok_u0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_u0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Curved track has 4 radii: 1,2,3,4  and allows angles of 22.5 and 45");
+    editorCell.setCellId("Constant_2jo8ok_u0c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.TEXT_COLOR, 0, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_v0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_v0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_w0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Adjustable Model Values:");
+    editorCell.setCellId("Constant_2jo8ok_w0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createCollection_2jo8ok_x0c0(EditorContext editorContext, SNode node) {
     EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_2jo8ok_u0c0");
+    editorCell.setCellId("Collection_2jo8ok_x0c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, 0, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(this.createConstant_2jo8ok_a02a2a(editorContext, node));
-    editorCell.addEditorCell(this.createProperty_2jo8ok_b02a2a(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a32a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b32a2a(editorContext, node));
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_a02a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_a32a2a(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Staring Angle of Track: (default 0 direction is \"->\")");
-    editorCell.setCellId("Constant_2jo8ok_a02a2a");
+    editorCell.setCellId("Constant_2jo8ok_a32a2a");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createProperty_2jo8ok_b02a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createProperty_2jo8ok_b32a2a(EditorContext editorContext, SNode node) {
     CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
     provider.setRole("startAngle");
     provider.setNoTargetText("<no startAngle>");
@@ -320,23 +347,23 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     } else
     return editorCell;
   }
-  private EditorCell createCollection_2jo8ok_v0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createCollection_2jo8ok_y0c0(EditorContext editorContext, SNode node) {
     EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_2jo8ok_v0c0");
+    editorCell.setCellId("Collection_2jo8ok_y0c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, 0, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(this.createConstant_2jo8ok_a12a2a(editorContext, node));
-    editorCell.addEditorCell(this.createProperty_2jo8ok_b12a2a(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a42a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b42a2a(editorContext, node));
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_a12a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_a42a2a(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Train speed in mm/s: ");
-    editorCell.setCellId("Constant_2jo8ok_a12a2a");
+    editorCell.setCellId("Constant_2jo8ok_a42a2a");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createProperty_2jo8ok_b12a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createProperty_2jo8ok_b42a2a(EditorContext editorContext, SNode node) {
     CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
     provider.setRole("trainSpeed");
     provider.setNoTargetText("<no trainSpeed>");
@@ -352,23 +379,23 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     } else
     return editorCell;
   }
-  private EditorCell createCollection_2jo8ok_w0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createCollection_2jo8ok_z0c0(EditorContext editorContext, SNode node) {
     EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_2jo8ok_w0c0");
+    editorCell.setCellId("Collection_2jo8ok_z0c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, 0, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(this.createConstant_2jo8ok_a22a2a(editorContext, node));
-    editorCell.addEditorCell(this.createProperty_2jo8ok_b22a2a(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a52a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b52a2a(editorContext, node));
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_a22a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_a52a2a(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Train updates per second: ");
-    editorCell.setCellId("Constant_2jo8ok_a22a2a");
+    editorCell.setCellId("Constant_2jo8ok_a52a2a");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createProperty_2jo8ok_b22a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createProperty_2jo8ok_b52a2a(EditorContext editorContext, SNode node) {
     CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
     provider.setRole("fps");
     provider.setNoTargetText("<no fps>");
@@ -384,23 +411,23 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     } else
     return editorCell;
   }
-  private EditorCell createCollection_2jo8ok_x0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createCollection_2jo8ok_ab0c0(EditorContext editorContext, SNode node) {
     EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_2jo8ok_x0c0");
+    editorCell.setCellId("Collection_2jo8ok_ab0c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, 0, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(this.createConstant_2jo8ok_a32a2a(editorContext, node));
-    editorCell.addEditorCell(this.createProperty_2jo8ok_b32a2a(editorContext, node));
+    editorCell.addEditorCell(this.createConstant_2jo8ok_a62a2a(editorContext, node));
+    editorCell.addEditorCell(this.createProperty_2jo8ok_b62a2a(editorContext, node));
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_a32a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_a62a2a(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Price per Centimeter of track: ");
-    editorCell.setCellId("Constant_2jo8ok_a32a2a");
+    editorCell.setCellId("Constant_2jo8ok_a62a2a");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createProperty_2jo8ok_b32a2a(EditorContext editorContext, SNode node) {
+  private EditorCell createProperty_2jo8ok_b62a2a(EditorContext editorContext, SNode node) {
     CellProviderWithRole provider = new PropertyCellProvider(node, editorContext);
     provider.setRole("price");
     provider.setNoTargetText("<no price>");
@@ -416,20 +443,20 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     } else
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_y0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_bb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
-    editorCell.setCellId("Constant_2jo8ok_y0c0");
+    editorCell.setCellId("Constant_2jo8ok_bb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2jo8ok_z0c0(EditorContext editorContext, SNode node) {
+  private EditorCell createConstant_2jo8ok_cb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "TrackPieces:");
-    editorCell.setCellId("Constant_2jo8ok_z0c0");
+    editorCell.setCellId("Constant_2jo8ok_cb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNodeList_2jo8ok_ab0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.trackPiecesListHandler_2jo8ok_ab0c0(node, "trackPieces", editorContext);
+  private EditorCell createRefNodeList_2jo8ok_db0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.trackPiecesListHandler_2jo8ok_db0c0(node, "trackPieces", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_trackPieces");
     Style style = new StyleImpl();
@@ -439,8 +466,8 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class trackPiecesListHandler_2jo8ok_ab0c0 extends RefNodeListHandler {
-    public trackPiecesListHandler_2jo8ok_ab0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class trackPiecesListHandler_2jo8ok_db0c0 extends RefNodeListHandler {
+    public trackPiecesListHandler_2jo8ok_db0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
@@ -475,7 +502,7 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     }
     @Override
     public EditorCell createSeparatorCell(EditorContext editorContext, SNode prevNode, SNode nextNode) {
-      EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, this.getOwner(), trackPiecesListHandler_2jo8ok_ab0c0.this.getSeparatorText(editorContext, prevNode));
+      EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, this.getOwner(), trackPiecesListHandler_2jo8ok_db0c0.this.getSeparatorText(editorContext, prevNode));
       editorCell.setSelectable(false);
       Style style = new StyleImpl();
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "");
@@ -486,57 +513,6 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
       return editorCell;
     }
   }
-  private EditorCell createConstant_2jo8ok_bb0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
-    editorCell.setCellId("Constant_2jo8ok_bb0c0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_2jo8ok_cb0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Stations:");
-    editorCell.setCellId("Constant_2jo8ok_cb0c0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createRefNodeList_2jo8ok_db0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.stationsListHandler_2jo8ok_db0c0(node, "stations", editorContext);
-    EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
-    editorCell.setCellId("refNodeList_stations");
-    editorCell.setRole(handler.getElementRole());
-    return editorCell;
-  }
-  private static class stationsListHandler_2jo8ok_db0c0 extends RefNodeListHandler {
-    public stationsListHandler_2jo8ok_db0c0(SNode ownerNode, String childRole, EditorContext context) {
-      super(ownerNode, childRole, context, false);
-    }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      SNode listOwner = super.getOwner();
-      return NodeFactoryManager.createNode(listOwner, editorContext, super.getElementRole());
-    }
-    public EditorCell createNodeCell(EditorContext editorContext, SNode elementNode) {
-      EditorCell elementCell = super.createNodeCell(editorContext, elementNode);
-      this.installElementCellActions(this.getOwner(), elementNode, elementCell, editorContext);
-      return elementCell;
-    }
-    public EditorCell createEmptyCell(EditorContext editorContext) {
-      EditorCell emptyCell = null;
-      emptyCell = super.createEmptyCell(editorContext);
-      this.installElementCellActions(super.getOwner(), null, emptyCell, editorContext);
-      return emptyCell;
-    }
-    public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell, EditorContext editorContext) {
-      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
-        elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET);
-        if (elementNode != null) {
-          elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-          elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
-        }
-        if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-          elementCell.setSubstituteInfo(new DefaultChildSubstituteInfo(listOwner, elementNode, super.getLinkDeclaration(), editorContext));
-        }
-      }
-    }
-  }
   private EditorCell createConstant_2jo8ok_eb0c0(EditorContext editorContext, SNode node) {
     EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
     editorCell.setCellId("Constant_2jo8ok_eb0c0");
@@ -544,20 +520,20 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     return editorCell;
   }
   private EditorCell createConstant_2jo8ok_fb0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Routes:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Stations:");
     editorCell.setCellId("Constant_2jo8ok_fb0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNodeList_2jo8ok_gb0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.routesListHandler_2jo8ok_gb0c0(node, "routes", editorContext);
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.stationsListHandler_2jo8ok_gb0c0(node, "stations", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
-    editorCell.setCellId("refNodeList_routes");
+    editorCell.setCellId("refNodeList_stations");
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class routesListHandler_2jo8ok_gb0c0 extends RefNodeListHandler {
-    public routesListHandler_2jo8ok_gb0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class stationsListHandler_2jo8ok_gb0c0 extends RefNodeListHandler {
+    public stationsListHandler_2jo8ok_gb0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
@@ -595,20 +571,71 @@ public class ModelTrainSet_Editor extends DefaultNodeEditor {
     return editorCell;
   }
   private EditorCell createConstant_2jo8ok_ib0c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Trains:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Routes:");
     editorCell.setCellId("Constant_2jo8ok_ib0c0");
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNodeList_2jo8ok_jb0c0(EditorContext editorContext, SNode node) {
-    AbstractCellListHandler handler = new ModelTrainSet_Editor.trainsListHandler_2jo8ok_jb0c0(node, "trains", editorContext);
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.routesListHandler_2jo8ok_jb0c0(node, "routes", editorContext);
+    EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
+    editorCell.setCellId("refNodeList_routes");
+    editorCell.setRole(handler.getElementRole());
+    return editorCell;
+  }
+  private static class routesListHandler_2jo8ok_jb0c0 extends RefNodeListHandler {
+    public routesListHandler_2jo8ok_jb0c0(SNode ownerNode, String childRole, EditorContext context) {
+      super(ownerNode, childRole, context, false);
+    }
+    public SNode createNodeToInsert(EditorContext editorContext) {
+      SNode listOwner = super.getOwner();
+      return NodeFactoryManager.createNode(listOwner, editorContext, super.getElementRole());
+    }
+    public EditorCell createNodeCell(EditorContext editorContext, SNode elementNode) {
+      EditorCell elementCell = super.createNodeCell(editorContext, elementNode);
+      this.installElementCellActions(this.getOwner(), elementNode, elementCell, editorContext);
+      return elementCell;
+    }
+    public EditorCell createEmptyCell(EditorContext editorContext) {
+      EditorCell emptyCell = null;
+      emptyCell = super.createEmptyCell(editorContext);
+      this.installElementCellActions(super.getOwner(), null, emptyCell, editorContext);
+      return emptyCell;
+    }
+    public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell, EditorContext editorContext) {
+      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
+        elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET);
+        if (elementNode != null) {
+          elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
+          elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
+        }
+        if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+          elementCell.setSubstituteInfo(new DefaultChildSubstituteInfo(listOwner, elementNode, super.getLinkDeclaration(), editorContext));
+        }
+      }
+    }
+  }
+  private EditorCell createConstant_2jo8ok_kb0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "");
+    editorCell.setCellId("Constant_2jo8ok_kb0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_2jo8ok_lb0c0(EditorContext editorContext, SNode node) {
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "Trains:");
+    editorCell.setCellId("Constant_2jo8ok_lb0c0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNodeList_2jo8ok_mb0c0(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new ModelTrainSet_Editor.trainsListHandler_2jo8ok_mb0c0(node, "trains", editorContext);
     EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_trains");
     editorCell.setRole(handler.getElementRole());
     return editorCell;
   }
-  private static class trainsListHandler_2jo8ok_jb0c0 extends RefNodeListHandler {
-    public trainsListHandler_2jo8ok_jb0c0(SNode ownerNode, String childRole, EditorContext context) {
+  private static class trainsListHandler_2jo8ok_mb0c0 extends RefNodeListHandler {
+    public trainsListHandler_2jo8ok_mb0c0(SNode ownerNode, String childRole, EditorContext context) {
       super(ownerNode, childRole, context, false);
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
