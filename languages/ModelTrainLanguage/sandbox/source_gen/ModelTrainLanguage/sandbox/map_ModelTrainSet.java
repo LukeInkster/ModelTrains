@@ -741,7 +741,6 @@ public class map_ModelTrainSet extends JFrame {
    * Helper methods and classes, and lastly code generated from track structures
    */
   public static void print(Object o) {
-    System.out.println(o.toString());
   }
 
   public static void addTrackCross(String t1, String t2, double angle) {
